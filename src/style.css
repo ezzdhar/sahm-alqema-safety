@@ -1,0 +1,170 @@
+:root {
+  /* Color Palette matching Figma */
+  --color-primary: #D6214E;
+  --color-primary-hover: #BF1B44;
+  --color-primary-active: #A6163A;
+  --color-primary-light: #FBE9ED;
+  --color-primary-subtle: rgba(214, 33, 78, 0.08);
+
+  --color-navy: #1A3E6F;
+  --color-navy-dark: #091627;
+  --color-navy-deep: #050A12;
+  --color-navy-light: #E8ECF1;
+  --color-navy-card: rgba(5, 10, 18, 0.85);
+
+  --color-bg-light: #F5F0EC;
+  --color-bg-white: #FFFFFF;
+  --color-bg-cream: #FAF9F6;
+
+  --color-text-main: #091627;
+  --color-text-body: #4A4A4A;
+  --color-text-muted: #6D6F73;
+  --color-text-light: #9EABBA;
+  --color-text-white: #FFFFFF;
+
+  --border-color-light: #E8ECF1;
+  --border-color-dark: rgba(255, 255, 255, 0.12);
+  --border-color-glass: rgba(255, 255, 255, 0.18);
+
+  --shadow-sm: 0 2px 8px rgba(9, 22, 39, 0.04);
+  --shadow-md: 0 8px 24px rgba(9, 22, 39, 0.08);
+  --shadow-lg: 0 16px 40px rgba(9, 22, 39, 0.12);
+  --shadow-glow: 0 0 40px rgba(214, 33, 78, 0.25);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 30px;
+  --radius-full: 9999px;
+
+  --font-family: 'Tajawal', system-ui, -apple-system, sans-serif;
+  --font-cairo: 'Cairo', system-ui, -apple-system, sans-serif;
+  --font-inter: 'Inter', system-ui, -apple-system, sans-serif;
+
+  --container-max-width: 1440px;
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-family);
+  direction: rtl;
+  text-align: right;
+  background-color: #FFFFFF;
+  color: var(--color-text-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.6;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
+  background-color: #FFFFFF;
+}
+
+#app {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+input, textarea, select {
+  font-family: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+@media (max-width: 767px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-color-glass);
+}
+
+.glass-panel-dark {
+  background: var(--color-navy-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-color-dark);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.05); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F4F8;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
