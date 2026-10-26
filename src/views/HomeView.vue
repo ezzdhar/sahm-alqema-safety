@@ -26,22 +26,22 @@ const features = [
 const steps = [
   {
     title: 'التخطيط والدراسة',
-    desc: 'مراجعة مخططات المشروع ودراسة التكاليف والجدوى الفنية لاختيار أفضل الحلول الاقتصادية ووضع جدول زمني للمشروع.',
+    desc: 'مراجعة متطلبات المشروع وموقعه بدقة ووضع الحلول الهندسية المناسبة وجدول التنفيذ الزمني.',
     icon: 'bar-chart',
   },
   {
     title: 'التصميم والنمذجة',
-    desc: 'إعداد كافة المخططات الهندسية ونمذجتها بواسطة طواقم هندسية محترفة لتفادي أي تعارض مسبق والتنسيق الكامل لأنظمة MEP.',
+    desc: 'تصميم شبكات MEP ونمذجتها بتقنية BIM المتطورة لتلافي أي تعارض وتنسيق الأعمال هندسياً.',
     icon: 'trending-up',
   },
   {
     title: 'التوريد والتركيب',
-    desc: 'فحص واختبار كافة الخطوط والمنافذ وتركيبها وضبطها بالتوافق مع خطط الصيانة المستدامة والمعايير الفنية والأنظمة العالمية.',
+    desc: 'توريد أجود المعدات المعتمدة وتركيبها بواسطة طواقم هندسية مدربة بأعلى اشتراطات السلامة.',
     icon: 'palette',
   },
   {
     title: 'الاختبار والتشغيل',
-    desc: 'التأكد من خلو المنظومة من أي تعارض وتنسيق الأعمال هندسياً ومطابقتها لمخططات As-Built وتسليم تقارير التشغيل المعتمدة.',
+    desc: 'فحص واختبار كافة الخطوط والأنظمة واعتمادها وتسليمها جاهزة مع خطط الصيانة المستدامة.',
     icon: 'globe',
   },
 ];
@@ -101,12 +101,12 @@ const featuredProjects = [
 // Stats Data matching Desktop - 11
 const statsData = [
   { value: '25,000+', label: 'غرفة فندقية' },
-  { value: '6,000+', label: 'نقطة توزيع سكنية' },
-  { value: '4,000+', label: 'متر مربع مساحة مباني' },
-  { value: '220+', label: 'فيلا ووحدة سكنية' },
-  { value: '90%', label: 'نسبة رضا وثقة العملاء' },
-  { value: '20+', label: 'سنة خبرة وتطوير' },
-  { value: '200+', label: 'مشروع تجاري وإداري' },
+  { value: '6,000+', label: 'فيلا وقصر' },
+  { value: '4,000+', label: 'شقة ووحدة سكنية' },
+  { value: '220+', label: 'شقة ووحدة سكنية' },
+  { value: '90%', label: 'نسبة ولاء وعودة العملاء' },
+  { value: '20+', label: 'محطة غلايات كبري' },
+  { value: '200+', label: 'محطة وغرفة مضخات' },
   { value: '1,200+', label: 'مخطط هندسي معتمد' },
 ];
 
@@ -133,6 +133,14 @@ const whyUsItems = [
     desc: 'التزام صارم بالجداول الزمنية والتسليم بمخططات As-Built وضمانات ما بعد التشغيل.',
   },
 ];
+
+const differentiators = whyUsItems.map((item, index) => ({
+  ...item,
+  id: item.number,
+  reverse: index % 2 === 1,
+  ellipseId: index + 1,
+  img: `/assets/num-0${index + 1}.png`,
+}));
 
 // Partner Logos matching Figma Desktop - 11
 const partners = [
@@ -229,12 +237,13 @@ const serviceHexagonsBottom = [
             <span class="hero-title-block"><span class="highlight-red">الأمان</span> بالإتقان الهندسي</span>
           </h1>
           <p class="hero-section__subtitle">
-            استشارات وتصميم وتنفيذ لأنظمة الميكانيكا والكهرباء والسباكة ومكافحة الحريق والأمن بخبرة تمتد لأكثر من ثلاثة عقود في تنفيذ أكبر مشاريع البنية التحتية والمنشآت العامة والخاصة في المملكة.
+            استشارات وتصميم وتنفيذ لأنظمة الميكانيكا والكهرباء والسباكة ومكافحة الحريق والأمن، بخبرة هندسية تمتد منذ عام
+            1989 وحضور قوي في السعودية ومصر والإمارات.
           </p>
           <div class="hero-section__actions">
             <RouterLink to="/contact" custom v-slot="{ navigate }">
               <button @click="navigate" class="hero-btn hero-btn--primary">
-                احجز الآن
+                استكشف الفرص
               </button>
             </RouterLink>
             <RouterLink to="/services" custom v-slot="{ navigate }">
@@ -250,26 +259,28 @@ const serviceHexagonsBottom = [
       <div class="hero-features">
         <div class="container">
           <div class="hero-features__bar">
-            <div
-              v-for="(item, index) in features"
-              :key="index"
-              class="hero-features__item"
-            >
+            <div v-for="(item, index) in features" :key="index" class="hero-features__item">
               <div class="hero-features__icon-wrap">
-                <svg v-if="item.icon === 'target'" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg v-if="item.icon === 'target'" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <circle cx="12" cy="12" r="10"></circle>
                   <circle cx="12" cy="12" r="6"></circle>
                   <circle cx="12" cy="12" r="2"></circle>
                 </svg>
-                <svg v-else-if="item.icon === 'shield'" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg v-else-if="item.icon === 'shield'" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                   <polyline points="9 12 11 14 15 10"></polyline>
                 </svg>
-                <svg v-else-if="item.icon === 'cogs'" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg v-else-if="item.icon === 'cogs'" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <circle cx="12" cy="12" r="3"></circle>
-                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                  <path
+                    d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                  </path>
                 </svg>
-                <svg v-else width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg v-else width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
                   <circle cx="12" cy="13" r="4"></circle>
                 </svg>
@@ -298,30 +309,13 @@ const serviceHexagonsBottom = [
           <div class="services-hex-cluster">
             <!-- Top Row (3 Hexagons in RTL) -->
             <div class="services-hex-row services-hex-row--top">
-              <div
-                v-for="hex in serviceHexagonsTop"
-                :key="hex.id"
-                class="services-hex-wrapper"
-                :style="{ animationDelay: hex.floatDelay }"
-              >
-                <RouterLink
-                  :to="hex.link"
-                  class="services-hex-card"
-                  :aria-label="hex.fullTitle"
-                >
-                  <img
-                    :src="hex.img"
-                    :alt="hex.fullTitle"
-                    class="services-hex-card__img"
-                    loading="lazy"
-                  />
+              <div v-for="hex in serviceHexagonsTop" :key="hex.id" class="services-hex-wrapper"
+                :style="{ animationDelay: hex.floatDelay }">
+                <RouterLink :to="hex.link" class="services-hex-card" :aria-label="hex.fullTitle">
+                  <img :src="hex.img" :alt="hex.fullTitle" class="services-hex-card__img" loading="lazy" />
                   <div class="services-hex-card__overlay" aria-hidden="true">
                     <span class="services-hex-card__text">
-                      <span
-                        v-for="(line, lineIdx) in hex.lines"
-                        :key="lineIdx"
-                        class="services-hex-card__text-line"
-                      >
+                      <span v-for="(line, lineIdx) in hex.lines" :key="lineIdx" class="services-hex-card__text-line">
                         {{ line }}
                       </span>
                     </span>
@@ -332,30 +326,13 @@ const serviceHexagonsBottom = [
 
             <!-- Bottom Row (2 Hexagons in RTL) -->
             <div class="services-hex-row services-hex-row--bottom">
-              <div
-                v-for="hex in serviceHexagonsBottom"
-                :key="hex.id"
-                class="services-hex-wrapper"
-                :style="{ animationDelay: hex.floatDelay }"
-              >
-                <RouterLink
-                  :to="hex.link"
-                  class="services-hex-card"
-                  :aria-label="hex.fullTitle"
-                >
-                  <img
-                    :src="hex.img"
-                    :alt="hex.fullTitle"
-                    class="services-hex-card__img"
-                    loading="lazy"
-                  />
+              <div v-for="hex in serviceHexagonsBottom" :key="hex.id" class="services-hex-wrapper"
+                :style="{ animationDelay: hex.floatDelay }">
+                <RouterLink :to="hex.link" class="services-hex-card" :aria-label="hex.fullTitle">
+                  <img :src="hex.img" :alt="hex.fullTitle" class="services-hex-card__img" loading="lazy" />
                   <div class="services-hex-card__overlay" aria-hidden="true">
                     <span class="services-hex-card__text">
-                      <span
-                        v-for="(line, lineIdx) in hex.lines"
-                        :key="lineIdx"
-                        class="services-hex-card__text-line"
-                      >
+                      <span v-for="(line, lineIdx) in hex.lines" :key="lineIdx" class="services-hex-card__text-line">
                         {{ line }}
                       </span>
                     </span>
@@ -368,61 +345,22 @@ const serviceHexagonsBottom = [
       </div>
     </section>
 
-    <!-- Projects Preview Section Matching Figma Frame 126 -->
-    <section class="home-projects-section">
-      <div class="container">
-        <div class="home-projects-header">
-          <div>
-            <span class="home-projects-badge">أعمالنا ومشاريعنا</span>
-            <h2 class="home-projects-title">
-              <span class="highlight-red">نماذج</span> من أعمالنا الرائدة
-            </h2>
-            <p class="home-projects-subtitle">مخططات أعمال متنوعة تضم كبرى المدارس والمستشفيات والاستراحات السياحية في السعودية ودبي</p>
-          </div>
-          <RouterLink to="/services#projects" class="home-projects-all-link">
-            <span>مشاهدة كافة المشاريع</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="m15 18-6-6 6-6"/>
-            </svg>
-          </RouterLink>
-        </div>
-
-        <div class="home-projects-grid">
-          <article
-            v-for="project in featuredProjects"
-            :key="project.id"
-            class="home-project-card"
-          >
-            <div class="home-project-card__img-wrap">
-              <img :src="project.image" :alt="project.title" class="home-project-card__img" loading="lazy" />
-              <div class="home-project-card__overlay"></div>
-              <span class="home-project-card__tag">{{ project.category }}</span>
-              <span class="home-project-card__loc">{{ project.location }}</span>
-            </div>
-            <div class="home-project-card__body">
-              <h3 class="home-project-card__title">{{ project.title }}</h3>
-              <p class="home-project-card__desc">{{ project.desc }}</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <!-- 4 Steps Section (Desktop - 5) -->
     <section class="steps-section">
       <div class="container steps-section__container">
         <!-- Right Column: Info & Action -->
         <div class="steps-section__intro">
           <h2 class="steps-section__title">
-            <span class="highlight-red">أربع</span> خطوات نحو الإتقان
+            <span class="highlight-red">أربع</span> خطوات نحو القمة
           </h2>
           <p class="steps-section__desc">
-            حلول استشارية واستثمارية متكاملة في قلب المجال الـ MEP
+            رحلة هندسية دقيقة ننفذها باحترافية، بدءاً من دراسة المخططات حتى الفحص والتشغيل التجريبي لتسليم منظومة
+            متكاملة تضمن راحة البال.
           </p>
           <div class="steps-section__action">
             <RouterLink to="/process" custom v-slot="{ navigate }">
               <button @click="navigate" class="steps-btn">
-                احجز استشارتك الآن
+                أبدأ نحو القمة
               </button>
             </RouterLink>
           </div>
@@ -430,32 +368,35 @@ const serviceHexagonsBottom = [
 
         <!-- Left Column: 4 Cards -->
         <div class="steps-section__cards">
-          <div
-            v-for="(step, idx) in steps"
-            :key="idx"
-            class="step-card"
-          >
+          <div v-for="(step, idx) in steps" :key="idx" class="step-card">
             <div class="step-card__icon">
-              <svg v-if="idx === 0" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg v-if="idx === 0" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="18" y1="20" x2="18" y2="10"></line>
                 <line x1="12" y1="20" x2="12" y2="4"></line>
                 <line x1="6" y1="20" x2="6" y2="14"></line>
               </svg>
-              <svg v-else-if="idx === 1" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg v-else-if="idx === 1" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
                 <polyline points="17 6 23 6 23 12"></polyline>
               </svg>
-              <svg v-else-if="idx === 2" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg v-else-if="idx === 2" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle>
                 <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle>
                 <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle>
                 <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle>
-                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path>
+                <path
+                  d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z">
+                </path>
               </svg>
-              <svg v-else width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg v-else width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10"></circle>
                 <line x1="2" y1="12" x2="22" y2="12"></line>
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                </path>
               </svg>
             </div>
             <h3 class="step-card__title">{{ step.title }}</h3>
@@ -474,29 +415,26 @@ const serviceHexagonsBottom = [
               مؤسسة سهم القمة
             </h2>
             <p class="home-about-card__desc">
-              مؤسسة سهم القمة لأنظمة الأمن والسلامة هي إحدى رواد الاستشارات والتنفيذ الهندسي لأنظمة MEP ومكافحة الحريق في المملكة، على مدار أكثر من 20 عاماً تميزنا بتقديم خدمات كهروميكانيكية استثنائية وإشراف ميداني دقيق يضمن سلامة المنشآت وكفاءة تشغيلها.
+              مؤسسة سهم القمة لأنظمة الأمن والسلامة هي الذراع الاستشاري والتنفيذي لمجموعة الفسطاط، المزوّد الهندسي
+              الثابت منذ 1989 لخدمات الميكانيكا والكهرباء والسباكة (MEP). ننطلق من الرياض بفريق عريق يغطي المشاريع
+              السكنية والفندقية والطبية والتعليمية.
             </p>
             <div class="home-about-subsections">
               <div class="home-about-subsection">
                 <h3 class="home-about-sub-title">رؤيتنا الهندسية</h3>
-                <p class="home-about-sub-desc">أن نكون منارة التميز الهندسي الأولى في تقديم الاستشارات والخدمات الهندسية المتكاملة لكافة أعمال الـ MEP في المملكة.</p>
+                <p class="home-about-sub-desc">أن نكون منارة التميز الأولى في حلول السلامة والاستشارات الهندسية
+                  المتكاملة، مع تحقيق أعلى معدلات الكفاءة الإنشائية ومطابقة المعايير الدولية.</p>
               </div>
               <div class="home-about-subsection">
                 <h3 class="home-about-sub-title">رسالتنا</h3>
-                <p class="home-about-sub-desc">تمكين شركائنا بحلول هندسية موثوقة تحد من المخاطر وتقلل التكاليف التشغيلية مع مراعاة بيئات السلامة والأمان.</p>
+                <p class="home-about-sub-desc">تمكين شركائنا بحلول هندسية موثوقة تحد من المخاطر وتقلل التكاليف
+                  التشغيلية، مع بناء علاقات شراكة طويلة الأجل أساسها المصداقية والجودة.</p>
               </div>
-            </div>
-            <div class="home-about-card__action">
-              <RouterLink to="/about" class="home-about-card__btn">
-                <span>اكتشف المزيد عنا</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="m15 18-6-6 6-6"/>
-                </svg>
-              </RouterLink>
             </div>
           </div>
           <div class="home-about-card__media">
-            <img src="/assets/contact-page-bg.jpg" alt="مقر مؤسسة سهم القمة" class="home-about-card__img" loading="lazy" />
+            <img src="/assets/contact-page-bg.jpg" alt="مقر مؤسسة سهم القمة" class="home-about-card__img"
+              loading="lazy" />
           </div>
         </div>
       </div>
@@ -508,7 +446,7 @@ const serviceHexagonsBottom = [
         <div class="home-stats-header">
           <h2 class="home-stats-title">أرقام تتحدث عن خبرتنا</h2>
           <p class="home-stats-subtitle">
-            أكثر من ثلاثة عقود من العمل المستمر في كبرى مشاريع البنية التحتية والسكك والخدمات الصحية والمشاريع السكنية والتجارية.
+            أكثر من ثلاثة عقود من التنفيذ في المباني السكنية والفندقية والصحية والتعليمية.
           </p>
         </div>
         <div class="home-stats-grid">
@@ -521,21 +459,72 @@ const serviceHexagonsBottom = [
     </section>
 
     <!-- Why Us Section Matching Figma Frame 60 -->
-    <section class="home-why-section">
-      <div class="container">
-        <div class="home-why-header">
-          <h2 class="home-why-title">لماذا نحن في قطاع الاستشارات والسلامة</h2>
-          <h3 class="home-why-subhead">شريكك الهندسي نحو تحقيق تطلعاتك وحفظ استثماراتك</h3>
-          <p class="home-why-desc">
-            نقدم حلولاً هندسية تلبي وتتخطى تطلعاتكم، ونضمن التوافق التام مع كود البناء السعودي ومعايير السلامة المهنية.
+    <section class="differentiators-section">
+      <div class="container differentiators-section__container">
+        <div class="differentiators-section__header">
+          <h2 class="differentiators-section__main-title">ما يميّزنا عن غيرنا</h2>
+          <p class="differentiators-section__title">
+            لأن نجاحك يبدأ بشريك <span class="highlight-navy">يفهمك</span>، ويخطط معك، <span
+              class="highlight-navy">وينفذ</span> بإتقان
           </p>
         </div>
-        <div class="home-why-grid">
-          <div v-for="item in whyUsItems" :key="item.number" class="home-why-card">
-            <span class="home-why-num">{{ item.number }}</span>
-            <h4 class="home-why-card-title">{{ item.title }}</h4>
-            <p class="home-why-card-desc">{{ item.desc }}</p>
+
+        <div class="differentiators-section__list">
+          <div v-for="item in differentiators" :key="item.id" class="diff-row"
+            :class="{ 'diff-row--reverse': item.reverse }">
+            <!-- Content: On Right for normal row in RTL -->
+            <div class="diff-row__content">
+              <div class="diff-row__title-wrap">
+                <h3 class="diff-row__title">{{ item.title }}</h3>
+                <div class="diff-row__accent-line" aria-hidden="true"></div>
+              </div>
+              <p class="diff-row__desc">{{ item.desc }}</p>
+            </div>
+
+            <!-- 3D Textured Number Image: On Left for normal row in RTL -->
+            <div class="diff-row__media">
+              <div class="diff-row__ellipse" :class="`ellipse-${item.ellipseId}`" aria-hidden="true"></div>
+              <img :src="item.img" :alt="item.id" class="diff-row__num-img" />
+              <span class="diff-row__num-label">{{ item.id }}</span>
+            </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Preview Section Matching Figma Frame 126 -->
+    <section class="home-projects-section">
+      <div class="container">
+        <div class="home-projects-header">
+          <div>
+            <span class="home-projects-badge">أعمالنا ومشاريعنا</span>
+            <h2 class="home-projects-title">
+              <span class="highlight-red">نماذج</span> من أعمالنا الرائدة
+            </h2>
+            <p class="home-projects-subtitle">مخططات أعمال متنوعة تضم كبرى المدارس والمستشفيات والاستراحات السياحية في
+              السعودية ودبي</p>
+          </div>
+          <RouterLink to="/services#projects" class="home-projects-all-link">
+            <span>مشاهدة كافة المشاريع</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m15 18-6-6 6-6" />
+            </svg>
+          </RouterLink>
+        </div>
+
+        <div class="home-projects-grid">
+          <article v-for="project in featuredProjects" :key="project.id" class="home-project-card">
+            <div class="home-project-card__img-wrap">
+              <img :src="project.image" :alt="project.title" class="home-project-card__img" loading="lazy" />
+              <div class="home-project-card__overlay"></div>
+              <span class="home-project-card__tag">{{ project.category }}</span>
+              <span class="home-project-card__loc">{{ project.location }}</span>
+            </div>
+            <div class="home-project-card__body">
+              <h3 class="home-project-card__title">{{ project.title }}</h3>
+              <p class="home-project-card__desc">{{ project.desc }}</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -545,14 +534,11 @@ const serviceHexagonsBottom = [
       <div class="container">
         <div class="partners-header">
           <h2 class="partners-title">عملاء يثقون بنا</h2>
-          <p class="partners-subtitle">نعتز بالتعاون مع أسماء رائدة في القطاعات العقارية والتجارية والصناعية والخدمية</p>
+          <p class="partners-subtitle">نعتز بالتعاون مع أسماء رائدة في القطاعات العقارية والتجارية والصناعية والخدمية
+          </p>
         </div>
         <div class="partners-strip">
-          <div
-            v-for="(partner, pIdx) in partners"
-            :key="pIdx"
-            class="partner-badge"
-          >
+          <div v-for="(partner, pIdx) in partners" :key="pIdx" class="partner-badge">
             {{ partner }}
           </div>
         </div>
@@ -576,19 +562,20 @@ const serviceHexagonsBottom = [
       <div class="home-contact-section__info-section">
         <div class="container">
           <div class="home-contact-section__cards">
-            <div
-              v-for="(card, index) in contactCards"
-              :key="index"
-              class="contact-box"
-            >
+            <div v-for="(card, index) in contactCards" :key="index" class="contact-box">
               <div class="contact-box__icon">
-                <svg v-if="card.icon === 'building'" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg v-if="card.icon === 'building'" width="36" height="36" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V9.5z"></path>
                 </svg>
-                <svg v-else-if="card.icon === 'phone'" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                <svg v-else-if="card.icon === 'phone'" width="36" height="36" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                  </path>
                 </svg>
-                <svg v-else width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg v-else width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <rect x="2" y="4" width="20" height="16" rx="2"></rect>
                   <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                 </svg>
@@ -635,12 +622,10 @@ const serviceHexagonsBottom = [
   padding-bottom: 120px;
   z-index: 2;
   overflow: visible;
-  background: linear-gradient(
-    to left,
-    rgba(9, 22, 39, 0.72) 0%,
-    rgba(9, 22, 39, 0.45) 50%,
-    rgba(9, 22, 39, 0.6) 100%
-  );
+  background: linear-gradient(to left,
+      rgba(9, 22, 39, 0.72) 0%,
+      rgba(9, 22, 39, 0.45) 50%,
+      rgba(9, 22, 39, 0.6) 100%);
 }
 
 @media (max-width: 768px) {
@@ -673,12 +658,10 @@ const serviceHexagonsBottom = [
 .hero-section__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to left,
-    rgba(9, 22, 39, 0.72) 0%,
-    rgba(9, 22, 39, 0.45) 50%,
-    rgba(9, 22, 39, 0.6) 100%
-  );
+  background: linear-gradient(to left,
+      rgba(9, 22, 39, 0.72) 0%,
+      rgba(9, 22, 39, 0.45) 50%,
+      rgba(9, 22, 39, 0.6) 100%);
 }
 
 .hero-section__container {
@@ -746,7 +729,8 @@ const serviceHexagonsBottom = [
   font-size: 20px;
   font-weight: 500;
   line-height: 1.6;
-  color: #DEDEDE; /* Foundation /Grey/Light :active */
+  color: #DEDEDE;
+  /* Foundation /Grey/Light :active */
   margin-bottom: 0;
   max-width: 840px;
   text-align: center;
@@ -787,7 +771,8 @@ const serviceHexagonsBottom = [
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
-  color: #FBE9ED; /* Foundation /Red/Light */
+  color: #FBE9ED;
+  /* Foundation /Red/Light */
   box-shadow: none !important;
   cursor: pointer;
   transition: all var(--transition-normal);
@@ -800,7 +785,8 @@ const serviceHexagonsBottom = [
   align-items: center;
   justify-content: center;
   background: var(--color-primary);
-  color: #FFFFFF !important; /* Brand/White */
+  color: #FFFFFF !important;
+  /* Brand/White */
   font-family: "Cairo", Tajawal, system-ui, -apple-system, sans-serif;
   border: none;
   border-radius: 12px;
@@ -818,12 +804,14 @@ const serviceHexagonsBottom = [
   align-items: center;
   justify-content: center;
   padding: 0 !important;
-  border: 1.5px solid #FBE9ED !important; /* Foundation /Red/Light */
+  border: 1.5px solid #FBE9ED !important;
+  /* Foundation /Red/Light */
   border-radius: 12px !important;
   background: rgba(255, 255, 255, 0.05) !important;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  color: #FBE9ED !important; /* Foundation /Red/Light */
+  color: #FBE9ED !important;
+  /* Foundation /Red/Light */
   font-family: "Cairo", Tajawal, system-ui, -apple-system, sans-serif;
   transition: all var(--transition-normal);
 }
@@ -960,6 +948,291 @@ const serviceHexagonsBottom = [
   gap: 40px;
 }
 
+/* Differentiators (Why Us - Desktop - 6) */
+.differentiators-section {
+  padding: 80px 24px;
+  background-color: #F6F0EC;
+}
+
+.differentiators-section__container {
+  max-width: 1248px;
+  padding: 0;
+}
+
+.differentiators-section__header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.differentiators-section__main-title {
+  font-family: "Cairo", Tajawal, system-ui, -apple-system, sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 60px;
+  color: #222F6D;
+  margin: 0;
+  border: none;
+  padding: 0;
+}
+
+.differentiators-section__title {
+  font-family: "Cairo", Tajawal, system-ui, -apple-system, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #434343;
+  line-height: 27px;
+  margin: 0;
+}
+
+.differentiators-section__title .highlight-navy {
+  color: inherit;
+  font-weight: inherit;
+}
+
+.differentiators-section__list {
+  display: flex;
+  flex-direction: column;
+  max-width: 1248px;
+  margin: 0 auto;
+  gap: 0;
+}
+
+.diff-row {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  padding: 32px 0;
+  border: 0;
+}
+
+.diff-row:last-child {
+  border-bottom: none;
+}
+
+.diff-row--reverse {
+  flex-direction: row-reverse;
+}
+
+@media (max-width: 768px) {
+  .differentiators-section__header {
+    margin-bottom: 36px;
+    gap: 12px;
+  }
+
+  .differentiators-section__main-title {
+    font-size: 32px;
+    line-height: 42px;
+  }
+
+  .differentiators-section__title {
+    font-size: 20px;
+    line-height: 32px;
+  }
+
+  .diff-row,
+  .diff-row--reverse {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+    padding: 40px 0;
+  }
+
+  .diff-row__media {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+  }
+
+  .diff-row__content {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .differentiators-section {
+    min-height: auto;
+    padding: 70px 0;
+  }
+}
+
+.diff-row__media {
+  position: relative;
+  flex-shrink: 0;
+  width: 240px;
+  height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.diff-row__ellipse {
+  display: none;
+}
+
+.diff-row__num-label {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  font-size: 1px;
+}
+
+.diff-row__num-img {
+  width: 240px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.08));
+  animation: visual-float 6s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+}
+
+.diff-row:nth-child(even) .diff-row__num-img {
+  animation-delay: -3s;
+}
+
+@keyframes hero-background-drift {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes visual-float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .hero-section__bg-img,
+  .services-hex-wrapper,
+  .diff-row__num-img {
+    animation: none;
+  }
+}
+
+.diff-row__content {
+  flex: 1;
+  width: auto;
+  max-width: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.diff-row__title-wrap {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+@media (max-width: 768px) {
+  .diff-row__title-wrap {
+    align-items: center;
+  }
+}
+
+.diff-row__title {
+  font-family: "Cairo", Tajawal, system-ui, -apple-system, sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 36px;
+  color: #1A3E6F;
+}
+
+.diff-row__accent-line {
+  width: 100px;
+  height: 4px;
+  background-color: var(--color-primary);
+  border-radius: 2px;
+  margin-top: 6px;
+}
+
+.diff-row__desc {
+  font-family: "Cairo", Tajawal, system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #4A4A4A;
+  line-height: 24px;
+  max-width: none;
+}
+
+/* Home Contact Section Matching Figma */
+.home-contact-section {
+  position: relative;
+  background-color: #FFFFFF;
+}
+
+.home-contact-section__hero {
+  position: relative;
+  height: 550px;
+  min-height: 550px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.home-contact-section__hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.home-contact-section__hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(9, 22, 39, 0.28);
+}
+
+.home-contact-section__hero-content {
+  position: relative;
+  z-index: 1;
+  color: #FFFFFF;
+  padding: 0;
+  max-width: 628px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.home-contact-section__title {
+  font-size: 72px;
+  font-weight: 800;
+  line-height: 108px;
+  color: var(--color-primary);
+  margin-bottom: 0;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+.home-contact-section__subtitle {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 33px;
+  color: #FFFFFF;
+  margin: 0;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+}
+
+
 .services-overview__header {
   margin: 0 auto;
   width: 100%;
@@ -1035,7 +1308,7 @@ const serviceHexagonsBottom = [
   max-width: 760px;
 }
 
-.services-hex-row--bottom > div:nth-of-type(1) > .services-hex-card {
+.services-hex-row--bottom>div:nth-of-type(1)>.services-hex-card {
   margin: 0;
 }
 
@@ -1147,9 +1420,12 @@ const serviceHexagonsBottom = [
 
 /* Organic Floating Animation */
 @keyframes hex-float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-8px);
   }
@@ -1330,24 +1606,28 @@ const serviceHexagonsBottom = [
   position: relative;
 }
 
-.steps-section__cards > .step-card:nth-child(1) {
+.steps-section__cards>.step-card:nth-child(1) {
   margin-top: 0;
 }
-.steps-section__cards > .step-card:nth-child(2) {
+
+.steps-section__cards>.step-card:nth-child(2) {
   margin-top: 25px;
 }
-.steps-section__cards > .step-card:nth-child(3) {
+
+.steps-section__cards>.step-card:nth-child(3) {
   margin-top: 50px;
 }
-.steps-section__cards > .step-card:nth-child(4) {
+
+.steps-section__cards>.step-card:nth-child(4) {
   margin-top: 75px;
 }
 
 @media (max-width: 900px) {
-  .steps-section__cards > .step-card:nth-child(1),
-  .steps-section__cards > .step-card:nth-child(2),
-  .steps-section__cards > .step-card:nth-child(3),
-  .steps-section__cards > .step-card:nth-child(4) {
+
+  .steps-section__cards>.step-card:nth-child(1),
+  .steps-section__cards>.step-card:nth-child(2),
+  .steps-section__cards>.step-card:nth-child(3),
+  .steps-section__cards>.step-card:nth-child(4) {
     margin-top: 0;
   }
 }
@@ -1478,7 +1758,8 @@ const serviceHexagonsBottom = [
 
 .home-project-card {
   background: #FFFFFF;
-  border: 3px solid #D6214E; /* Foundation /Red/Normal */
+  border: 3px solid #D6214E;
+  /* Foundation /Red/Normal */
   border-radius: 10px;
   width: 100%;
   max-width: 614px;
@@ -1554,14 +1835,16 @@ const serviceHexagonsBottom = [
   font-family: "Cairo", Tajawal, system-ui, -apple-system, sans-serif;
   font-size: 22px;
   font-weight: 800;
-  color: #1A3E6F; /* Foundation /Blue/Normal */
+  color: #1A3E6F;
+  /* Foundation /Blue/Normal */
   margin: 0;
 }
 
 .home-project-card__desc {
   font-family: "Cairo", Tajawal, system-ui, -apple-system, sans-serif;
   font-size: 16px;
-  color: #595959; /* Foundation /Grey/Dark :hover */
+  color: #595959;
+  /* Foundation /Grey/Dark :hover */
   line-height: 1.6;
   margin: 0;
 }
@@ -1800,9 +2083,9 @@ const serviceHexagonsBottom = [
   line-height: 1.4;
 }
 
-.home-stats-grid > .home-stat-card:nth-child(4) .home-stat-val,
-.home-stats-grid > .home-stat-card:nth-child(5) .home-stat-val,
-.home-stats-grid > .home-stat-card:nth-child(8) .home-stat-val {
+.home-stats-grid>.home-stat-card:nth-child(4) .home-stat-val,
+.home-stats-grid>.home-stat-card:nth-child(5) .home-stat-val,
+.home-stats-grid>.home-stat-card:nth-child(8) .home-stat-val {
   color: #F4F4F4;
   font-weight: 700;
 }
@@ -2069,7 +2352,8 @@ const serviceHexagonsBottom = [
   font-size: 22px;
   font-weight: 800;
   line-height: 33px;
-  color: #FBE9ED; /* Foundation /Red/Light */
+  color: #FBE9ED;
+  /* Foundation /Red/Light */
   margin: 0;
   text-shadow: none;
 }
@@ -2113,7 +2397,7 @@ const serviceHexagonsBottom = [
   max-width: 400px;
 }
 
-.home-contact-section__cards > .contact-box:nth-child(2) {
+.home-contact-section__cards>.contact-box:nth-child(2) {
   width: 422px;
   max-width: 422px;
 }
@@ -2123,6 +2407,7 @@ const serviceHexagonsBottom = [
     border-right: 1px solid rgba(0, 0, 0, 0.2);
     border-left: none;
   }
+
   .contact-box:first-child {
     border-right: none;
   }
@@ -2134,6 +2419,7 @@ const serviceHexagonsBottom = [
     padding-bottom: 30px;
     height: auto;
   }
+
   .contact-box:last-child {
     border-bottom: none;
   }
@@ -2145,7 +2431,7 @@ const serviceHexagonsBottom = [
   color: var(--color-primary);
 }
 
-.home-contact-section__cards > .contact-box:nth-child(2) .contact-box__icon {
+.home-contact-section__cards>.contact-box:nth-child(2) .contact-box__icon {
   margin-inline-start: 79.5px;
   align-self: flex-start;
 }
@@ -2189,7 +2475,7 @@ const serviceHexagonsBottom = [
   opacity: 0.8;
 }
 
-.home-contact-section__cards > .contact-box:nth-child(2) .contact-box__link {
+.home-contact-section__cards>.contact-box:nth-child(2) .contact-box__link {
   width: 422px;
   text-decoration: none;
   display: block;
@@ -2197,7 +2483,7 @@ const serviceHexagonsBottom = [
   margin-top: -8.1px;
 }
 
-.home-contact-section__cards > .contact-box:nth-child(3) .contact-box__link {
+.home-contact-section__cards>.contact-box:nth-child(3) .contact-box__link {
   margin-inline-start: 30px;
 }
 
@@ -2208,8 +2494,181 @@ const serviceHexagonsBottom = [
   border-radius: 2px;
 }
 
-.home-contact-section__cards > .contact-box:nth-child(2) .contact-box__line {
+.home-contact-section__cards>.contact-box:nth-child(2) .contact-box__line {
   margin-inline-start: 192px;
   align-self: flex-start;
+}
+
+/* Desktop - 8 fidelity adjustments */
+@media (min-width: 1025px) {
+  .hero-section__container {
+    padding-top: 51px;
+  }
+
+  .hero-section__content {
+    max-width: 884px;
+    gap: 40px;
+  }
+
+  .hero-section__title {
+    font-size: 72px;
+    line-height: 82px;
+  }
+
+  .hero-section__subtitle {
+    max-width: 884px;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 42px;
+  }
+
+  .services-overview__container {
+    max-width: 913px;
+    padding-inline: 0;
+    gap: 20px;
+  }
+
+  .services-overview__header {
+    gap: 14px;
+  }
+
+  .section-title {
+    width: 771px;
+  }
+
+  .section-subtitle {
+    font-family: "Cairo", Tajawal, system-ui, -apple-system, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 27px;
+  }
+
+  .steps-section {
+    background: #17202B;
+    color: #FFFFFF;
+    padding: 96px 0;
+  }
+
+  .steps-section__container {
+    grid-template-columns: 335px 1fr;
+    gap: 72px;
+    padding-inline: 0;
+  }
+
+  .steps-section__intro {
+    max-width: 335px;
+    gap: 20px;
+  }
+
+  .steps-section__title {
+    font-family: Tajawal, Cairo, system-ui, -apple-system, sans-serif;
+    font-size: 40px;
+    line-height: 60px;
+    color: #FBE9ED;
+  }
+
+  .steps-section__desc {
+    color: #EFEFEF;
+    font-size: 18px;
+    line-height: 27px;
+  }
+
+  .steps-btn {
+    width: 335px !important;
+    min-height: 56px;
+    padding: 10px 26px !important;
+    font-size: 16px;
+    line-height: 24px;
+    box-shadow: none !important;
+  }
+
+  .steps-section__cards {
+    gap: 24px;
+  }
+
+  .step-card {
+    min-height: 317px;
+    background: rgba(28, 28, 28, 0.15);
+    border: 0;
+    border-radius: 12px;
+    box-shadow: none;
+    padding: 24px 15px;
+    align-items: flex-start;
+    text-align: right;
+  }
+
+  .steps-section__cards>.step-card:nth-child(2) {
+    margin-top: 35px;
+  }
+
+  .steps-section__cards>.step-card:nth-child(3) {
+    margin-top: 70px;
+  }
+
+  .steps-section__cards>.step-card:nth-child(4) {
+    margin-top: 105px;
+  }
+
+  .step-card__icon {
+    margin: 0;
+  }
+
+  .step-card__title {
+    color: #FFFFFF;
+    font-size: 18px;
+    line-height: 27px;
+    text-align: right;
+  }
+
+  .step-card__desc {
+    color: #B9BFD0;
+    font-size: 14px;
+    text-align: right;
+  }
+
+  .home-about-teaser {
+    min-height: 724px;
+    padding: 0 96px;
+    display: flex;
+    align-items: center;
+  }
+
+  .home-about-teaser>.container {
+    padding-inline: 0;
+  }
+
+  .home-about-card {
+    grid-template-columns: 583px 614px;
+    gap: 51px;
+  }
+
+  .home-about-card__text {
+    gap: 16px;
+  }
+
+  .home-about-card__desc {
+    line-height: 27px;
+  }
+
+  .home-about-sub-desc {
+    font-family: "Cairo", Tajawal, system-ui, -apple-system, sans-serif;
+  }
+
+  .home-about-card__media {
+    width: 614px;
+    height: 367px;
+    border-radius: 16px;
+  }
+
+  .home-about-card__img {
+    width: 614px;
+    max-width: none;
+    border-radius: 16px;
+  }
+
+  .home-stats-subtitle {
+    line-height: 27px;
+  }
+
 }
 </style>
