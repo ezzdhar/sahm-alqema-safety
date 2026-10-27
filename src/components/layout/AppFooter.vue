@@ -25,7 +25,7 @@ const serviceLinks = [
         <!-- Brand Column -->
         <div class="app-footer__brand">
           <RouterLink to="/" class="app-footer__logo" aria-label="الرئيسية">
-            <img :src="`${baseUrl}assets/logo.png`" alt="مؤسسة سهم القمة" class="app-footer__logo-img" />
+            <img :src="`${baseUrl}assets/logo-dark-bg.png`" alt="مؤسسة سهم القمة" class="app-footer__logo-img" />
           </RouterLink>
           <p class="app-footer__desc">
             حلول استشارية واستثمارية متكاملة في قلب المجال الـ MEP.
@@ -156,8 +156,9 @@ const serviceLinks = [
 }
 
 .app-footer__logo-img {
-  height: 48px;
-  width: 144px;
+  height: 56px;
+  width: 168px;
+  max-width: 180px;
   object-fit: contain;
 }
 
