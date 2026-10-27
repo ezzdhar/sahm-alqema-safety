@@ -38,7 +38,7 @@ const isContactPage = computed(() => route.path === '/contact');
 }
 
 .app-layout--about {
-  background-color: #091627;
+  background-color: #FFFFFF;
 }
 
 .app-layout--contact {

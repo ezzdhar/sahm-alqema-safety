@@ -1,228 +1,95 @@
 <script setup>
-import { onMounted, onUnmounted } from 'vue';
 import AppButton from '../components/common/AppButton.vue';
 
-const pillars = [
-  {
-    icon: 'compass',
-    title: 'رؤيتنا',
-    desc: 'أن نكون الخيار الأول والنموذج الرائد في تقديم الحلول والأنظمة الكهروميكانيكية المتكاملة، مساهمين بفعالية في تحقيق مستهدفات رؤية المملكة 2030.',
-    color: '#D6214E',
-  },
-  {
-    icon: 'target',
-    title: 'رسالتنا',
-    desc: 'تحويل التحديات الهندسية إلى حلول تنفيذية متطورة ومستدامة، عبر خدمات متكاملة تبدأ من الفكرة والتصميم حتى التشغيل والتسليم بأعلى معايير السلامة والجودة.',
-    color: '#1A3E6F',
-  },
-  {
-    icon: 'award',
-    title: 'قيمنا',
-    desc: 'الإتقان الهندسي، الشفافية، الالتزام المطلق بسلامة الأرواح والمنشآت، والحرص على بناء شراكات استراتيجية طويلة الأمد مع عملائنا.',
-    color: '#D6214E',
-  },
-];
-
-const capabilities = [
-  {
-    num: '01',
-    title: 'كوادر هندسية معتمدة',
-    desc: 'فريق عمل متكامل من المهندسين والفنيين ذوي الكفاءة العالية والخبرة الميدانية الواسعة.',
-  },
-  {
-    num: '02',
-    title: 'معايير سلامة وجودة دولية',
-    desc: 'تطبيق صارم لاشتراطات كود البناء السعودي ومعايير السلامة المهنية المعتمدة عالمياً.',
-  },
-  {
-    num: '03',
-    title: 'أحدث تقنيات النمذجة BIM',
-    desc: 'استخدام أحدث برمجيات التصميم والنمذجة ثلاثية الأبعاد لكشف التعارضات وتسريع وتيرة الإنجاز.',
-  },
-  {
-    num: '04',
-    title: 'التزام دقيق بالمواعيد',
-    desc: 'إدارة هندسية محترفة للمشاريع تضمن تسليم كافة المراحل وفق الجدول الزمني المعتمد بدون تأخير.',
-  },
-];
-
-const stats = [
-  { value: '+15', label: 'عاماً من الخبرة التراكمية' },
-  { value: '+120', label: 'مشروعاً منجزاً بنجاح' },
-  { value: '100%', label: 'التزام بمعايير الجودة والسلامة' },
-  { value: '+50', label: 'كادراً هندسياً وفنياً متخصصاً' },
-];
-
-onMounted(() => {
-  if (typeof document !== 'undefined') {
-    document.documentElement.style.backgroundColor = '#091627';
-    document.body.style.backgroundColor = '#091627';
-  }
-});
-
-onUnmounted(() => {
-  if (typeof document !== 'undefined') {
-    document.documentElement.style.backgroundColor = '';
-    document.body.style.backgroundColor = '';
-  }
-});
+const baseUrl = import.meta.env.BASE_URL;
 </script>
 
 <template>
-  <div class="about-view" data-name="Desktop - 15">
-    <!-- Ambient Section Glow matching Figma -->
-    <div class="about-glow section-glow" data-name="Section glow" aria-hidden="true"></div>
-
-    <!-- Hero Header -->
-    <section class="about-hero" data-name="Frame 146">
+  <div class="about-page" data-name="Desktop - 15">
+    <!-- Desktop - 1: Hero Section -->
+    <section class="about-hero" data-name="Desktop - 1">
+      <div class="about-hero__overlay" aria-hidden="true"></div>
       <div class="container about-hero__container">
-        <div class="about-hero__badge">عن المؤسسة</div>
-        <h1 class="about-hero__title" data-name="Manifesto heading">
-          مؤسسة <span class="highlight-red">سهم القمة</span>
-        </h1>
-        <p class="about-hero__desc" data-name="Manifesto heading">
-          رواد الحلول الهندسية المتكاملة والمقاولات الكهروميكانيكية (MEP) في المملكة العربية السعودية
-        </p>
+        <div class="about-hero__content" data-name="Frame 106">
+          <h1 class="about-hero__title" data-name="مؤسسة سهم القمة">
+            مؤسسة سهم القمة
+          </h1>
+          <p
+            class="about-hero__subtitle"
+            data-name="شريكك الهندسي في أنظمة الأمن والسلامة والميكانيكا والكهرباء والسباكة، بخبرة مجموعة الفسطاط منذ 1989."
+          >
+            شريكك الهندسي في أنظمة الأمن والسلامة والميكانيكا والكهرباء والسباكة، بخبرة مجموعة الفسطاط منذ 1989.
+          </p>
+        </div>
       </div>
     </section>
 
-    <!-- Company Story Section -->
-    <section class="about-story">
-      <div class="container">
-        <div class="about-story__card">
-          <div class="about-story__image-wrap">
-            <img
-              src="/assets/contact-page-bg.jpg"
-              alt="مبنى مؤسسة سهم القمة"
-              class="about-story__img"
-              loading="lazy"
-            />
-            <div class="about-story__image-overlay"></div>
-            <div class="about-story__floating-badge">
-              <span class="about-story__badge-title">الإتقان الهندسي</span>
-              <span class="about-story__badge-sub">هدفنا في كل مشروع</span>
+    <!-- Desktop - 10: About Section -->
+    <section class="about-section" data-name="Desktop - 10">
+      <div class="container about-section__container">
+        <div class="about-section__grid" data-name="Frame 115">
+          <!-- Text Content Block (Container) - Right side in RTL -->
+          <div class="about-section__content" data-name="Container">
+            <div class="about-section__heading-wrap">
+              <h2 class="about-section__title" data-name="Heading 2">
+                <span class="about-section__title-prefix" data-name="من نحن:">من نحن:</span>
+                <span class="about-section__title-brand" data-name="مؤسسة سهم القمة">مؤسسة سهم القمة</span>
+              </h2>
+              <!-- Pink/Red underline bar (Background in Figma) -->
+              <div class="about-section__accent-bar" data-name="Background" aria-hidden="true"></div>
             </div>
-          </div>
 
-          <div class="about-story__text-wrap">
-            <span class="about-story__subtitle">من نحن</span>
-            <h2 class="about-story__title">
-              نبني الثقة عبر <span class="highlight-red">حلول كهروميكانيكية</span> دقيقة ومستدامة
-            </h2>
-            <p class="about-story__paragraph">
-              تأسست مؤسسة سهم القمة لتكون الشريك الاستراتيجي الرائد في قطاع المقاولات والهندسة الكهروميكانيكية (MEP) في المملكة العربية السعودية. ننطلق بخبرات هندسية متراكمة وفريق عمل مؤهل يجمع بين التخطيط الهندسي المتقن والتنفيذ الميداني الصارم وفق أعلى معايير الجودة العالمية وكود البناء السعودي.
-            </p>
-            <p class="about-story__paragraph">
-              نقدم خدمات متكاملة تشمل التكييف المركزي، الإنارة والشبكات الكهربائية، مكافحة الحريق، غرف المضخات، ونمذجة معلومات البناء BIM، مع التركيز على كفاءة الطاقة واستدامة المنشآت.
+            <p class="about-section__desc" data-name="Paragraph">
+              مؤسسة سهم القمة لأنظمة الأمن والسلامة هي الفرع السعودي لمجموعة الفسطاط، المزوّد الاستشاري الثابت منذ عام 1989 لخدمات الميكانيكا والكهرباء والسباكة بموثوقية ودقة. بحضور راسخ في الشرق الأوسط وحضور قوي في مصر، وبفرعنا في المملكة العربية السعودية، نحن شريك يُعتمد عليه في احتياجات البنية التحتية لمشروعك.
             </p>
 
-            <div class="about-story__action">
+            <div class="about-section__actions" data-name="Frame 52">
               <AppButton
                 to="/contact"
                 variant="primary"
                 size="lg"
-                class="about-story__btn"
+                class="about-section__btn about-section__btn--primary"
                 data-name="Button"
               >
-                <span class="about-hero__btn-text" data-name="Book Now">ابدأ رحلتك معنا</span>
+                احجز الآن
+              </AppButton>
+              <AppButton
+                to="/services"
+                variant="outline-dark"
+                size="lg"
+                class="about-section__btn about-section__btn--secondary"
+                data-name="Button"
+              >
+                خدماتنا
               </AppButton>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Stats Section -->
-    <section class="about-stats">
-      <div class="container">
-        <div class="about-stats__grid">
-          <div
-            v-for="(item, index) in stats"
-            :key="index"
-            class="about-stat-item"
-          >
-            <span class="about-stat-item__value">{{ item.value }}</span>
-            <span class="about-stat-item__label">{{ item.label }}</span>
-          </div>
-        </div>
-      </div>
-    </section>
+          <!-- Media / Image Block - Left side in RTL (Frame 114) -->
+          <div class="about-section__media" data-name="Frame 114">
+            <!-- Decorative Offset Red Frame (Rectangle 5) -->
+            <div class="about-section__frame-border" data-name="Rectangle 5" aria-hidden="true"></div>
 
-    <!-- Vision, Mission & Values (Pillars) -->
-    <section class="about-pillars">
-      <div class="container">
-        <div class="about-section-header">
-          <h2 class="about-section-title">
-            ركائزنا <span class="highlight-red">الاستراتيجية</span>
-          </h2>
-          <p class="about-section-desc">
-            المبادئ التي تقود كل قرار هندسي وميداني نتخذه في كل مشروع نتشرف بتنفيذه
-          </p>
-        </div>
-
-        <div class="about-pillars__grid">
-          <div
-            v-for="(p, i) in pillars"
-            :key="i"
-            class="about-pillar-card"
-          >
-            <div class="about-pillar-card__icon" :style="{ backgroundColor: p.color }">
-              <svg v-if="p.icon === 'compass'" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
-              </svg>
-              <svg v-else-if="p.icon === 'target'" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <circle cx="12" cy="12" r="6"></circle>
-                <circle cx="12" cy="12" r="2"></circle>
-              </svg>
-              <svg v-else width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="8" r="7"></circle>
-                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-              </svg>
+            <!-- Front Image Frame (Frame 113) -->
+            <div class="about-section__image-container" data-name="Frame 113">
+              <img
+                :src="`${baseUrl}assets/villa.jpg`"
+                alt="مقر ومشاريع مؤسسة سهم القمة"
+                class="about-section__img"
+                loading="lazy"
+                data-name="villa 1"
+              />
+              <div class="about-section__img-overlay" aria-hidden="true"></div>
             </div>
-            <h3 class="about-pillar-card__title">{{ p.title }}</h3>
-            <p class="about-pillar-card__desc">{{ p.desc }}</p>
+
+            <!-- Floating Experience Card (Frame 51) -->
+            <div class="about-section__badge" data-name="Frame 51">
+              <div class="about-section__badge-content" data-name="Frame 150">
+                <span class="about-section__badge-title" data-name="خبرة هندسية منذ">خبرة هندسية منذ</span>
+                <span class="about-section__badge-year" data-name="1989">1989</span>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Engineering Capabilities -->
-    <section class="about-capabilities">
-      <div class="container">
-        <div class="about-section-header">
-          <h2 class="about-section-title">
-            لماذا يختار العملاء <span class="highlight-red">سهم القمة</span>؟
-          </h2>
-          <p class="about-section-desc">
-            معايير احترافية تصنع الفارق في كل مرحلة من مراحل المشروع
-          </p>
-        </div>
-
-        <div class="about-capabilities__grid">
-          <div
-            v-for="cap in capabilities"
-            :key="cap.num"
-            class="about-capability-card"
-          >
-            <span class="about-capability-card__num">{{ cap.num }}</span>
-            <h3 class="about-capability-card__title">{{ cap.title }}</h3>
-            <p class="about-capability-card__desc">{{ cap.desc }}</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Bottom CTA Banner -->
-    <section class="about-cta">
-      <div class="container">
-        <div class="about-cta__card">
-          <h2 class="about-cta__title">هل لديك استفسار أو ترغب في مناقشة مشروعك؟</h2>
-          <p class="about-cta__desc">فريقنا الهندسي المتخصص يرحب بالتواصل معك لتقديم أفضل الحلول والاستشارات الفنية المعتمدة.</p>
-          <AppButton to="/contact" variant="primary" size="lg" class="about-cta__btn">
-            تواصل معنا الآن
-          </AppButton>
         </div>
       </div>
     </section>
@@ -230,400 +97,503 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-.highlight-red {
-  color: var(--color-primary);
-}
-
-.about-view {
-  background-color: #091627;
-  min-height: 100vh;
+/* Desktop - 15 Root Container */
+.about-page {
+  background-color: #FFFFFF;
+  width: 100%;
   position: relative;
-  overflow: hidden;
-  color: #FFFFFF;
-  padding-bottom: 80px;
+  overflow-x: hidden;
+  direction: rtl;
 }
 
-.about-glow {
-  position: absolute;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.section-glow {
-  top: 90px;
-  left: -180px;
-  width: 520px;
-  height: 520px;
-  border-radius: 260px;
-  background-color: #1A3E6F;
-  opacity: 0.3;
-  filter: blur(100px);
-}
-
-/* Hero Header */
+/* ==========================================================================
+   Desktop - 1: Hero Section
+   ========================================================================== */
 .about-hero {
   position: relative;
-  z-index: 1;
-  padding-top: 170px;
-  padding-bottom: 60px;
-  text-align: center;
-}
-
-.about-hero__container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  max-width: 860px;
-  margin: 0 auto;
-}
-
-.about-hero__badge {
-  display: inline-block;
-  padding: 6px 18px;
-  border-radius: 30px;
-  background: rgba(214, 33, 78, 0.12);
-  color: #D6214E;
-  font-size: 14px;
-  font-weight: 700;
-  border: 1px solid rgba(214, 33, 78, 0.3);
-}
-
-.about-hero__title {
-  font-size: clamp(36px, 5vw, 56px);
-  font-weight: 800;
-  line-height: 1.25;
-  color: #FFFFFF;
-  margin: 0;
-}
-
-.about-hero__desc {
-  font-size: clamp(17px, 2.5vw, 22px);
-  font-weight: 600;
-  line-height: 1.6;
-  color: #C8D5E1;
-  margin: 0;
-  max-width: 760px;
-}
-
-/* Company Story Card */
-.about-story {
-  position: relative;
-  z-index: 1;
-  margin-bottom: 80px;
-}
-
-.about-story__card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 24px;
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 40px;
-  padding: 40px;
-  backdrop-filter: blur(10px);
-}
-
-@media (min-width: 1024px) {
-  .about-story__card {
-    grid-template-columns: 1fr 1.2fr;
-    align-items: center;
-    gap: 56px;
-    padding: 56px;
-  }
-}
-
-.about-story__image-wrap {
-  position: relative;
-  border-radius: 18px;
-  overflow: hidden;
-  height: 380px;
-}
-
-@media (min-width: 1024px) {
-  .about-story__image-wrap {
-    height: 480px;
-  }
-}
-
-.about-story__img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.about-story__image-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(9, 22, 39, 0.1) 0%, rgba(9, 22, 39, 0.6) 100%);
-}
-
-.about-story__floating-badge {
-  position: absolute;
-  bottom: 24px;
-  right: 24px;
-  background: rgba(9, 22, 39, 0.88);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(214, 33, 78, 0.4);
-  padding: 14px 20px;
-  border-radius: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.about-story__badge-title {
-  color: #FFFFFF;
-  font-weight: 700;
-  font-size: 15px;
-}
-
-.about-story__badge-sub {
-  color: #D6214E;
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.about-story__text-wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.about-story__subtitle {
-  color: #D6214E;
-  font-weight: 700;
-  font-size: 15px;
-  letter-spacing: 0.5px;
-}
-
-.about-story__title {
-  font-size: clamp(26px, 3.2vw, 36px);
-  font-weight: 800;
-  line-height: 1.35;
-  color: #FFFFFF;
-  margin: 0;
-}
-
-.about-story__paragraph {
-  font-size: 16px;
-  line-height: 1.8;
-  color: #B5C4D3;
-  margin: 0;
-}
-
-.about-story__action {
-  margin-top: 12px;
-}
-
-/* Stats Section */
-.about-stats {
-  position: relative;
-  z-index: 1;
-  margin-bottom: 90px;
-}
-
-.about-stats__grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  background: linear-gradient(135deg, rgba(20, 47, 83, 0.4) 0%, rgba(9, 22, 39, 0.8) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
-  padding: 40px;
-}
-
-@media (min-width: 900px) {
-  .about-stats__grid {
-    grid-template-columns: repeat(4, 1fr);
-    padding: 48px;
-  }
-}
-
-.about-stat-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 8px;
-}
-
-.about-stat-item__value {
-  font-size: clamp(34px, 4vw, 48px);
-  font-weight: 800;
-  color: #D6214E;
-  line-height: 1;
-  font-family: var(--font-inter);
-}
-
-.about-stat-item__label {
-  font-size: 14px;
-  color: #C8D5E1;
-  font-weight: 600;
-}
-
-/* Pillars Section */
-.about-pillars {
-  position: relative;
-  z-index: 1;
-  margin-bottom: 90px;
-}
-
-.about-section-header {
-  text-align: center;
-  max-width: 700px;
-  margin: 0 auto 50px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.about-section-title {
-  font-size: clamp(28px, 3.5vw, 40px);
-  font-weight: 800;
-  color: #FFFFFF;
-  margin: 0;
-}
-
-.about-section-desc {
-  font-size: 16px;
-  color: #A0B0C0;
-  line-height: 1.6;
-  margin: 0;
-}
-
-.about-pillars__grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 28px;
-}
-
-@media (min-width: 768px) {
-  .about-pillars__grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.about-pillar-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
-  padding: 36px 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  transition: all var(--transition-normal);
-}
-
-.about-pillar-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(214, 33, 78, 0.4);
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.about-pillar-card__icon {
-  width: 54px;
-  height: 54px;
-  border-radius: 14px;
+  min-height: 644px;
+  height: 644px;
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(26, 32, 49, 0.7) 100%), url('/assets/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #FFFFFF;
+  /* Top padding ensures content is vertically centered accounting for 50px fixed header */
+  padding: 130px 24px 60px;
+  box-sizing: border-box;
 }
 
-.about-pillar-card__title {
-  font-size: 22px;
-  font-weight: 700;
-  color: #FFFFFF;
-  margin: 0;
-}
-
-.about-pillar-card__desc {
-  font-size: 15px;
-  line-height: 1.7;
-  color: #A0B0C0;
-  margin: 0;
-}
-
-/* Capabilities Section */
-.about-capabilities {
-  position: relative;
-  z-index: 1;
-  margin-bottom: 90px;
-}
-
-.about-capabilities__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 24px;
-}
-
-.about-capability-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 18px;
-  padding: 32px 24px;
+.about-hero__container {
+  width: 100%;
+  max-width: 1248px;
+  margin: 0 auto;
   display: flex;
-  flex-direction: column;
-  gap: 12px;
-  transition: all var(--transition-fast);
+  justify-content: center;
+  align-items: center;
 }
 
-.about-capability-card:hover {
-  border-color: rgba(214, 33, 78, 0.4);
-  transform: translateY(-4px);
-}
-
-.about-capability-card__num {
-  font-size: 20px;
-  font-weight: 800;
-  color: #D6214E;
-  font-family: var(--font-inter);
-}
-
-.about-capability-card__title {
-  font-size: 18px;
-  font-weight: 700;
-  color: #FFFFFF;
-  margin: 0;
-}
-
-.about-capability-card__desc {
-  font-size: 14px;
-  color: #A0B0C0;
-  line-height: 1.6;
-  margin: 0;
-}
-
-/* CTA Card */
-.about-cta__card {
-  background: linear-gradient(135deg, rgba(20, 47, 83, 0.7) 0%, rgba(9, 22, 39, 0.95) 100%);
-  border: 1px solid rgba(214, 33, 78, 0.35);
-  border-radius: 24px;
-  padding: 48px;
-  text-align: center;
+/* Frame 106 */
+.about-hero__content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 18px;
+  text-align: center;
+  gap: 40px;
+  width: 100%;
+  max-width: 884px;
 }
 
-.about-cta__title {
-  font-size: clamp(24px, 3.5vw, 34px);
+/* مؤسسة سهم القمة */
+.about-hero__title {
+  font-family: 'Tajawal', var(--font-family, sans-serif);
+  font-style: normal;
   font-weight: 800;
-  color: #FFFFFF;
+  font-size: 72px;
+  line-height: 82px;
+  text-align: center;
+  color: #F4F4F4;
   margin: 0;
+  letter-spacing: -0.5px;
 }
 
-.about-cta__desc {
-  font-size: 16px;
-  color: #C8D5E1;
-  max-width: 640px;
+/* شريكك الهندسي في أنظمة الأمن والسلامة... */
+.about-hero__subtitle {
+  font-family: 'Cairo', var(--font-cairo, sans-serif);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 42px;
+  text-align: center;
+  color: #DEDEDE;
   margin: 0;
+  max-width: 884px;
 }
 
-.about-cta__btn {
+/* ==========================================================================
+   Desktop - 10: About Section
+   ========================================================================== */
+.about-section {
+  position: relative;
+  width: 100%;
+  min-height: 724px;
+  background-color: #F6F0EC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 0;
+  box-sizing: border-box;
+}
+
+.about-section__container {
+  width: 100%;
+  max-width: 1248px;
+  margin: 0 auto;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+/* Frame 115 (1248px x 390px, gap: 27px) */
+.about-section__grid {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 27px;
+  width: 100%;
+}
+
+/* Container (Text Column) - width: 583px */
+.about-section__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: right;
+  gap: 20px;
+  width: 100%;
+  max-width: 583px;
+  flex: 0 0 583px;
+  box-sizing: border-box;
+}
+
+.about-section__heading-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  width: 100%;
+}
+
+/* Heading 2 */
+.about-section__title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Cairo', var(--font-cairo, sans-serif);
+  font-style: normal;
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 60px;
+  margin: 0;
+  text-align: right;
+}
+
+/* من نحن: */
+.about-section__title-prefix {
+  color: #102543;
+}
+
+/* مؤسسة سهم القمة */
+.about-section__title-brand {
+  color: #D6214E;
+}
+
+/* Red accent bar under title (Background: width 294px, height 4px, background #D81B4D) */
+.about-section__accent-bar {
+  width: 294px;
+  height: 4px;
+  background-color: #D81B4D;
+  border-radius: 4px;
+}
+
+/* Paragraph Text */
+.about-section__desc {
+  font-family: 'Cairo', var(--font-cairo, sans-serif);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 27px;
+  color: #434343;
+  margin: 0;
+  text-align: right;
+  max-width: 583px;
+}
+
+/* Frame 52 (Buttons) */
+.about-section__actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
   margin-top: 10px;
+}
+
+/* Button 1: Primary Red */
+.about-section__btn--primary {
+  width: 216px !important;
+  height: 56px !important;
+  background-color: #D6214E !important;
+  border-radius: 10px !important;
+  color: #FFFFFF !important;
+  font-family: 'Cairo', var(--font-cairo, sans-serif) !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+  line-height: 24px !important;
+  box-shadow: 0 4px 14px rgba(214, 33, 78, 0.25) !important;
+}
+
+.about-section__btn--primary:hover {
+  background-color: #BF1B44 !important;
+  transform: translateY(-2px);
+}
+
+/* Button 2: Dark Outline */
+.about-section__btn--secondary {
+  width: 169px !important;
+  height: 56px !important;
+  border: 1.5px solid #091627 !important;
+  border-radius: 10px !important;
+  background-color: transparent !important;
+  color: #091627 !important;
+  font-family: 'Cairo', var(--font-cairo, sans-serif) !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+  line-height: 24px !important;
+}
+
+.about-section__btn--secondary:hover {
+  background-color: rgba(9, 22, 39, 0.05) !important;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Frame 114: Media / Image Column (width: 638px, height: 390px)
+   ========================================================================== */
+.about-section__media {
+  position: relative;
+  width: 638px;
+  height: 390px;
+  flex: 0 0 638px;
+  box-sizing: border-box;
+}
+
+/* Rectangle 5: Red Border Frame (offset by 24px, 23px) */
+.about-section__frame-border {
+  position: absolute;
+  width: 614px;
+  height: 367px;
+  left: 24px;
+  top: 23px;
+  border: 3px solid #D6214E;
+  border-radius: 10px;
+  box-sizing: border-box;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Frame 113: Image Container */
+.about-section__image-container {
+  position: absolute;
+  width: 614px;
+  height: 367px;
+  left: 0px;
+  top: 0px;
+  border-radius: 16px;
+  overflow: hidden;
+  z-index: 2;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* villa 1 */
+.about-section__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.about-section__img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+  pointer-events: none;
+}
+
+/* Frame 51: Floating Badge (239px x 139px, left: 399px, top: 309px inside Frame 114) */
+.about-section__badge {
+  position: absolute;
+  width: 239px;
+  height: 139px;
+  left: 399px;
+  top: 309px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.12);
+  border-radius: 16px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Frame 150 */
+.about-section__badge-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 157px;
+  height: 100px;
+  text-align: center;
+}
+
+/* خبرة هندسية منذ */
+.about-section__badge-title {
+  font-family: 'Cairo', var(--font-cairo, sans-serif);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  color: #0C1C32;
+  text-align: center;
+  margin: 0;
+}
+
+/* 1989 */
+.about-section__badge-year {
+  font-family: 'Cairo', var(--font-cairo, sans-serif);
+  font-style: normal;
+  font-weight: 900;
+  font-size: 40px;
+  line-height: 60px;
+  color: #D6214E;
+  text-align: center;
+  margin: 0;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+@media (max-width: 1280px) {
+  .about-section__grid {
+    gap: 20px;
+  }
+
+  .about-section__content {
+    max-width: 520px;
+    flex: 0 0 520px;
+  }
+
+  .about-section__media {
+    width: 580px;
+    height: 355px;
+    flex: 0 0 580px;
+  }
+
+  .about-section__frame-border,
+  .about-section__image-container {
+    width: 556px;
+    height: 332px;
+  }
+
+  .about-section__badge {
+    left: 340px;
+    top: 250px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .about-hero {
+    min-height: 520px;
+    height: auto;
+    padding: 140px 20px 60px;
+  }
+
+  .about-hero__title {
+    font-size: clamp(40px, 6vw, 60px);
+    line-height: 1.2;
+  }
+
+  .about-hero__subtitle {
+    font-size: clamp(20px, 3vw, 24px);
+    line-height: 1.5;
+  }
+
+  .about-section {
+    min-height: auto;
+    padding: 60px 0 80px;
+  }
+
+  .about-section__grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+  }
+
+  .about-section__content {
+    max-width: 638px;
+    flex: none;
+    align-items: flex-start;
+  }
+
+  .about-section__media {
+    max-width: 100%;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 680px) {
+  .about-hero {
+    min-height: 480px;
+    padding: 120px 16px 50px;
+  }
+
+  .about-hero__content {
+    gap: 24px;
+  }
+
+  .about-hero__title {
+    font-size: 34px;
+    line-height: 44px;
+  }
+
+  .about-hero__subtitle {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .about-section__heading-wrap {
+    gap: 10px;
+  }
+
+  .about-section__title {
+    font-size: 28px;
+    line-height: 40px;
+    flex-wrap: wrap;
+  }
+
+  .about-section__accent-bar {
+    width: 200px;
+  }
+
+  .about-section__desc {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .about-section__actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 14px;
+  }
+
+  .about-section__btn--primary,
+  .about-section__btn--secondary {
+    width: 100% !important;
+  }
+
+  /* Responsive image frame on small mobile screens */
+  .about-section__media {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 638 / 390;
+    min-height: 260px;
+    flex: none;
+  }
+
+  .about-section__frame-border {
+    width: calc(100% - 24px);
+    height: calc(100% - 23px);
+    left: 24px;
+    top: 23px;
+  }
+
+  .about-section__image-container {
+    width: calc(100% - 24px);
+    height: calc(100% - 23px);
+  }
+
+  .about-section__badge {
+    width: 180px;
+    height: 100px;
+    left: auto;
+    right: 12px;
+    bottom: -20px;
+    top: auto;
+    padding: 8px;
+  }
+
+  .about-section__badge-content {
+    width: 100%;
+    height: 100%;
+    gap: 4px;
+  }
+
+  .about-section__badge-title {
+    font-size: 15px;
+    line-height: 22px;
+  }
+
+  .about-section__badge-year {
+    font-size: 28px;
+    line-height: 38px;
+  }
 }
 </style>

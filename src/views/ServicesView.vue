@@ -222,84 +222,39 @@ const scrollToService = (id) => {
             <span class="services-hero__title-line">لنجاح أعمالك</span>
           </h1>
           <p class="services-hero__desc">
-            خدمات كهروميكانيكية وهندسية تغطي كافة احتياجات منشأتك من المخططات حتى التشغيل الميداني
-          </p>
-        </div>
-
-        <!-- 5 Floating Services Pills Matching Figma -->
-        <div class="services-pills">
-          <button
-            v-for="s in services"
-            :key="s.id"
-            class="services-pill"
-            :class="{ 'services-pill--active': activeFilter === s.id }"
-            @click="scrollToService(s.id)"
-          >
-            <span class="services-pill__dot" :style="{ backgroundColor: s.dotColor }"></span>
-            <span class="services-pill__num">{{ s.number }}</span>
-            <span class="services-pill__title">{{ s.pillTitle || s.title }}</span>
-          </button>
+            خدماتنا تغطي كل ما تحتاجه شركتك من التحليل حتى الانتشار الرقمي </p>
         </div>
       </div>
     </section>
 
     <!-- Services Detailed List Matching Figma Node 303:649 -->
     <section class="services-list-section">
-      <div
-        v-for="s in services"
-        :id="s.id"
-        :key="s.id"
-        class="service-item"
-        :style="{ minHeight: s.minHeight }"
-      >
+      <div v-for="s in services" :id="s.id" :key="s.id" class="service-item" :style="{ minHeight: s.minHeight }">
         <!-- Giant background watermark with exact 20% alpha matching Figma -->
-        <div
-          class="service-item__giant-num"
-          :style="{ color: s.watermarkColor }"
-          aria-hidden="true"
-        >
+        <div class="service-item__giant-num" :style="{ color: s.watermarkColor }" aria-hidden="true">
           {{ s.number }}
         </div>
-        <div
-          class="service-item__glow"
-          :style="{ backgroundColor: s.accentColor }"
-          aria-hidden="true"
-        ></div>
+        <div class="service-item__glow" :style="{ backgroundColor: s.accentColor }" aria-hidden="true"></div>
 
         <div class="container">
           <!-- Top Divider Bar with Big Number, Line, and Watermark -->
           <div class="service-item__top-bar">
             <!-- Number and Line on the right (RTL: number on far right, line stretching to left) -->
-            <span
-              class="service-item__top-num"
-              :style="{ color: s.accentColor }"
-            >
+            <span class="service-item__top-num" :style="{ color: s.accentColor }">
               {{ s.number }}
             </span>
-            <div
-              class="service-item__top-line"
-              :style="{ backgroundColor: s.lineColor }"
-            ></div>
+            <div class="service-item__top-line" :style="{ backgroundColor: s.lineColor }"></div>
           </div>
 
           <div class="service-item__grid">
             <!-- Right Column in RTL: Description, Tools & Action Button -->
             <div class="service-item__info">
-              <h2
-                class="service-item__title"
-                :style="{ color: s.titleColor }"
-              >
+              <h2 class="service-item__title" :style="{ color: s.titleColor }">
                 {{ s.title }}
               </h2>
 
-              <div
-                class="service-item__quote-wrap"
-                :style="{ borderRightColor: s.accentColor }"
-              >
-                <p
-                  class="service-item__quote"
-                  :style="{ color: s.accentColor }"
-                >
+              <div class="service-item__quote-wrap" :style="{ borderRightColor: s.accentColor }">
+                <p class="service-item__quote" :style="{ color: s.accentColor }">
                   {{ s.quote }}
                 </p>
               </div>
@@ -310,12 +265,7 @@ const scrollToService = (id) => {
               <div class="service-item__tools-wrap">
                 <h4 class="service-item__tools-title">الأدوات المستخدمة</h4>
                 <div class="service-item__tools-list">
-                  <span
-                    v-for="tool in s.tools"
-                    :key="tool"
-                    class="tool-chip"
-                    :style="{ borderColor: s.accentColor }"
-                  >
+                  <span v-for="tool in s.tools" :key="tool" class="tool-chip" :style="{ borderColor: s.accentColor }">
                     {{ tool }}
                   </span>
                 </div>
@@ -323,12 +273,8 @@ const scrollToService = (id) => {
 
               <!-- Action Button -->
               <div class="service-item__action">
-                <AppButton
-                  :to="{ path: '/contact', query: { service: s.id } }"
-                  :variant="s.btnVariant"
-                  class="service-item__btn"
-                  :style="{ backgroundColor: s.accentColor + ' !important' }"
-                >
+                <AppButton :to="{ path: '/contact', query: { service: s.id } }" :variant="s.btnVariant"
+                  class="service-item__btn" :style="{ backgroundColor: s.accentColor + ' !important' }">
                   {{ s.btnText }}
                 </AppButton>
               </div>
@@ -338,26 +284,16 @@ const scrollToService = (id) => {
             <div class="service-item__deliverables">
               <div class="deliverables-header">
                 <span class="deliverables-header__title">ماذا نقدم</span>
-                <span
-                  class="deliverables-header__line"
-                  :style="{ backgroundColor: s.lineColor }"
-                ></span>
+                <span class="deliverables-header__line" :style="{ backgroundColor: s.lineColor }"></span>
                 <span class="deliverables-header__count">{{ s.deliverablesCount }}</span>
               </div>
 
               <div class="deliverables-grid">
-                <div
-                  v-for="(deliv, idx) in s.deliverables"
-                  :key="deliv.id"
-                  class="deliverable-chip"
+                <div v-for="(deliv, idx) in s.deliverables" :key="deliv.id" class="deliverable-chip"
                   :class="{ 'deliverable-chip--full': s.deliverables.length === 5 && idx === 4 }"
-                  :style="{ borderColor: s.accentColor }"
-                >
+                  :style="{ borderColor: s.accentColor }">
                   <span class="deliverable-chip__text">{{ deliv.text }}</span>
-                  <span
-                    class="deliverable-chip__num"
-                    :style="{ color: s.accentColor }"
-                  >
+                  <span class="deliverable-chip__num" :style="{ color: s.accentColor }">
                     {{ deliv.id }}
                   </span>
                 </div>
@@ -377,37 +313,30 @@ const scrollToService = (id) => {
             <span class="highlight-red">نماذج</span> من أعمالنا الرائدة
           </h2>
           <p class="projects-header__desc">
-            سجل حافل بالمشاريع الكهروميكانيكية المتكاملة التي نفذناها بدقة والتزام بأعلى معايير السلامة والجودة في المملكة
+            سجل حافل بالمشاريع الكهروميكانيكية المتكاملة التي نفذناها بدقة والتزام بأعلى معايير السلامة والجودة في
+            المملكة
           </p>
 
           <!-- Category filter buttons -->
           <div class="projects-filters">
-            <button
-              class="projects-filter-btn"
+            <button class="projects-filter-btn"
               :class="{ 'projects-filter-btn--active': activeProjectCategory === 'all' }"
-              @click="activeProjectCategory = 'all'"
-            >
+              @click="activeProjectCategory = 'all'">
               كافة المشاريع
             </button>
-            <button
-              class="projects-filter-btn"
+            <button class="projects-filter-btn"
               :class="{ 'projects-filter-btn--active': activeProjectCategory === 'mep' }"
-              @click="activeProjectCategory = 'mep'"
-            >
+              @click="activeProjectCategory = 'mep'">
               أنظمة متكاملة MEP
             </button>
-            <button
-              class="projects-filter-btn"
+            <button class="projects-filter-btn"
               :class="{ 'projects-filter-btn--active': activeProjectCategory === 'electrical' }"
-              @click="activeProjectCategory = 'electrical'"
-            >
+              @click="activeProjectCategory = 'electrical'">
               الخدمات الكهربائية
             </button>
-            <button
-              class="projects-filter-btn"
+            <button class="projects-filter-btn"
               :class="{ 'projects-filter-btn--active': activeProjectCategory === 'mechanical' }"
-              @click="activeProjectCategory = 'mechanical'"
-            >
+              @click="activeProjectCategory = 'mechanical'">
               الخدمات الميكانيكية
             </button>
           </div>
@@ -415,11 +344,7 @@ const scrollToService = (id) => {
 
         <!-- Projects Grid -->
         <div class="projects-grid">
-          <article
-            v-for="project in filteredProjects"
-            :key="project.id"
-            class="project-card"
-          >
+          <article v-for="project in filteredProjects" :key="project.id" class="project-card">
             <div class="project-card__image-wrap">
               <img :src="project.image" :alt="project.title" class="project-card__img" loading="lazy" />
               <div class="project-card__overlay"></div>
@@ -439,7 +364,7 @@ const scrollToService = (id) => {
                 <RouterLink to="/contact" class="project-card__link">
                   <span>طلب مشروع مماثل</span>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="m15 18-6-6 6-6"/>
+                    <path d="m15 18-6-6 6-6" />
                   </svg>
                 </RouterLink>
               </div>
@@ -451,7 +376,8 @@ const scrollToService = (id) => {
         <div class="projects-cta-box">
           <div class="projects-cta-box__content">
             <h3 class="projects-cta-box__title">هل تخطط لمشروع جديد أو ترغب في استشارة هندسية متخصصة؟</h3>
-            <p class="projects-cta-box__desc">فريقنا الهندسي المتكامل جاهز لدراسة متطلبات مشروعك وتقديم أفضل الحلول الفنية والتنفيذية.</p>
+            <p class="projects-cta-box__desc">فريقنا الهندسي المتكامل جاهز لدراسة متطلبات مشروعك وتقديم أفضل الحلول
+              الفنية والتنفيذية.</p>
           </div>
           <AppButton to="/contact" variant="primary" size="lg" class="projects-cta-box__btn">
             تواصل معنا الآن
@@ -511,12 +437,10 @@ const scrollToService = (id) => {
 .services-hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(9, 22, 39, 0.72) 0%,
-    rgba(9, 22, 39, 0.5) 40%,
-    rgba(9, 22, 39, 0.88) 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(9, 22, 39, 0.72) 0%,
+      rgba(9, 22, 39, 0.5) 40%,
+      rgba(9, 22, 39, 0.88) 100%);
 }
 
 .services-hero__container {
@@ -525,8 +449,8 @@ const scrollToService = (id) => {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: flex-start;
-  text-align: right;
+  /* align-items: flex-start; */
+  text-align: center;
   width: 100%;
   max-width: 1248px;
   height: 100%;
@@ -535,10 +459,10 @@ const scrollToService = (id) => {
 }
 
 .services-hero__content {
-  max-width: 636px;
+  /* max-width: 636px; */
   margin-top: auto;
   margin-bottom: auto;
-  text-align: right;
+  text-align: center;
 }
 
 .services-hero__title {
@@ -550,7 +474,6 @@ const scrollToService = (id) => {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  text-align: right;
 }
 
 @media (min-width: 768px) {
@@ -580,8 +503,7 @@ const scrollToService = (id) => {
   color: #C7C7C7;
   font-weight: 700;
   line-height: 1.6;
-  max-width: 636px;
-  text-align: right;
+  /* max-width: 636px; */
 }
 
 @media (min-width: 768px) {

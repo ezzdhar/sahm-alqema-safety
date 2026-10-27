@@ -1,4 +1,5 @@
 <script setup>
+import { ref, computed } from 'vue';
 import { RouterLink } from 'vue-router';
 import AppButton from '../components/common/AppButton.vue';
 
@@ -46,57 +47,106 @@ const steps = [
   },
 ];
 
-// 6 Featured Projects matching Figma Frame 126
+// Projects Filters & 9 Featured Projects matching Figma Node 25:200
+const activeProjectCountry = ref('all');
+
+const projectCountryFilters = [
+  { id: 'all', label: 'كافة المشاريع' },
+  { id: 'saudi', label: 'المملكة العربية السعودية' },
+  { id: 'egypt', label: 'جمهورية مصر العربية' },
+  { id: 'uae', label: 'دولة الإمارات' },
+];
+
 const featuredProjects = [
   {
     id: 1,
-    title: 'مشروع فيلا سكنية خاصة',
-    category: 'فيلا خاصة',
-    location: 'الرياض',
-    desc: 'تصميم وتنفيذ أنظمة التكييف والإنارة الذكية وشبكات المياه والصرف الصحي وفق أعلى المعايير.',
-    image: '/assets/hero-bg.jpg',
+    title: 'مدارس منارات الرياض',
+    client: 'معارف للتعليم · الرياض وجدة والخبر',
+    desc: 'توريد وتركيب واختبار وتشغيل البنية التحتيةوأنظمة مكافحة الحريق والإنذار المبكر لثلاثة مجمعات تعليمية كبرى.',
+    country: 'السعودية',
+    countryCode: 'saudi',
+    image: '/assets/projects/project-manarat-riyadh.png',
   },
   {
     id: 2,
-    title: 'مجمع مدارس تعليمي متكامل',
-    category: 'منشآت تعليمية',
-    location: 'الرياض',
-    desc: 'شبكات متطورة للإنذار ومكافحة الحريق وأنظمة تهوية وتكييف ميكانيكي متوافقة مع الكود السعودي.',
-    image: '/assets/contact-page-bg.jpg',
+    title: 'كليات عناية الطبية',
+    client: 'عناية الطبية · مدينة الرياض',
+    desc: 'تنفيذ البنية التحتية المتطورة وأنظمة إطفاء وإنذار الحريق لثلاثة مبانٍ جامعية طبية متخصصة ومختبرات مركزية.',
+    country: 'السعودية',
+    countryCode: 'saudi',
+    image: '/assets/projects/project-enaya-colleges.png',
   },
   {
     id: 3,
-    title: 'استراحة ومنتجع سياحي فاخر',
-    category: 'منتجعات واستراحات',
-    location: 'الرياض',
-    desc: 'أنظمة طاقة وتوزيع كهروميكانيكية متكاملة لبيئة سياحية وترفيهية راقية ومستدامة.',
-    image: '/assets/contact-banner-bg.jpg',
+    title: 'مدارس الفرسان العالمية',
+    client: 'الفرسان · الرياض',
+    desc: 'البنية التحتية وأنظمة إطفاء الحريق وإنذاره للمدرسة.',
+    country: 'السعودية',
+    countryCode: 'saudi',
+    image: '/assets/projects/project-forsan-school.png',
   },
   {
     id: 4,
-    title: 'مستودعات وهناجر لوجستية',
-    category: 'مستودعات لوجستية',
-    location: 'الرياض',
-    desc: 'شبكات إطفاء متطورة ورشاشات مائية تلقائية وأنظمة إنارة صناعية عالية الكفاءة.',
-    image: '/assets/hero-bg.jpg',
+    title: 'مدارس مايان والعليا',
+    client: 'الراجحي للاستثمار · الرياض',
+    desc: 'البنية التحتية وأنظمة إطفاء الحريق وإنذاره لمدرستين.',
+    country: 'السعودية',
+    countryCode: 'saudi',
+    image: '/assets/projects/project-haitan-malqa.png',
   },
   {
     id: 5,
-    title: 'مركز تجاري ومكاتب إدارية',
-    category: 'مباني إدارية وتجارية',
-    location: 'الرياض',
-    desc: 'لوحات التوزيع الرئيسية MDB وأنظمة التكييف المركزي وتنسيق MEP بنمذجة BIM.',
-    image: '/assets/contact-page-bg.jpg',
+    title: 'مكاني بلازا',
+    client: 'مطيب الكردي · الرياض',
+    desc: 'توريد وتركيب وتشغيل البنية التحتية وأنظمة الإنذار ومكافحة الحريق.',
+    country: 'السعودية',
+    countryCode: 'saudi',
+    image: '/assets/projects/project-makani-plaza.png',
   },
   {
     id: 6,
-    title: 'معرض تجاري وصالة عرض',
-    category: 'صالات عرض تجارية',
-    location: 'الرياض',
-    desc: 'تنسيق كامل بين أنظمة الإنارة المعمارية والتكييف المخفي وشبكات الأمان والسلامة.',
-    image: '/assets/contact-banner-bg.jpg',
+    title: 'مستشفى أثير',
+    client: 'مجمع البر الخيري · المملكة العربية السعودية',
+    desc: 'تصميم وتنفيذ أنظمة MEP، ونماذج Revit إنشائية ومعمارية وMEP، ومحاكاة الحريق FDS.',
+    country: 'السعودية',
+    countryCode: 'saudi',
+    image: '/assets/projects/project-alber-hospital.png',
+  },
+  {
+    id: 7,
+    title: 'البنك الأهلي المصري',
+    client: 'البنك الأهلي المصري · القاهرة',
+    desc: 'مكافحة الحريق والتكييف والسباكة والتيار الخفيف والقوى وكاميرات المراقبة.',
+    country: 'مصر',
+    countryCode: 'egypt',
+    image: '/assets/projects/project-nbe.png',
+  },
+  {
+    id: 8,
+    title: 'فودافون',
+    client: 'فودافون · القاهرة والإسكندرية',
+    desc: 'البنية التحتية والسباكة الداخلية ومكافحة الحريق والتكييف وغرفة مضخات خزان المياه الرئيسي.',
+    country: 'مصر',
+    countryCode: 'egypt',
+    image: '/assets/projects/project-vodafone.png',
+  },
+  {
+    id: 9,
+    title: 'كليوباترا مول الشيخ زايد',
+    client: 'مجموعة كليوباترا · الشيخ زايد',
+    desc: 'مكافحة الحريق والمضخات وشبكة تصريف مياه الأمطار.',
+    country: 'مصر',
+    countryCode: 'egypt',
+    image: '/assets/projects/project-cleopatra-mall.png',
   },
 ];
+
+const filteredProjects = computed(() => {
+  if (activeProjectCountry.value === 'all') {
+    return featuredProjects;
+  }
+  return featuredProjects.filter((p) => p.countryCode === activeProjectCountry.value);
+});
 
 // Stats Data matching Desktop - 11
 const statsData = [
@@ -142,11 +192,28 @@ const differentiators = whyUsItems.map((item, index) => ({
   img: `/assets/num-0${index + 1}.png`,
 }));
 
-// Partner Logos matching Figma Desktop - 11
-const partners = [
-  'EMAAR', 'ORASCOM', 'AL RAJHI', 'HILTON', 'VODAFONE',
-  'TRAVCO', 'ECC', 'FORSAN', 'NAKHEEL', 'MANARAT',
-  'MAKANI', 'SAUDIBIO', 'RIMAYA', 'SLEEPNICE', 'SICAST'
+// Partner Logos matching Figma Frame 160 & Node 50:134
+const partnerLogos = [
+  { name: 'Nakheel', src: '/assets/partners/nakheel.png' },
+  { name: 'MV Pharmacy', src: '/assets/partners/mv.png' },
+  { name: 'منارات الرياض', src: '/assets/partners/manarat.png' },
+  { name: 'EMAAR', src: '/assets/partners/emaar.png' },
+  { name: 'Better Home', src: '/assets/partners/betterhome.png' },
+  { name: 'Ceramica Cleopatra', src: '/assets/partners/cleopatra.png' },
+  { name: 'ECC', src: '/assets/partners/ecc.png' },
+  { name: 'مدارس الفرسان', src: '/assets/partners/forsan.png' },
+  { name: 'باجة Baja', src: '/assets/partners/baja.png' },
+  { name: 'Balbaa Group', src: '/assets/partners/balbaa.png' },
+  { name: 'Hilton', src: '/assets/partners/hilton.png' },
+  { name: 'مكاني بلازا Makani', src: '/assets/partners/makani.png' },
+  { name: 'Orascom', src: '/assets/partners/orascom.png' },
+  { name: 'Al Rajhi', src: '/assets/partners/rajhi.png' },
+  { name: 'الرماية Rimaya', src: '/assets/partners/rimaya.png' },
+  { name: 'Saudi Bio', src: '/assets/partners/saudibio.png' },
+  { name: 'Sicast', src: '/assets/partners/sicast.png' },
+  { name: 'Sleep Nice', src: '/assets/partners/sleepnice.png' },
+  { name: 'Travco', src: '/assets/partners/travco.png' },
+  { name: 'Vodafone', src: '/assets/partners/vodafone.png' },
 ];
 
 // Contact points matching Figma Desktop - 7 & Contact section
@@ -345,58 +412,70 @@ const serviceHexagonsBottom = [
       </div>
     </section>
 
-    <!-- 4 Steps Section (Desktop - 5) -->
-    <section class="steps-section">
+    <!-- 4 Steps Section (Desktop - 5 Matching Figma Node 14-1138) -->
+    <section class="steps-section" data-name="Desktop - 5">
+      <!-- Watermark logo in background -->
+      <div class="steps-section__watermark" aria-hidden="true"></div>
+
       <div class="container steps-section__container">
-        <!-- Right Column: Info & Action -->
-        <div class="steps-section__intro">
-          <h2 class="steps-section__title">
-            <span class="highlight-red">أربع</span> خطوات نحو القمة
-          </h2>
-          <p class="steps-section__desc">
-            رحلة هندسية دقيقة ننفذها باحترافية، بدءاً من دراسة المخططات حتى الفحص والتشغيل التجريبي لتسليم منظومة
-            متكاملة تضمن راحة البال.
-          </p>
-          <div class="steps-section__action">
-            <RouterLink to="/process" custom v-slot="{ navigate }">
-              <button @click="navigate" class="steps-btn">
-                أبدأ نحو القمة
-              </button>
-            </RouterLink>
+        <!-- Frame 84: Info & Action (Right side in RTL) -->
+        <div class="steps-section__intro" data-name="Frame 84">
+          <div class="steps-section__heading-wrap" data-name="Frame 127">
+            <h2 class="steps-section__title" data-name="أربع خطوات نحو القمة">
+              أربع خطوات نحو القمة
+            </h2>
+            <div class="steps-section__accent-bar" data-name="Background" aria-hidden="true"></div>
           </div>
+
+          <p class="steps-section__desc" data-name="Paragraph">
+            حلول استشارية واستثمارية متكاملة في قلب التحول الاقتصادي للمملكة.
+          </p>
+
+          <AppButton
+            to="/contact"
+            variant="primary"
+            size="lg"
+            class="steps-btn"
+            data-name="Button"
+          >
+            احجز الآن
+          </AppButton>
         </div>
 
-        <!-- Left Column: 4 Cards -->
-        <div class="steps-section__cards">
-          <div v-for="(step, idx) in steps" :key="idx" class="step-card">
+        <!-- Frame 110: 4 Stepping Cards (Left side in RTL) -->
+        <div class="steps-section__cards" data-name="Frame 110">
+          <div
+            v-for="(step, idx) in steps"
+            :key="idx"
+            class="step-card"
+            :class="`step-card--${idx + 1}`"
+            :data-name="`Frame ${85 + idx}`"
+          >
             <div class="step-card__icon">
-              <svg v-if="idx === 0" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="18" y1="20" x2="18" y2="10"></line>
-                <line x1="12" y1="20" x2="12" y2="4"></line>
-                <line x1="6" y1="20" x2="6" y2="14"></line>
+              <!-- Card 1: التخطيط والدراسة (search) -->
+              <svg v-if="idx === 0" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#D6214E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="7" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
               </svg>
-              <svg v-else-if="idx === 1" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-                <polyline points="17 6 23 6 23 12"></polyline>
+              <!-- Card 2: التصميم والنمذجة (cube) -->
+              <svg v-else-if="idx === 1" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#D6214E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                <line x1="12" y1="22.08" x2="12" y2="12" />
               </svg>
-              <svg v-else-if="idx === 2" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle>
-                <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle>
-                <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle>
-                <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle>
-                <path
-                  d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z">
-                </path>
+              <!-- Card 3: التوريد والتركيب (hvac) -->
+              <svg v-else-if="idx === 2" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#D6214E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="3" />
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 4v4" />
+                <path d="M12 16v4" />
+                <path d="M4 12h4" />
+                <path d="M16 12h4" />
               </svg>
-              <svg v-else width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="2" y1="12" x2="22" y2="12"></line>
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
-                </path>
+              <!-- Card 4: الاختبار والتشغيل (check circle) -->
+              <svg v-else width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#D6214E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9" />
+                <path d="m9 12 2 2 4-4" />
               </svg>
             </div>
             <h3 class="step-card__title">{{ step.title }}</h3>
@@ -406,35 +485,55 @@ const serviceHexagonsBottom = [
       </div>
     </section>
 
-    <!-- Company Story Teaser (Desktop - 10 About Section) -->
-    <section class="home-about-teaser">
-      <div class="container">
-        <div class="home-about-card">
-          <div class="home-about-card__text">
-            <h2 class="home-about-card__title">
-              مؤسسة سهم القمة
-            </h2>
-            <p class="home-about-card__desc">
-              مؤسسة سهم القمة لأنظمة الأمن والسلامة هي الذراع الاستشاري والتنفيذي لمجموعة الفسطاط، المزوّد الهندسي
-              الثابت منذ 1989 لخدمات الميكانيكا والكهرباء والسباكة (MEP). ننطلق من الرياض بفريق عريق يغطي المشاريع
-              السكنية والفندقية والطبية والتعليمية.
+    <!-- Company Story Teaser (Desktop - 10 About Section Matching Figma Node 14-1294) -->
+    <section class="home-about-teaser" data-name="Desktop - 10">
+      <div class="container home-about-teaser__container">
+        <div class="home-about-card" data-name="Frame 115">
+          <!-- Text Content Block (Container) - Right side in RTL -->
+          <div class="home-about-card__text" data-name="Container">
+            <div class="home-about-heading-wrap">
+              <h2 class="home-about-card__title" data-name="Heading 2">
+                <span class="home-about-title-prefix" data-name="من نحن:">من نحن:</span>
+                <span class="home-about-title-brand" data-name="مؤسسة سهم القمة">مؤسسة سهم القمة</span>
+              </h2>
+              <div class="home-about-accent-bar" data-name="Background" aria-hidden="true"></div>
+            </div>
+
+            <p class="home-about-card__desc" data-name="Paragraph">
+              مؤسسة سهم القمة لأنظمة الأمن والسلامة هي الذراع الاستشاري والتنفيذي لمجموعة الفسطاط، المزوّد الهندسي الثابت منذ 1989 لخدمات الميكانيكا والكهرباء والسباكة (MEP). ننطلق من الرياض بفريق عريق يغطي المشاريع السكنية والفندقية والطبية والتعليمية.
             </p>
-            <div class="home-about-subsections">
-              <div class="home-about-subsection">
-                <h3 class="home-about-sub-title">رؤيتنا الهندسية</h3>
-                <p class="home-about-sub-desc">أن نكون منارة التميز الأولى في حلول السلامة والاستشارات الهندسية
-                  المتكاملة، مع تحقيق أعلى معدلات الكفاءة الإنشائية ومطابقة المعايير الدولية.</p>
+
+            <div class="home-about-subsections" data-name="Container">
+              <div class="home-about-subsection" data-name="Container">
+                <h3 class="home-about-sub-title" data-name="Heading 3">رؤيتنا الهندسية</h3>
+                <p class="home-about-sub-desc">
+                  أن نكون منارة التميز الأولى في حلول السلامة والاستشارات الهندسية المتكاملة، مع تحقيق أعلى معدلات الكفاءة الإنشائية ومطابقة المعايير الدولية.
+                </p>
               </div>
-              <div class="home-about-subsection">
-                <h3 class="home-about-sub-title">رسالتنا</h3>
-                <p class="home-about-sub-desc">تمكين شركائنا بحلول هندسية موثوقة تحد من المخاطر وتقلل التكاليف
-                  التشغيلية، مع بناء علاقات شراكة طويلة الأجل أساسها المصداقية والجودة.</p>
+              <div class="home-about-subsection" data-name="Container">
+                <h3 class="home-about-sub-title" data-name="Heading 3">رسالتنا</h3>
+                <p class="home-about-sub-desc">
+                  تمكين شركائنا بحلول هندسية موثوقة تحد من المخاطر وتقلل التكاليف التشغيلية، مع بناء علاقات شراكة طويلة الأجل أساسها المصداقية والجودة.
+                </p>
               </div>
             </div>
           </div>
-          <div class="home-about-card__media">
-            <img src="/assets/contact-page-bg.jpg" alt="مقر مؤسسة سهم القمة" class="home-about-card__img"
-              loading="lazy" />
+
+          <!-- Media Block (Frame 114) - Left side in RTL -->
+          <div class="home-about-card__media" data-name="Frame 114">
+            <!-- Decorative Offset Red Frame (Rectangle 5) -->
+            <div class="home-about-card__frame-border" data-name="Rectangle 5" aria-hidden="true"></div>
+
+            <!-- Front Image Frame (Frame 113) -->
+            <div class="home-about-card__image-container" data-name="Frame 113">
+              <img
+                src="/assets/villa.jpg"
+                alt="مقر ومشاريع مؤسسة سهم القمة"
+                class="home-about-card__img"
+                loading="lazy"
+                data-name="villa 1"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -492,103 +591,188 @@ const serviceHexagonsBottom = [
       </div>
     </section>
 
-    <!-- Projects Preview Section Matching Figma Frame 126 -->
-    <section class="home-projects-section">
+    <!-- Projects Preview Section Matching Figma Node 25:200 -->
+    <section class="home-projects-section" id="projects">
       <div class="container">
         <div class="home-projects-header">
-          <div>
-            <span class="home-projects-badge">أعمالنا ومشاريعنا</span>
-            <h2 class="home-projects-title">
-              <span class="highlight-red">نماذج</span> من أعمالنا الرائدة
-            </h2>
-            <p class="home-projects-subtitle">مخططات أعمال متنوعة تضم كبرى المدارس والمستشفيات والاستراحات السياحية في
-              السعودية ودبي</p>
-          </div>
-          <RouterLink to="/services#projects" class="home-projects-all-link">
-            <span>مشاهدة كافة المشاريع</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="m15 18-6-6 6-6" />
-            </svg>
-          </RouterLink>
+          <h2 class="home-projects-title">
+            <span class="title-navy">نماذج من </span><span class="highlight-crimson">مشاريعنا</span><span class="title-navy"> الرائدة</span>
+          </h2>
+          <div class="home-projects-title-bar" aria-hidden="true"></div>
+          <p class="home-projects-subtitle">
+            محفظة أعمال متنوعة تضم كبرى المدارس والمستشفيات والمنتجعات السياحية في السعودية ومصر<br class="desktop-break" />والإمارات.
+          </p>
         </div>
 
-        <div class="home-projects-grid">
-          <article v-for="project in featuredProjects" :key="project.id" class="home-project-card">
+        <!-- Country Filters -->
+        <div class="home-projects-filters" role="tablist" aria-label="تصفية المشاريع حسب الدولة">
+          <button
+            v-for="filter in projectCountryFilters"
+            :key="filter.id"
+            type="button"
+            role="tab"
+            :aria-selected="activeProjectCountry === filter.id"
+            class="home-projects-filter-btn"
+            :class="{ 'is-active': activeProjectCountry === filter.id }"
+            @click="activeProjectCountry = filter.id"
+          >
+            {{ filter.label }}
+          </button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div v-if="filteredProjects.length > 0" class="home-projects-grid">
+          <article
+            v-for="project in filteredProjects"
+            :key="project.id"
+            class="home-project-card"
+          >
             <div class="home-project-card__img-wrap">
-              <img :src="project.image" :alt="project.title" class="home-project-card__img" loading="lazy" />
-              <div class="home-project-card__overlay"></div>
-              <span class="home-project-card__tag">{{ project.category }}</span>
-              <span class="home-project-card__loc">{{ project.location }}</span>
+              <img
+                :src="project.image"
+                :alt="project.title"
+                class="home-project-card__img"
+                loading="lazy"
+              />
+              <span class="home-project-card__badge">{{ project.country }}</span>
             </div>
             <div class="home-project-card__body">
               <h3 class="home-project-card__title">{{ project.title }}</h3>
+              <div class="home-project-card__client">{{ project.client }}</div>
               <p class="home-project-card__desc">{{ project.desc }}</p>
             </div>
           </article>
         </div>
+
+        <!-- Empty state if selected country has no projects yet -->
+        <div v-else class="home-projects-empty">
+          <p class="home-projects-empty__text">مشاريعنا في هذه الدولة قيد التحديث والإضافة قريباً.</p>
+          <AppButton to="/contact" variant="outline" size="sm">تواصل معنا لمعرفة المزيد</AppButton>
+        </div>
+
+        <!-- Bottom CTA Button matching Figma Instance Button 53:970 -->
+        <div class="home-projects-cta">
+          <AppButton to="/services#projects" variant="primary" class="home-projects-cta-btn">
+            عرض كل المشاريع
+          </AppButton>
+        </div>
       </div>
     </section>
 
-    <!-- Partners Logos Strip Matching Figma Desktop - 11 -->
+    <!-- Partners Logos Strip Matching Figma Frame 160 -->
     <section class="partners-section" data-name="Frame 160">
       <div class="container">
         <div class="partners-header">
           <h2 class="partners-title">عملاء يثقون بنا</h2>
-          <p class="partners-subtitle">نعتز بالتعاون مع أسماء رائدة في القطاعات العقارية والتجارية والصناعية والخدمية
+          <p class="partners-subtitle">
+            نعتز بالتعاون مع أسماء رائدة في القطاعات العقارية والتجارية والصناعية والخدمية
           </p>
         </div>
-        <div class="partners-strip">
-          <div v-for="(partner, pIdx) in partners" :key="pIdx" class="partner-badge">
-            {{ partner }}
+      </div>
+
+      <!-- Partners Slider Marquee -->
+      <div class="partners-strip partners-slider-wrapper" dir="ltr" aria-label="شركاء النجاح">
+        <div class="partners-track">
+          <!-- First set of logos -->
+          <div
+            v-for="(partner, pIdx) in partnerLogos"
+            :key="'p1-' + pIdx"
+            class="partner-card"
+          >
+            <img
+              :src="partner.src"
+              :alt="partner.name"
+              class="partner-card__img"
+              loading="lazy"
+              width="200"
+              height="100"
+            />
+          </div>
+          <!-- Duplicate set for seamless infinite loop -->
+          <div
+            v-for="(partner, pIdx) in partnerLogos"
+            :key="'p2-' + pIdx"
+            class="partner-card"
+            aria-hidden="true"
+          >
+            <img
+              :src="partner.src"
+              :alt="partner.name"
+              class="partner-card__img"
+              loading="lazy"
+              width="200"
+              height="100"
+            />
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Contact Banner & Info Section Matching Figma -->
-    <section class="home-contact-section">
+    <!-- Contact Banner & Info Section Matching Figma Node 29:399 -->
+    <section class="home-contact-section" id="contact">
+      <!-- Frame 142: Hero Banner -->
       <div class="home-contact-section__hero">
-        <img src="/assets/contact-banner-bg.jpg" alt="خلفية تواصل معنا" class="home-contact-section__hero-bg" />
-        <div class="home-contact-section__hero-overlay"></div>
         <div class="container home-contact-section__hero-content">
           <h2 class="home-contact-section__title">تواصل معنا</h2>
           <p class="home-contact-section__subtitle">
-            أخبرنا بمتطلبات مشروعك وسيتواصل معك خبراؤنا في أقرب فرصة
+            أخبرنا بفكرتك وسنعود إليك بخطة واضحة تناسب أهدافك، خلال 24 ساعة
           </p>
+          <AppButton to="/contact" variant="primary" class="home-contact-hero-btn">
+            احجز الآن
+          </AppButton>
         </div>
       </div>
 
-      <!-- 3 Contact Columns directly below banner -->
+      <!-- Frame 145: 3 Contact Columns directly below banner -->
       <div class="home-contact-section__info-section">
         <div class="container">
           <div class="home-contact-section__cards">
-            <div v-for="(card, index) in contactCards" :key="index" class="contact-box">
+            <!-- Column 1: زورونا (Right in RTL) -->
+            <div class="contact-box">
               <div class="contact-box__icon">
-                <svg v-if="card.icon === 'building'" width="36" height="36" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg width="58" height="58" viewBox="0 0 24 24" fill="none" stroke="#D6214E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V9.5z"></path>
                 </svg>
-                <svg v-else-if="card.icon === 'phone'" width="36" height="36" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path
-                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
-                  </path>
+              </div>
+              <h3 class="contact-box__title">زورونا</h3>
+              <p class="contact-box__desc">يسعدنا استقبالكم في مكتبنا خلال ساعات العمل</p>
+              <div class="contact-box__detail-wrap">
+                <span class="contact-box__detail">شارع الملك فهد، الرياض، المملكة العربية السعودية</span>
+                <div class="contact-box__line" aria-hidden="true"></div>
+              </div>
+            </div>
+
+            <!-- Column 2: اتصلوا بنا (Middle) -->
+            <div class="contact-box">
+              <div class="contact-box__icon">
+                <svg width="58" height="58" viewBox="0 0 24 24" fill="none" stroke="#D6214E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                 </svg>
-                <svg v-else width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              </div>
+              <h3 class="contact-box__title">اتصلوا بنا</h3>
+              <p class="contact-box__desc">فريقنا متاح من الأحد إلى الخميس خلال ساعات العمل</p>
+              <div class="contact-box__detail-wrap">
+                <a href="tel:+966568909193" class="contact-box__detail contact-box__link" dir="ltr">
+                  +966 56 890 9193
+                </a>
+                <div class="contact-box__line" aria-hidden="true"></div>
+              </div>
+            </div>
+
+            <!-- Column 3: راسلونا (Left in RTL) -->
+            <div class="contact-box">
+              <div class="contact-box__icon">
+                <svg width="58" height="58" viewBox="0 0 24 24" fill="none" stroke="#D6214E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                   <rect x="2" y="4" width="20" height="16" rx="2"></rect>
                   <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                 </svg>
               </div>
-              <h3 class="contact-box__title">{{ card.title }}</h3>
-              <p class="contact-box__desc">{{ card.subtitle }}</p>
+              <h3 class="contact-box__title">راسلونا</h3>
+              <p class="contact-box__desc">أرسلوا لنا وسنعاود الرد خلال يوم عمل واحد</p>
               <div class="contact-box__detail-wrap">
-                <a v-if="card.link" :href="card.link" class="contact-box__detail contact-box__link" dir="ltr">
-                  {{ card.detail }}
+                <a href="mailto:mahmoud@k-fawziat.net" class="contact-box__detail contact-box__link" dir="ltr">
+                  mahmoud@k-fawziat.net
                 </a>
-                <p v-else class="contact-box__detail">
-                  {{ card.detail }}
-                </p>
                 <div class="contact-box__line" aria-hidden="true"></div>
               </div>
             </div>
@@ -1005,6 +1189,8 @@ const serviceHexagonsBottom = [
   display: flex;
   align-items: center;
   gap: 64px;
+    flex-direction: row-reverse;
+
   padding: 32px 0;
   border: 0;
 }
@@ -1013,9 +1199,7 @@ const serviceHexagonsBottom = [
   border-bottom: none;
 }
 
-.diff-row--reverse {
-  flex-direction: row-reverse;
-}
+
 
 @media (max-width: 768px) {
   .differentiators-section__header {
@@ -1033,8 +1217,7 @@ const serviceHexagonsBottom = [
     line-height: 32px;
   }
 
-  .diff-row,
-  .diff-row--reverse {
+  .diff-row {
     flex-direction: column;
     text-align: center;
     gap: 30px;
@@ -1170,67 +1353,6 @@ const serviceHexagonsBottom = [
   max-width: none;
 }
 
-/* Home Contact Section Matching Figma */
-.home-contact-section {
-  position: relative;
-  background-color: #FFFFFF;
-}
-
-.home-contact-section__hero {
-  position: relative;
-  height: 550px;
-  min-height: 550px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  overflow: hidden;
-}
-
-.home-contact-section__hero-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.home-contact-section__hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(9, 22, 39, 0.28);
-}
-
-.home-contact-section__hero-content {
-  position: relative;
-  z-index: 1;
-  color: #FFFFFF;
-  padding: 0;
-  max-width: 628px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.home-contact-section__title {
-  font-size: 72px;
-  font-weight: 800;
-  line-height: 108px;
-  color: var(--color-primary);
-  margin-bottom: 0;
-  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
-}
-
-.home-contact-section__subtitle {
-  font-size: 22px;
-  font-weight: 800;
-  line-height: 33px;
-  color: #FFFFFF;
-  margin: 0;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
-}
 
 
 .services-overview__header {
@@ -1455,94 +1577,314 @@ const serviceHexagonsBottom = [
   }
 }
 
-/* 4 Steps Section (Desktop - 5) */
+/* ==========================================================================
+   4 Steps Section (Desktop - 5 Matching Figma Node 14-1138)
+   ========================================================================== */
 .steps-section {
-  background-color: #F6F0EC;
-  color: #102543;
-  padding: 90px 0;
+  background-color: #17202B;
+  min-height: 722px;
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 0;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* Watermark: shield watermark on the right side */
+.steps-section__watermark {
+  position: absolute;
+  width: 862px;
+  height: 1108px;
+  right: -100px;
+  top: -260px;
+  background-image: url('/assets/shield-watermark.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .steps-section__container {
-  display: grid;
-  grid-template-columns: 340px 1fr;
-  gap: 48px;
-  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
   width: 100%;
   max-width: 1248px;
   margin: 0 auto;
   padding: 0 24px;
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
 }
 
-@media (max-width: 1024px) {
-  .steps-section__container {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-}
-
+/* Frame 84: Intro Column (width: 335px, height: 388px) - Right side in RTL */
 .steps-section__intro {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  text-align: right;
   align-items: flex-start;
+  text-align: right;
+  gap: 40px;
   width: 100%;
-  max-width: 340px;
-  margin: 0;
+  max-width: 335px;
+  flex: 0 0 335px;
+  box-sizing: border-box;
 }
 
+.steps-section__heading-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+  max-width: 268px;
+}
+
+/* أربع خطوات نحو القمة */
 .steps-section__title {
-  font-family: var(--font-cairo);
-  font-size: 42px;
+  font-family: 'Cairo', var(--font-cairo, sans-serif);
+  font-style: normal;
   font-weight: 800;
-  line-height: 1.3;
-  color: #102543;
+  font-size: 40px;
+  line-height: 60px;
+  color: #FBE9ED;
   margin: 0;
   text-align: right;
 }
 
+/* Red accent bar (Background: width 65px, height 4px, background #D81B4D) */
+.steps-section__accent-bar {
+  width: 65px;
+  height: 4px;
+  background-color: #D81B4D;
+  border-radius: 4px;
+}
+
+/* Subtitle: Cairo 600, 18px, line-height 27px, color #EFEFEF */
 .steps-section__desc {
-  font-family: var(--font-cairo);
-  font-size: 16px;
+  font-family: 'Cairo', var(--font-cairo, sans-serif);
+  font-style: normal;
   font-weight: 600;
-  color: #595959;
-  line-height: 1.6;
-  text-align: right;
+  font-size: 18px;
+  line-height: 27px;
+  color: #EFEFEF;
   margin: 0;
-}
-
-.steps-section__action {
-  width: auto;
-  margin-top: 8px;
   text-align: right;
+  max-width: 335px;
 }
 
+/* Button: 335px x 56px, background #D6214E, border-radius 10px */
 .steps-btn {
+  width: 335px !important;
+  height: 56px !important;
   background: #D6214E !important;
   color: #FFFFFF !important;
-  border-radius: 12px !important;
+  border-radius: 10px !important;
   border: none !important;
-  padding: 14px 28px !important;
-  font-family: var(--font-cairo);
-  font-weight: 700;
-  font-size: 15px;
-  line-height: 1.4;
-  cursor: pointer;
+  font-family: 'Tajawal', var(--font-family, sans-serif) !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+  line-height: 24px !important;
+  box-shadow: 0 4px 14px rgba(214, 33, 78, 0.25) !important;
+  transition: all var(--transition-normal);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 14px rgba(214, 33, 78, 0.25) !important;
-  transition: all var(--transition-normal);
-  width: auto !important;
-  margin: 0 !important;
 }
 
 .steps-btn:hover {
-  background: #B8183E !important;
+  background: #BF1B44 !important;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(214, 33, 78, 0.35) !important;
+  box-shadow: 0 6px 20px rgba(214, 33, 78, 0.4) !important;
+}
+
+/* ==========================================================================
+   Frame 110: 4 Stepping Cards (width: 824px, height: 422px)
+   ========================================================================== */
+.steps-section__cards {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 24px;
+  width: 100%;
+  max-width: 824px;
+  flex: 0 0 824px;
+  box-sizing: border-box;
+}
+
+/* Card: width 188px, height 317px, background rgba(28, 28, 28, 0.15) */
+.step-card {
+  width: 188px;
+  min-width: 188px;
+  height: 317px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 12px;
+  padding: 24px 15px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 20px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.step-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(214, 33, 78, 0.35);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* Staircase offsets matching Figma:
+   In RTL:
+   Card 1 (التخطيط والدراسة): 0px (highest)
+   Card 2 (التصميم والنمذجة): 35px
+   Card 3 (التوريد والتركيب): 70px
+   Card 4 (الاختبار والتشغيل): 105px (lowest)
+*/
+.step-card--1 {
+  margin-top: 0px;
+}
+
+.step-card--2 {
+  margin-top: 35px;
+}
+
+.step-card--3 {
+  margin-top: 70px;
+}
+
+.step-card--4 {
+  margin-top: 105px;
+}
+
+.step-card__icon {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Card Title: Cairo 700, 18px, line-height 24px, color #FFFFFF */
+.step-card__title {
+  font-family: 'Cairo', var(--font-cairo, sans-serif);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+  color: #FFFFFF;
+  text-align: center;
+  margin: 0;
+  width: 100%;
+}
+
+/* Card Desc: Cairo 400, 14px, line-height 21px, color #B9BFD0 */
+.step-card__desc {
+  font-family: 'Cairo', var(--font-cairo, sans-serif);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: #B9BFD0;
+  text-align: center;
+  margin: 0;
+  width: 100%;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+@media (max-width: 1280px) {
+  .steps-section__container {
+    gap: 30px;
+  }
+
+  .steps-section__intro {
+    max-width: 290px;
+    flex: 0 0 290px;
+    gap: 28px;
+  }
+
+  .steps-btn {
+    width: 100% !important;
+  }
+
+  .steps-section__cards {
+    gap: 16px;
+    max-width: 760px;
+    flex: 0 0 760px;
+  }
+
+  .step-card {
+    width: 175px;
+    min-width: 175px;
+    padding: 24px 12px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .steps-section {
+    min-height: auto;
+    padding: 70px 0;
+  }
+
+  .steps-section__container {
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+  }
+
+  .steps-section__intro {
+    max-width: 600px;
+    flex: none;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+  }
+
+  .steps-section__heading-wrap {
+    align-items: center;
+    max-width: 100%;
+  }
+
+  .steps-section__title {
+    text-align: center;
+  }
+
+  .steps-section__desc {
+    text-align: center;
+    max-width: 500px;
+  }
+
+  .steps-btn {
+    width: 280px !important;
+  }
+
+  .steps-section__cards {
+    max-width: 100%;
+    flex: none;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .step-card--1,
+  .step-card--2,
+  .step-card--3,
+  .step-card--4 {
+    margin-top: 0;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1550,243 +1892,181 @@ const serviceHexagonsBottom = [
     padding: 60px 0;
   }
 
-  .steps-section__intro {
-    align-items: flex-start;
-    text-align: right;
-    gap: 16px;
-    max-width: 100%;
-  }
-
   .steps-section__title {
     font-size: 32px;
-    line-height: 1.3;
+    line-height: 48px;
   }
 
-  .steps-section__desc {
-    font-size: 15px;
-    line-height: 1.6;
+  .steps-btn {
+    width: 100% !important;
   }
-}
 
-.steps-section__cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  align-items: flex-start;
-  width: 100%;
-  margin: 0;
-}
-
-@media (max-width: 900px) {
   .steps-section__cards {
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    width: 100%;
+  }
+
+  .step-card {
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    min-height: 280px;
   }
 }
 
-@media (max-width: 540px) {
+@media (max-width: 480px) {
   .steps-section__cards {
     grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .step-card {
+    min-height: auto;
+    padding: 24px 16px;
   }
 }
 
-.step-card {
-  background: #FFFFFF;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 16px;
-  padding: 24px 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 14px;
-  text-align: center;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
-  transition: all var(--transition-normal);
-  min-height: 250px;
-  position: relative;
-}
-
-.steps-section__cards>.step-card:nth-child(1) {
-  margin-top: 0;
-}
-
-.steps-section__cards>.step-card:nth-child(2) {
-  margin-top: 25px;
-}
-
-.steps-section__cards>.step-card:nth-child(3) {
-  margin-top: 50px;
-}
-
-.steps-section__cards>.step-card:nth-child(4) {
-  margin-top: 75px;
-}
-
-@media (max-width: 900px) {
-
-  .steps-section__cards>.step-card:nth-child(1),
-  .steps-section__cards>.step-card:nth-child(2),
-  .steps-section__cards>.step-card:nth-child(3),
-  .steps-section__cards>.step-card:nth-child(4) {
-    margin-top: 0;
-  }
-}
-
-.step-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-  border-color: rgba(214, 33, 78, 0.2);
-}
-
-.step-card__icon {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: rgba(214, 33, 78, 0.1);
-  color: #D6214E;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-}
-
-.step-card__icon svg {
-  margin: 0 auto;
-}
-
-.step-card__title {
-  font-family: var(--font-cairo);
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.4;
-  color: #102543;
-  text-align: center;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-.step-card__desc {
-  font-family: var(--font-cairo);
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 1.6;
-  color: #595959;
-  text-align: center;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-/* Home Projects Preview Matching Figma Desktop - 8 & Frame 126 */
+/* Projects Showcase Section Matching Figma Node 25:200 */
 .home-projects-section {
-  padding: 80px 0;
+  padding: 80px 0 90px;
   background-color: #FFFFFF;
-  color: #102543;
   position: relative;
+  scroll-margin-top: 90px;
 }
 
+.home-projects-section .container {
+  max-width: 1248px;
+  margin: 0 auto;
+}
+
+/* Header */
 .home-projects-header {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 20px;
-  margin-bottom: 48px;
-}
-
-@media (min-width: 768px) {
-  .home-projects-header {
-    flex-direction: row;
-    align-items: flex-end;
-  }
-}
-
-.home-projects-badge {
-  display: inline-block;
-  padding: 5px 16px;
-  border-radius: 20px;
-  background: rgba(214, 33, 78, 0.12);
-  color: #D6214E;
-  font-size: 13px;
-  font-weight: 700;
-  margin-bottom: 8px;
-  border: 1px solid rgba(214, 33, 78, 0.3);
+  align-items: center;
+  text-align: center;
+  margin-bottom: 32px;
 }
 
 .home-projects-title {
-  font-size: clamp(28px, 3.5vw, 40px);
+  font-family: var(--font-cairo, "Cairo", system-ui, sans-serif);
+  font-size: 40px;
   font-weight: 800;
-  color: #102543;
+  line-height: 1.5;
   margin: 0;
+  text-align: center;
+}
+
+.home-projects-title .title-navy {
+  color: #222F6D;
+}
+
+.home-projects-title .highlight-crimson {
+  color: #D81B4D;
+}
+
+.home-projects-title-bar {
+  width: 220px;
+  height: 4px;
+  background-color: #D81B4D;
+  border-radius: 4px;
+  margin: 14px auto 0;
 }
 
 .home-projects-subtitle {
-  font-size: 16px;
-  color: #595959;
-  margin-top: 8px;
-  line-height: 1.6;
+  font-family: var(--font-cairo, "Cairo", system-ui, sans-serif);
+  font-size: 18px;
+  font-weight: 400;
+  color: #434343;
+  line-height: 27px;
+  margin: 14px auto 0;
+  max-width: 760px;
+  text-align: center;
 }
 
-.home-projects-all-link {
-  display: inline-flex;
+.desktop-break {
+  display: inline;
+}
+
+/* Filter Tabs */
+.home-projects-filters {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
-  gap: 8px;
-  color: #D6214E;
-  font-weight: 700;
-  font-size: 15px;
-  text-decoration: none;
-  transition: gap var(--transition-fast);
-}
-
-.home-projects-all-link:hover {
   gap: 12px;
-  color: #FF4772;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
 }
 
+.home-projects-filter-btn {
+  font-family: var(--font-cairo, "Cairo", system-ui, sans-serif);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  padding: 10px 24px;
+  border-radius: 99px;
+  border: 2px solid #E2D8D2;
+  background-color: #FFFFFF;
+  color: #222F6D;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  user-select: none;
+}
+
+.home-projects-filter-btn:hover {
+  border-color: #D81B4D;
+  color: #D81B4D;
+}
+
+.home-projects-filter-btn.is-active {
+  background-color: #D81B4D;
+  border-color: #D81B4D;
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(216, 27, 77, 0.25);
+}
+
+/* Grid */
 .home-projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 28px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
 }
 
-@media (min-width: 1024px) {
-  .home-projects-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
+/* Card */
 .home-project-card {
   background: #FFFFFF;
-  border: 3px solid #D6214E;
-  /* Foundation /Red/Normal */
-  border-radius: 10px;
-  width: 100%;
-  max-width: 614px;
-  height: 367px;
+  border: 1px solid #E2D8D2;
+  border-radius: 20px;
   overflow: hidden;
-  transition: all var(--transition-normal);
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
 }
 
 .home-project-card:hover {
-  transform: translateY(-6px);
-  border-color: #D6214E;
-  box-shadow: 0 16px 36px rgba(214, 33, 78, 0.15);
+  transform: translateY(-5px);
+  border-color: #D81B4D;
+  box-shadow: 0 16px 32px rgba(216, 27, 77, 0.12);
 }
 
 .home-project-card__img-wrap {
   position: relative;
-  height: 220px;
+  height: 252px;
+  width: 100%;
   overflow: hidden;
+  background-color: #F5F0EC;
 }
 
 .home-project-card__img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
   transition: transform 0.5s ease;
 }
 
@@ -1794,195 +2074,438 @@ const serviceHexagonsBottom = [
   transform: scale(1.05);
 }
 
-.home-project-card__overlay {
+.home-project-card__badge {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(9, 22, 39, 0.05) 0%, rgba(9, 22, 39, 0.65) 100%);
-}
-
-.home-project-card__tag {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  background: rgba(9, 22, 39, 0.85);
-  backdrop-filter: blur(8px);
-  color: #D6214E;
-  font-size: 12px;
-  font-weight: 700;
-  padding: 4px 12px;
-  border-radius: 20px;
-  border: 1px solid rgba(214, 33, 78, 0.3);
-}
-
-.home-project-card__loc {
-  position: absolute;
-  bottom: 12px;
-  right: 14px;
-  color: #E8ECF1;
+  top: 16px;
+  left: 16px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #FFFFFF;
+  font-family: var(--font-cairo, "Cairo", system-ui, sans-serif);
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 700;
+  line-height: 20px;
+  padding: 3px 14px 4px;
+  border-radius: 99px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  pointer-events: none;
   z-index: 2;
 }
 
 .home-project-card__body {
-  padding: 20px 24px;
+  padding: 16px 24px 20px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
+  text-align: right;
+  flex: 1;
 }
 
 .home-project-card__title {
-  font-family: "Cairo", Tajawal, system-ui, -apple-system, sans-serif;
-  font-size: 22px;
+  font-family: var(--font-cairo, "Cairo", system-ui, sans-serif);
+  font-size: 16px;
   font-weight: 800;
   color: #1A3E6F;
-  /* Foundation /Blue/Normal */
+  line-height: 24px;
+  margin: 0;
+}
+
+.home-project-card__client {
+  font-family: var(--font-cairo, "Cairo", system-ui, sans-serif);
+  font-size: 14px;
+  font-weight: 700;
+  color: #D6214E;
+  line-height: 21px;
   margin: 0;
 }
 
 .home-project-card__desc {
-  font-family: "Cairo", Tajawal, system-ui, -apple-system, sans-serif;
-  font-size: 16px;
-  color: #595959;
-  /* Foundation /Grey/Dark :hover */
-  line-height: 1.6;
+  font-family: var(--font-cairo, "Cairo", system-ui, sans-serif);
+  font-size: 12px;
+  font-weight: 400;
+  color: #434343;
+  line-height: 18px;
   margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-/* Home About Teaser Matching Desktop - 10 (Frame 115) */
-.home-about-teaser {
-  padding: 80px 96px;
-  background-color: #FDFBFA;
-  position: relative;
+/* Empty State */
+.home-projects-empty {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #FAF9F6;
+  border-radius: 16px;
+  border: 1px dashed #E2D8D2;
+  margin-bottom: 48px;
+}
+
+.home-projects-empty__text {
+  font-family: var(--font-cairo, "Cairo", system-ui, sans-serif);
+  font-size: 16px;
+  color: #6D6F73;
+  margin-bottom: 20px;
+}
+
+/* CTA */
+.home-projects-cta {
+  display: flex;
+  justify-content: center;
+}
+
+.home-projects-cta-btn.app-btn {
+  width: 338px;
+  max-width: 100%;
+  height: 56px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  background-color: #D6214E;
+  color: #FFFFFF;
+}
+
+.home-projects-cta-btn.app-btn:hover {
+  background-color: #BD1740;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(214, 33, 78, 0.25);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .home-projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
 }
 
 @media (max-width: 768px) {
-  .home-about-teaser {
-    padding: 60px 20px;
+  .home-projects-section {
+    padding: 60px 0;
   }
+
+  .home-projects-title {
+    font-size: 28px;
+    line-height: 1.4;
+  }
+
+  .home-projects-title-bar {
+    width: 160px;
+    margin-top: 10px;
+  }
+
+  .home-projects-subtitle {
+    font-size: 15px;
+    line-height: 24px;
+  }
+
+  .desktop-break {
+    display: none;
+  }
+
+  .home-projects-filters {
+    gap: 8px;
+  }
+
+  .home-projects-filter-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .home-projects-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .home-project-card__img-wrap {
+    height: 220px;
+  }
+
+  .home-projects-cta-btn.app-btn {
+    width: 100%;
+    max-width: 338px;
+  }
+}
+
+/* Home About Teaser Matching Desktop - 10 (Node 14-1294, Frame 115) */
+.home-about-teaser {
+  background-color: #F6F0EC;
+  min-height: 724px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 0;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.home-about-teaser__container {
+  width: 100%;
+  max-width: 1248px;
+  margin: 0 auto;
+  padding: 0 24px;
+  box-sizing: border-box;
 }
 
 .home-about-card {
   width: 100%;
   max-width: 1248px;
-  background: transparent;
-  border: none;
-  border-radius: 0px;
-  padding: 0;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 27px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
+  gap: 27px;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
-@media (min-width: 900px) {
-  .home-about-card {
-    grid-template-columns: 1.2fr 1fr;
-    gap: 27px;
-  }
-}
-
+/* Container (Text Column) - width: 583px */
 .home-about-card__text {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  text-align: right;
   gap: 20px;
-  padding-bottom: 0px;
+  width: 100%;
+  max-width: 583px;
+  flex: 0 0 583px;
+  box-sizing: border-box;
 }
 
+.home-about-heading-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  width: 100%;
+}
+
+/* Heading 2 */
 .home-about-card__title {
-  width: 583px;
-  max-width: 583px;
-  font-size: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Cairo', var(--font-cairo, sans-serif);
+  font-style: normal;
   font-weight: 800;
-  color: #D6214E;
+  font-size: 40px;
   line-height: 60px;
-  font-family: "Cairo", Tajawal, system-ui, -apple-system, sans-serif;
   margin: 0;
+  text-align: right;
 }
 
+.home-about-title-prefix {
+  color: #102543;
+}
+
+.home-about-title-brand {
+  color: #D6214E;
+}
+
+/* Red accent bar (Background: width 294px, height 4px, background #D81B4D) */
+.home-about-accent-bar {
+  width: 294px;
+  height: 4px;
+  background-color: #D81B4D;
+  border-radius: 4px;
+}
+
+/* Paragraph: Cairo 600, 18px, line-height 27px, color #434343 */
 .home-about-card__desc {
-  width: 583px;
+  width: 100%;
   max-width: 583px;
-  font-family: "Cairo", Tajawal, system-ui, -apple-system, sans-serif;
+  font-family: 'Cairo', var(--font-cairo, sans-serif);
+  font-style: normal;
   font-weight: 600;
   font-size: 18px;
-  line-height: 1.8;
+  line-height: 27px;
   color: #434343;
   margin: 0;
+  text-align: right;
 }
 
+/* Subsections Container: gap 21.99px, padding-top 6px */
 .home-about-subsections {
   display: flex;
   flex-direction: column;
   gap: 22px;
-  padding: 6px 0px 0px;
+  padding: 6px 0 0;
   margin: 0;
+  width: 100%;
+  max-width: 583px;
 }
 
 .home-about-subsection {
+  display: flex;
+  flex-direction: column;
+  gap: 4.8px;
   border: none;
-  padding: 0px;
+  padding: 0;
+  width: 100%;
 }
 
+/* Heading 3: Cairo 800, 22px, line-height 32px, color #1A3E6F */
 .home-about-sub-title {
-  width: 583px;
-  max-width: 583px;
-  font-family: "Cairo", Tajawal, system-ui, -apple-system, sans-serif;
+  font-family: 'Cairo', var(--font-cairo, sans-serif);
+  font-style: normal;
   font-size: 22px;
   font-weight: 800;
   line-height: 32px;
   color: #1A3E6F;
-  margin: 0 0 4px;
-}
-
-.home-about-sub-desc {
-  width: 583px;
-  max-width: 583px;
-  font-size: 16px;
-  color: #595959;
-  line-height: 1.6;
   margin: 0;
+  text-align: right;
 }
 
-.home-about-card__action {
-  margin-top: 8px;
+/* Paragraph: Cairo 400, 16px, line-height 24px, color #595959 */
+.home-about-sub-desc {
+  font-family: 'Cairo', var(--font-cairo, sans-serif);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #595959;
+  margin: 0;
+  text-align: right;
 }
 
-.home-about-card__btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: #D6214E;
-  color: #FFFFFF;
-  font-weight: 700;
-  font-size: 15px;
-  padding: 12px 28px;
-  border-radius: 12px;
-  text-decoration: none;
-  transition: all var(--transition-fast);
-}
-
-.home-about-card__btn:hover {
-  background: #B8183E;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(214, 33, 78, 0.35);
-}
-
+/* ==========================================================================
+   Frame 114: Media / Image Column (width: 638px, height: 390px)
+   ========================================================================== */
 .home-about-card__media {
-  border-radius: 12px;
-  overflow: hidden;
-  height: 380px;
-  display: flex;
-  justify-content: center;
+  position: relative;
+  width: 638px;
+  height: 390px;
+  flex: 0 0 638px;
+  box-sizing: border-box;
 }
 
+/* Rectangle 5: Red Border Frame (offset by 24px, 23px) */
+.home-about-card__frame-border {
+  position: absolute;
+  width: 614px;
+  height: 367px;
+  left: 24px;
+  top: 23px;
+  border: 3px solid #D6214E;
+  border-radius: 10px;
+  box-sizing: border-box;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Frame 113: Image Container */
+.home-about-card__image-container {
+  position: absolute;
+  width: 614px;
+  height: 367px;
+  left: 0px;
+  top: 0px;
+  border-radius: 16px;
+  overflow: hidden;
+  z-index: 2;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* villa 1 */
 .home-about-card__img {
   width: 100%;
-  max-width: 480px;
   height: 100%;
   object-fit: cover;
-  border-radius: 12px;
+  display: block;
+  border-radius: 16px;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1280px) {
+  .home-about-card {
+    gap: 20px;
+  }
+
+  .home-about-card__text {
+    max-width: 520px;
+    flex: 0 0 520px;
+  }
+
+  .home-about-card__media {
+    width: 580px;
+    height: 355px;
+    flex: 0 0 580px;
+  }
+
+  .home-about-card__frame-border,
+  .home-about-card__image-container {
+    width: 556px;
+    height: 332px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .home-about-teaser {
+    min-height: auto;
+    padding: 60px 0 80px;
+  }
+
+  .home-about-card {
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+  }
+
+  .home-about-card__text {
+    max-width: 638px;
+    flex: none;
+    align-items: flex-start;
+  }
+
+  .home-about-card__media {
+    max-width: 100%;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 680px) {
+  .home-about-teaser {
+    padding: 50px 0 60px;
+  }
+
+  .home-about-card__title {
+    font-size: 28px;
+    line-height: 40px;
+    flex-wrap: wrap;
+  }
+
+  .home-about-accent-bar {
+    width: 200px;
+  }
+
+  .home-about-card__desc {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .home-about-card__media {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 638 / 390;
+    min-height: 260px;
+    flex: none;
+  }
+
+  .home-about-card__frame-border {
+    width: calc(100% - 24px);
+    height: calc(100% - 23px);
+    left: 24px;
+    top: 23px;
+  }
+
+  .home-about-card__image-container {
+    width: calc(100% - 24px);
+    height: calc(100% - 23px);
+  }
 }
 
 /* Stats Section Matching Figma Desktop - 11 */
@@ -2199,24 +2722,25 @@ const serviceHexagonsBottom = [
 
 /* Partners Logos Strip Matching Figma Desktop - 11 Frame 160 */
 .partners-section {
-  padding: 80px 0;
+  padding: 80px 0 90px;
   background-color: #17202B;
   border: none;
+  overflow: hidden;
+  position: relative;
 }
 
 .partners-section .container {
   padding: 0 24px;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 16px;
   width: 100%;
   max-width: 1248px;
-  margin: 0 auto;
+  margin: 0 auto 44px;
 }
 
 .partners-header {
   text-align: center;
-  margin-bottom: 0px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -2241,147 +2765,214 @@ const serviceHexagonsBottom = [
   margin: 0 auto;
 }
 
-.partners-strip {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 16px;
-  align-items: center;
+/* Slider Full-Bleed Infinite Marquee */
+.partners-slider-wrapper {
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0;
+  position: relative;
+  overflow: hidden;
+  padding: 12px 0;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
 }
 
-.partner-badge {
-  height: 64px;
-  min-width: 130px;
-  padding: 0 24px;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #D2DCE6;
-  font-family: var(--font-inter);
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  display: inline-flex;
+.partners-track {
+  display: flex;
+  flex-direction: row;
   align-items: center;
+  gap: 20px;
+  width: max-content;
+  animation: partners-scroll 42s linear infinite;
+  will-change: transform;
+}
+
+.partners-slider-wrapper:hover .partners-track {
+  animation-play-state: paused;
+}
+
+@keyframes partners-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Partner Card matching Figma specifications (200x100px, border-radius 18px) */
+.partner-card {
+  box-sizing: border-box;
+  width: 200px;
+  height: 100px;
+  flex: none;
+  border-radius: 18px;
+  overflow: hidden;
+  background-color: #17202B;
+  display: flex;
   justify-content: center;
-  transition: all var(--transition-fast);
+  align-items: center;
+  filter: drop-shadow(0px 4px 15px rgba(0, 0, 0, 0.03));
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+  cursor: pointer;
 }
 
-.partner-badge:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(214, 33, 78, 0.5);
-  color: #FFFFFF;
-  transform: translateY(-2px);
+.partner-card:hover {
+  transform: translateY(-4px) scale(1.03);
+  filter: drop-shadow(0px 10px 24px rgba(0, 0, 0, 0.4)) brightness(1.1);
 }
 
-/* Home Contact Section Matching Figma */
+.partner-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .partners-section {
+    padding: 60px 0 70px;
+  }
+
+  .partners-section .container {
+    margin-bottom: 30px;
+  }
+
+  .partners-title {
+    font-size: 28px;
+  }
+
+  .partners-subtitle {
+    font-size: 15px;
+  }
+
+  .partner-card {
+    width: 160px;
+    height: 80px;
+  }
+
+  .partners-track {
+    gap: 14px;
+    animation-duration: 32s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .partners-track {
+    animation: none;
+    overflow-x: auto;
+    width: 100%;
+    justify-content: flex-start;
+    padding: 10px 24px;
+  }
+}
+
+/* Home Contact Section Matching Figma Node 29:399 */
 .home-contact-section {
   position: relative;
   background-color: #FFFFFF;
   overflow: hidden;
+  width: 100%;
 }
 
+/* Frame 142: Hero Banner */
 .home-contact-section__hero {
   position: relative;
   height: 550px;
   min-height: 550px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   text-align: center;
   overflow: hidden;
-  background: url('/assets/contact-banner-bg.jpg') center / cover no-repeat;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/assets/blueprint.jpg') center / cover no-repeat;
 }
 
-@media (max-width: 768px) {
-  .home-contact-section__hero {
-    height: auto;
-    min-height: 320px;
-    padding: 60px 16px;
-  }
-}
-
-.home-contact-section__hero-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.home-contact-section__hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(9, 22, 39, 0.28);
-}
-
+/* Frame 143: Content Box */
 .home-contact-section__hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   color: #FFFFFF;
-  padding: 0;
-  margin: 251px auto 0;
+  padding: 0 16px;
   max-width: 628px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 20px;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .home-contact-section__title {
+  font-family: var(--font-family, 'Tajawal', sans-serif);
   font-size: 72px;
   font-weight: 800;
-  line-height: 108px;
-  color: var(--color-primary);
-  margin-bottom: 0;
-  text-shadow: none;
-}
-
-@media (max-width: 768px) {
-  .home-contact-section__title {
-    font-size: clamp(34px, 9vw, 48px);
-    line-height: 1.3;
-  }
-}
-
-.home-contact-section__subtitle {
-  font-size: 22px;
-  font-weight: 800;
-  line-height: 33px;
-  color: #FBE9ED;
-  /* Foundation /Red/Light */
+  line-height: 1.15;
+  color: #D6214E;
   margin: 0;
   text-shadow: none;
 }
 
-@media (max-width: 768px) {
-  .home-contact-section__subtitle {
-    font-size: clamp(14px, 4vw, 17px);
-    line-height: 1.5;
-  }
+.home-contact-section__subtitle {
+  font-family: var(--font-family, 'Tajawal', sans-serif);
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 33px;
+  color: #FBE9ED;
+  max-width: 562px;
+  margin: 0;
+  text-shadow: none;
 }
 
-/* 3 Contact Columns directly below banner */
+/* Button */
+.home-contact-hero-btn.app-btn {
+  width: 356px;
+  max-width: 100%;
+  height: 56px;
+  background-color: #D6214E;
+  border-radius: 10px;
+  color: #FFFFFF;
+  font-family: var(--font-cairo, 'Cairo', sans-serif);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4px;
+  transition: all var(--transition-normal);
+}
+
+.home-contact-hero-btn.app-btn:hover {
+  background-color: #BD1740;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(214, 33, 78, 0.35);
+}
+
+/* Frame 145: 3 Contact Columns directly below banner */
 .home-contact-section__info-section {
   background-color: #FFFFFF;
-  padding: 70px 0 80px;
+  padding: 60px 0 70px;
 }
 
 .home-contact-section__cards {
   display: flex;
+  flex-direction: row;
   justify-content: center;
-  align-items: center;
-  gap: 32px;
-}
-
-@media (min-width: 768px) {
-  .home-contact-section__cards {
-    gap: 0;
-  }
+  align-items: stretch;
+  max-width: 1254px;
+  margin: 0 auto;
 }
 
 .contact-box {
@@ -2390,80 +2981,68 @@ const serviceHexagonsBottom = [
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: 10px;
-  padding: 10px 28px;
-  height: 302px;
-  width: 400px;
-  max-width: 400px;
+  gap: 18px;
+  padding: 24px 32px;
+  min-height: 302px;
+  flex: 1;
+  box-sizing: border-box;
 }
 
-.home-contact-section__cards>.contact-box:nth-child(2) {
-  width: 422px;
-  max-width: 422px;
-}
-
+/* Vertical Dividers between columns in RTL */
 @media (min-width: 768px) {
-  .contact-box {
-    border-right: 1px solid rgba(0, 0, 0, 0.2);
-    border-left: none;
-  }
-
-  .contact-box:first-child {
-    border-right: none;
+  .contact-box:not(:last-child) {
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
   }
 }
 
-@media (max-width: 767px) {
-  .contact-box {
-    border-bottom: 1px solid #E8ECF1;
-    padding-bottom: 30px;
-    height: auto;
-  }
-
-  .contact-box:last-child {
-    border-bottom: none;
-  }
+.contact-box__icon {
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .contact-box__icon svg {
   width: 58px;
   height: 58px;
-  color: var(--color-primary);
-}
-
-.home-contact-section__cards>.contact-box:nth-child(2) .contact-box__icon {
-  margin-inline-start: 79.5px;
-  align-self: flex-start;
+  stroke: #D6214E;
 }
 
 .contact-box__title {
+  font-family: var(--font-family, 'Tajawal', sans-serif);
   font-size: 27px;
   font-weight: 700;
   color: #242A32;
-  line-height: 33.8px;
+  line-height: 1.25;
+  margin: 0;
 }
 
 .contact-box__desc {
+  font-family: var(--font-family, 'Tajawal', sans-serif);
   font-size: 16px;
   font-weight: 500;
   color: #616161;
-  line-height: 27.2px;
-  min-height: 44px;
+  line-height: 1.7;
+  margin: 0;
+  max-width: 300px;
 }
 
 .contact-box__detail-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  margin-top: 6px;
+  gap: 10px;
+  margin-top: 4px;
 }
 
 .contact-box__detail {
+  font-family: var(--font-family, 'Tajawal', sans-serif);
   font-size: 17px;
   font-weight: 500;
-  color: var(--color-primary);
-  line-height: 24.7px;
+  color: #D6214E;
+  line-height: 1.45;
+  text-align: center;
 }
 
 .contact-box__link {
@@ -2475,28 +3054,57 @@ const serviceHexagonsBottom = [
   opacity: 0.8;
 }
 
-.home-contact-section__cards>.contact-box:nth-child(2) .contact-box__link {
-  width: 422px;
-  text-decoration: none;
-  display: block;
-  text-align: center;
-  margin-top: -8.1px;
-}
-
-.home-contact-section__cards>.contact-box:nth-child(3) .contact-box__link {
-  margin-inline-start: 30px;
-}
-
 .contact-box__line {
-  width: 40px;
+  width: 38px;
   height: 2px;
-  background-color: var(--color-primary);
-  border-radius: 2px;
+  background-color: #D6214E;
+  border-radius: 9999px;
+  margin-top: 6px;
 }
 
-.home-contact-section__cards>.contact-box:nth-child(2) .contact-box__line {
-  margin-inline-start: 192px;
-  align-self: flex-start;
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .home-contact-section__hero {
+    height: auto;
+    min-height: 440px;
+    padding: 70px 20px;
+  }
+
+  .home-contact-section__title {
+    font-size: clamp(40px, 10vw, 56px);
+  }
+
+  .home-contact-section__subtitle {
+    font-size: clamp(16px, 4.5vw, 20px);
+    line-height: 1.4;
+  }
+
+  .home-contact-hero-btn.app-btn {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .home-contact-section__info-section {
+    padding: 40px 16px;
+  }
+
+  .home-contact-section__cards {
+    flex-direction: column;
+    gap: 36px;
+  }
+
+  .contact-box {
+    width: 100%;
+    max-width: 100%;
+    min-height: auto;
+    padding: 0 0 36px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .contact-box:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
 }
 
 /* Desktop - 8 fidelity adjustments */

@@ -6,7 +6,7 @@ const props = defineProps({
   variant: {
     type: String,
     default: 'primary',
-    validator: (v) => ['primary', 'outline', 'outline-white', 'white', 'dark', 'ghost'].includes(v),
+    validator: (v) => ['primary', 'outline', 'outline-dark', 'outline-white', 'white', 'dark', 'ghost'].includes(v),
   },
   size: {
     type: String,
@@ -137,6 +137,18 @@ const classes = computed(() => [
 
 .app-btn--outline:hover:not(.app-btn--disabled) {
   background: var(--color-primary-light);
+  transform: translateY(-2px);
+}
+
+/* Outline Dark (Figma #091627) */
+.app-btn--outline-dark {
+  background: transparent;
+  color: var(--color-navy-dark);
+  border: 1.5px solid var(--color-navy-dark);
+}
+
+.app-btn--outline-dark:hover:not(.app-btn--disabled) {
+  background: rgba(9, 22, 39, 0.05);
   transform: translateY(-2px);
 }
 
