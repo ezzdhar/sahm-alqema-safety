@@ -1,5 +1,31 @@
+import { fileURLToPath } from 'node:url'
+import { dirname, resolve } from 'node:path'
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
+/**
+ * Dev server plugin to rewrite / and /index.html to /index.source.html
+ * so that Vite dev server serves the live HMR Vue app, even while
+ * the root index.html hosts the compiled production bundle for GitHub Pages.
+ */
+function devHtmlRewritePlugin() {
+  return {
+    name: 'dev-html-rewrite',
+    configureServer(server) {
+      server.middlewares.use((req, res, next) => {
+        const url = req.url ? req.url.split('?')[0] : ''
+        if (url === '' || url === '/' || url === '/index.html') {
+          const query = req.url && req.url.includes('?') ? req.url.slice(req.url.indexOf('?')) : ''
+          req.url = '/index.source.html' + query
+        }
+        next()
+      })
+    }
+  }
+}
 
 /**
  * Dev server plugin to handle /api/contact.php and /api/contact during local development (Vite).
@@ -55,5 +81,12 @@ function contactApiDevPlugin() {
 // https://vite.dev/config/
 export default defineConfig({
   base: '/',
-  plugins: [vue(), contactApiDevPlugin()],
+  plugins: [devHtmlRewritePlugin(), vue(), contactApiDevPlugin()],
+  build: {
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.source.html'),
+      },
+    },
+  },
 })
