@@ -6,20 +6,20 @@ import AppButton from '../components/common/AppButton.vue';
 // 4 Feature items in floating bar matching Figma Frame 54
 const features = [
   {
-    title: 'أنظمة التكييف والتهوية الميكانيكية',
-    icon: 'cogs',
+    title: 'مكافحة الحريق والإنذار\nالمبكر',
+    icon: 'fire',
   },
   {
-    title: 'مكافحة الحريق والإنذار المبكر',
-    icon: 'shield',
+    title: 'كاميرات المراقبة\nوالتحكم بالدخول',
+    icon: 'lock',
   },
   {
-    title: 'شبكات الكهرباء والطاقة والإنارة',
-    icon: 'target',
+    title: 'أنظمة التكييف\nوالتهوية الميكانيكية',
+    icon: 'hvac',
   },
   {
-    title: 'كاميرات المراقبة والتحكم بالدخول',
-    icon: 'cctv',
+    title: 'شبكات الكهرباء\nوالطاقة والإنارة',
+    icon: 'bolt',
   },
 ];
 
@@ -328,28 +328,46 @@ const serviceHexagonsBottom = [
           <div class="hero-features__bar">
             <div v-for="(item, index) in features" :key="index" class="hero-features__item">
               <div class="hero-features__icon-wrap">
-                <svg v-if="item.icon === 'target'" width="32" height="32" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <circle cx="12" cy="12" r="6"></circle>
-                  <circle cx="12" cy="12" r="2"></circle>
-                </svg>
-                <svg v-else-if="item.icon === 'shield'" width="32" height="32" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                  <polyline points="9 12 11 14 15 10"></polyline>
-                </svg>
-                <svg v-else-if="item.icon === 'cogs'" width="32" height="32" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="3"></circle>
+                <!-- Fire Icon -->
+                <svg v-if="item.icon === 'fire'" width="33" height="42" viewBox="0 0 33 42" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
                   <path
-                    d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
-                  </path>
+                    d="M31.5984 18.9796C30.6884 16.9315 29.3655 15.0931 27.7125 13.5796L26.3484 12.3281C26.3021 12.2867 26.2464 12.2574 26.1861 12.2427C26.1258 12.2279 26.0628 12.2282 26.0026 12.2434C25.9425 12.2587 25.887 12.2885 25.841 12.3302C25.7951 12.372 25.7601 12.4243 25.7391 12.4828L25.1297 14.2312C24.75 15.3281 24.0516 16.4484 23.0625 17.5499C22.9969 17.6203 22.9219 17.639 22.8703 17.6437C22.8188 17.6484 22.7391 17.639 22.6687 17.5734C22.6031 17.5171 22.5703 17.4328 22.575 17.3484C22.7484 14.5265 21.9047 11.3437 20.0578 7.87963C18.5297 5.00151 16.4062 2.75619 13.7531 1.19057L11.8172 0.0515069C11.5641 -0.0984931 11.2406 0.0983817 11.2547 0.393694L11.3578 2.64369C11.4281 4.18119 11.25 5.54057 10.8281 6.67026C10.3125 8.05307 9.57187 9.33744 8.625 10.4906C7.96606 11.292 7.21919 12.0168 6.39844 12.6515C4.42174 14.171 2.81444 16.1181 1.69687 18.3468C0.582065 20.595 0.00136013 23.0702 0 25.5796C0 27.7921 0.435937 29.9343 1.29844 31.9546C2.13125 33.8998 3.33309 35.6651 4.8375 37.1531C6.35625 38.6531 8.11875 39.8343 10.0828 40.6546C12.1172 41.5078 14.2734 41.939 16.5 41.939C18.7266 41.939 20.8828 41.5078 22.9172 40.6593C24.8764 39.8438 26.658 38.6545 28.1625 37.1578C29.6812 35.6578 30.8719 33.9046 31.7016 31.9593C32.5628 29.9445 33.0046 27.7754 33 25.5843C33 23.2968 32.5312 21.0749 31.5984 18.9796ZM25.9219 34.8843C23.4047 37.3781 20.0625 38.7468 16.5 38.7468C12.9375 38.7468 9.59531 37.3781 7.07812 34.8843C4.57031 32.3953 3.1875 29.0953 3.1875 25.5843C3.1875 23.5453 3.64688 21.5906 4.55156 19.7718C5.43281 17.9953 6.74531 16.4062 8.33906 15.1828C9.35549 14.4055 10.2774 13.512 11.0859 12.5203C12.2578 11.0906 13.1766 9.49682 13.8141 7.78588C14.0756 7.08012 14.2656 6.3499 14.3812 5.60619C15.5109 6.64682 16.4578 7.90307 17.25 9.37494C18.8156 12.3093 19.5375 14.9203 19.3969 17.1421C19.3633 17.6654 19.4487 18.1895 19.6468 18.675C19.8449 19.1606 20.1505 19.5948 20.5406 19.9453C20.8787 20.2506 21.274 20.4858 21.7038 20.6371C22.1335 20.7884 22.5889 20.8527 23.0437 20.8265C23.9672 20.7796 24.8156 20.3718 25.4344 19.6828C26.0578 18.9843 26.5969 18.2718 27.0469 17.5453C27.7031 18.3843 28.2516 19.2984 28.6875 20.2828C29.4328 21.9609 29.8125 23.7468 29.8125 25.5843C29.8125 29.0953 28.4297 32.3999 25.9219 34.8843Z"
+                    fill="#D6214E" />
                 </svg>
-                <svg v-else width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
-                  <circle cx="12" cy="13" r="4"></circle>
+
+                <!-- Lock Icon -->
+                <svg v-else-if="item.icon === 'lock'" width="48" height="48" viewBox="0 0 48 48" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0_8_1007)">
+                    <mask id="stroke0_8_1007" fill="white">
+                      <path
+                        d="M13.5 13.5V18H28.5V13.5C28.5 9.35625 25.1437 6 21 6C16.8563 6 13.5 9.35625 13.5 13.5ZM7.5 18V13.5C7.5 6.04688 13.5469 0 21 0C28.4531 0 34.5 6.04688 34.5 13.5V18H36C39.3094 18 42 20.6906 42 24V42C42 45.3094 39.3094 48 36 48H6C2.69063 48 0 45.3094 0 42V24C0 20.6906 2.69063 18 6 18H7.5Z" />
+                    </mask>
+                    <path
+                      d="M13.5 13.5V18H28.5V13.5C28.5 9.35625 25.1438 6 21 6C16.8562 6 13.5 9.35625 13.5 13.5ZM7.5 18V13.5C7.5 6.04688 13.5469 0 21 0C28.4531 0 34.5 6.04688 34.5 13.5V18H36C39.3094 18 42 20.6906 42 24V42C42 45.3094 39.3094 48 36 48H6C2.69063 48 0 45.3094 0 42V24C0 20.6906 2.69063 18 6 18H7.5Z"
+                      stroke-width="8" stroke="#D6214E" mask="url(#stroke0_8_1007)" />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_8_1007">
+                      <rect width="48" height="48" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+
+                <!-- HVAC Icon -->
+                <svg v-else-if="item.icon === 'hvac'" width="48" height="48" viewBox="0 0 48 48" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M33.04 33.5279C35.5067 31.0596 36.74 28.0462 36.74 24.4879C36.74 20.9296 35.5067 17.9162 33.04 15.4479C30.5733 12.9796 27.56 11.7462 24 11.7479C20.44 11.7496 17.4267 12.9829 14.96 15.4479C12.4933 17.9179 11.26 20.9312 11.26 24.4879C11.26 28.0446 12.4933 31.0579 14.96 33.5279C17.4283 35.9946 20.4417 37.2279 24 37.2279C27.5583 37.2279 30.5717 35.9946 33.04 33.5279ZM20.0425 33.9529C18.706 33.3585 19.2817 31.7004 20.7444 31.7004H27.2571C28.7181 31.7004 29.2924 33.3567 27.9575 33.9504C26.7208 34.5004 25.4017 34.7754 24 34.7754C22.5983 34.7754 21.2792 34.5004 20.0425 33.9504M16.3749 29.7754C15.6403 29.7754 14.953 29.3775 14.6631 28.7025C14.5182 28.3652 14.388 28.0228 14.2725 27.6754C14.2672 27.6593 14.2619 27.6433 14.2566 27.6272C13.8862 26.4956 14.8276 25.4504 16.0183 25.4504H31.9817C33.1724 25.4504 34.1138 26.4958 33.7412 27.6266C33.7358 27.6429 33.7304 27.6592 33.725 27.6754C33.6032 28.0418 33.4611 28.4026 33.2989 28.7578C33.0037 29.4042 32.3333 29.7754 31.6227 29.7754H16.3749ZM16.0183 23.5254C14.8276 23.5254 13.8862 22.4802 14.2566 21.3486C14.2619 21.3326 14.2672 21.3165 14.2725 21.3004C14.3947 20.933 14.5374 20.5712 14.7006 20.215C14.9961 19.5702 15.6656 19.2004 16.3749 19.2004H31.6251C32.3597 19.2004 33.0472 19.5983 33.3363 20.2736C33.4807 20.6108 33.6103 20.9531 33.725 21.3004C33.7303 21.3165 33.7356 21.3326 33.7409 21.3486C34.1113 22.4802 33.1699 23.5254 31.9792 23.5254H16.0183ZM20.7429 17.2754C19.2819 17.2754 18.7076 15.6191 20.0425 15.0254C21.2792 14.4754 22.5983 14.2004 24 14.2004C25.4017 14.2004 26.7208 14.4754 27.9575 15.0254C29.2924 15.6191 28.7181 17.2754 27.2571 17.2754H20.7429ZM6 44.4879C4.89543 44.4879 4 43.5925 4 42.4879V6.48792C4 5.38335 4.89543 4.48792 6 4.48792H42C43.1046 4.48792 44 5.38335 44 6.48792V42.4879C44 43.5925 43.1046 44.4879 42 44.4879H6ZM6.5 39.9879C6.5 41.0925 7.39543 41.9879 8.5 41.9879H39.5C40.6046 41.9879 41.5 41.0925 41.5 39.9879V8.98792C41.5 7.88335 40.6046 6.98792 39.5 6.98792H8.5C7.39543 6.98792 6.5 7.88335 6.5 8.98792V39.9879Z"
+                    fill="#D6214E" />
+                </svg>
+
+                <!-- Electrical / Bolt Icon -->
+                <svg v-else width="36" height="44" viewBox="0 0 24 24" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path d="M13 2L4.5 13.5H11.5L10.5 22L19.5 10.5H12.5L13 2Z" stroke="#D6214E"
+                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </div>
               <p class="hero-features__text">{{ item.title }}</p>
@@ -812,12 +830,19 @@ const serviceHexagonsBottom = [
       rgba(9, 22, 39, 0.6) 100%);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
   .hero-section {
     min-height: auto;
-    padding-top: 120px;
-    padding-bottom: 90px;
+    padding-top: 130px;
+    padding-bottom: 40px;
     overflow: visible;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-section {
+    padding-top: 110px;
+    padding-bottom: 32px;
   }
 }
 
@@ -1008,15 +1033,23 @@ const serviceHexagonsBottom = [
 
 /* Floating Feature Bar on the boundary between Hero and Services */
 .hero-features {
-  position: absolute;
-  bottom: -65px;
+  position: relative;
+  bottom: auto;
   top: auto;
   left: 0;
   right: 0;
   z-index: 20;
   width: 100%;
-  margin: 0;
-  padding: 0 24px;
+  margin: 36px 0 -90px;
+  padding: 0;
+}
+
+@media (min-width: 1024px) {
+  .hero-features {
+    position: absolute;
+    bottom: -65px;
+    margin: 0;
+  }
 }
 
 .hero-features__bar {
@@ -1024,19 +1057,22 @@ const serviceHexagonsBottom = [
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 28px;
-  padding: 0;
+  border-radius: 24px;
+  padding: 12px;
   display: grid;
   grid-template-columns: 1fr;
+  gap: 8px;
   box-shadow: none;
   width: 100%;
   max-width: 1248px;
   margin: 0 auto;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 480px) {
   .hero-features__bar {
     grid-template-columns: repeat(2, 1fr);
+    padding: 16px;
+    gap: 12px;
   }
 }
 
@@ -1044,33 +1080,35 @@ const serviceHexagonsBottom = [
   .hero-features__bar {
     grid-template-columns: repeat(4, 1fr);
     height: 145px;
+    border-radius: 28px;
+    padding: 0;
+    gap: 0;
   }
 }
 
 .hero-features__item {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 16px;
   position: relative;
   width: 100%;
   height: 100%;
-  padding: 16px 0;
-  padding-inline-end: 0px;
+  padding: 14px 16px;
 }
 
 @media (min-width: 1024px) {
   .hero-features__item {
-    padding: 0;
-    padding-inline-end: 0px;
+    gap: 16px;
+    padding: 0 20px;
   }
 }
 
 .hero-features__icon-wrap {
   flex-shrink: 0;
-  width: 36px;
-  height: 36px;
+  width: 48px;
+  height: 48px;
   color: var(--color-primary);
   display: flex;
   align-items: center;
@@ -1079,10 +1117,11 @@ const serviceHexagonsBottom = [
 
 .hero-features__text {
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   color: #FFFFFF;
   line-height: 24px;
-  text-align: center;
+  text-align: right;
+  white-space: pre-line;
   margin: 0;
 }
 
@@ -1095,10 +1134,10 @@ const serviceHexagonsBottom = [
     display: block;
     position: absolute;
     left: 0;
-    top: 6px;
-    bottom: 6px;
+    top: 26px;
+    bottom: 26px;
     width: 1px;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.25);
   }
 }
 
@@ -1113,9 +1152,9 @@ const serviceHexagonsBottom = [
   overflow: hidden;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
   .services-overview {
-    padding-top: 100px;
+    padding-top: 110px;
     padding-bottom: 60px;
     overflow: hidden;
   }
@@ -1132,15 +1171,28 @@ const serviceHexagonsBottom = [
   gap: 40px;
 }
 
+@media (max-width: 767px) {
+  .services-overview__container {
+    padding: 0 16px;
+    gap: 28px;
+  }
+}
+
 /* Differentiators (Why Us - Desktop - 6) */
 .differentiators-section {
-  padding: 80px 24px;
+  padding: 80px 0;
   background-color: #F6F0EC;
 }
 
 .differentiators-section__container {
   max-width: 1248px;
-  padding: 0;
+  padding: 0 24px;
+}
+
+@media (max-width: 767px) {
+  .differentiators-section__container {
+    padding: 0 16px;
+  }
 }
 
 .differentiators-section__header {
@@ -1208,26 +1260,29 @@ const serviceHexagonsBottom = [
   }
 
   .differentiators-section__main-title {
-    font-size: 32px;
-    line-height: 42px;
+    font-size: clamp(26px, 6vw, 32px);
+    line-height: 1.35;
   }
 
   .differentiators-section__title {
-    font-size: 20px;
-    line-height: 32px;
+    font-size: 16px;
+    line-height: 26px;
   }
 
   .diff-row {
     flex-direction: column;
     text-align: center;
-    gap: 30px;
-    padding: 40px 0;
+    gap: 24px;
+    padding: 32px 0;
   }
 
   .diff-row__media {
-    width: 100%;
-    max-width: 280px;
-    height: auto;
+    width: 180px;
+    height: 180px;
+  }
+
+  .diff-row__num-img {
+    width: 180px;
   }
 
   .diff-row__content {
@@ -1237,7 +1292,7 @@ const serviceHexagonsBottom = [
 
   .differentiators-section {
     min-height: auto;
-    padding: 70px 0;
+    padding: 60px 0;
   }
 }
 
@@ -1368,11 +1423,12 @@ const serviceHexagonsBottom = [
 
 .section-title {
   margin: 0 auto;
-  font-size: 40px;
+  font-size: clamp(26px, 5vw, 40px);
   font-weight: 800;
   font-family: "Cairo", Tajawal, system-ui, -apple-system, sans-serif;
   color: #102543;
-  line-height: 60px;
+  line-height: 1.45;
+  max-width: 771px;
 }
 
 .section-title span {
@@ -1380,17 +1436,18 @@ const serviceHexagonsBottom = [
 }
 
 .section-subtitle {
-  font-size: 14px;
+  font-size: 15px;
   color: #4A4A4A;
   font-weight: 500;
-  line-height: 20px;
+  line-height: 1.6;
 }
 
 .services-overview__visual {
   display: flex;
   justify-content: center;
-  margin-top: 30px;
+  margin-top: 16px;
   position: relative;
+  width: 100%;
 }
 
 /* Honeycomb Hexagon Cluster Layout */
@@ -1426,7 +1483,7 @@ const serviceHexagonsBottom = [
   position: relative;
   margin-top: calc(-1 * var(--hex-overlap));
   z-index: 2;
-  width: 760px;
+  width: 100%;
   max-width: 760px;
 }
 
@@ -1805,15 +1862,15 @@ const serviceHexagonsBottom = [
 /* ==========================================================================
    Responsive Breakpoints
    ========================================================================== */
-@media (max-width: 1280px) {
+@media (max-width: 1279px) {
   .steps-section__container {
-    gap: 30px;
+    gap: 24px;
   }
 
   .steps-section__intro {
-    max-width: 290px;
-    flex: 0 0 290px;
-    gap: 28px;
+    max-width: 280px;
+    flex: 0 0 280px;
+    gap: 24px;
   }
 
   .steps-btn {
@@ -1821,15 +1878,16 @@ const serviceHexagonsBottom = [
   }
 
   .steps-section__cards {
-    gap: 16px;
-    max-width: 760px;
-    flex: 0 0 760px;
+    gap: 14px;
+    max-width: 100%;
+    flex: 1 1 0;
   }
 
   .step-card {
-    width: 175px;
-    min-width: 175px;
-    padding: 24px 12px;
+    flex: 1 1 0;
+    width: auto;
+    min-width: 0;
+    padding: 20px 12px;
   }
 }
 
@@ -1842,7 +1900,7 @@ const serviceHexagonsBottom = [
   .steps-section__container {
     flex-direction: column;
     align-items: center;
-    gap: 50px;
+    gap: 44px;
   }
 
   .steps-section__intro {
@@ -1850,7 +1908,7 @@ const serviceHexagonsBottom = [
     flex: none;
     align-items: center;
     text-align: center;
-    gap: 24px;
+    gap: 20px;
   }
 
   .steps-section__heading-wrap {
@@ -1872,18 +1930,26 @@ const serviceHexagonsBottom = [
   }
 
   .steps-section__cards {
-    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 680px;
+    width: 100%;
     flex: none;
-    justify-content: center;
-    flex-wrap: wrap;
     gap: 20px;
+  }
+
+  .step-card {
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    min-height: 260px;
   }
 
   .step-card--1,
   .step-card--2,
   .step-card--3,
   .step-card--4 {
-    margin-top: 0;
+    margin-top: 0 !important;
   }
 }
 
@@ -1892,27 +1958,22 @@ const serviceHexagonsBottom = [
     padding: 60px 0;
   }
 
+  .steps-section__container {
+    padding: 0 16px;
+  }
+
   .steps-section__title {
     font-size: 32px;
-    line-height: 48px;
+    line-height: 46px;
   }
 
   .steps-btn {
     width: 100% !important;
+    max-width: 320px;
   }
 
   .steps-section__cards {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
-    width: 100%;
-  }
-
-  .step-card {
-    width: 100%;
-    min-width: 0;
-    height: auto;
-    min-height: 280px;
   }
 }
 
@@ -2420,26 +2481,26 @@ const serviceHexagonsBottom = [
 }
 
 /* Responsive Breakpoints */
-@media (max-width: 1280px) {
+@media (max-width: 1279px) {
   .home-about-card {
-    gap: 20px;
+    gap: 24px;
   }
 
   .home-about-card__text {
     max-width: 520px;
-    flex: 0 0 520px;
+    flex: 1 1 440px;
   }
 
   .home-about-card__media {
-    width: 580px;
-    height: 355px;
-    flex: 0 0 580px;
+    width: 520px;
+    height: 320px;
+    flex: 0 0 520px;
   }
 
   .home-about-card__frame-border,
   .home-about-card__image-container {
-    width: 556px;
-    height: 332px;
+    width: 496px;
+    height: 297px;
   }
 }
 
@@ -2452,7 +2513,7 @@ const serviceHexagonsBottom = [
   .home-about-card {
     flex-direction: column;
     align-items: center;
-    gap: 50px;
+    gap: 40px;
   }
 
   .home-about-card__text {
@@ -2462,14 +2523,28 @@ const serviceHexagonsBottom = [
   }
 
   .home-about-card__media {
-    max-width: 100%;
-    margin-top: 10px;
+    width: 100%;
+    max-width: 614px;
+    height: auto;
+    aspect-ratio: 638 / 390;
+    flex: none;
+    margin-top: 8px;
+  }
+
+  .home-about-card__frame-border,
+  .home-about-card__image-container {
+    width: calc(100% - 24px);
+    height: calc(100% - 23px);
   }
 }
 
 @media (max-width: 680px) {
   .home-about-teaser {
     padding: 50px 0 60px;
+  }
+
+  .home-about-teaser__container {
+    padding: 0 16px;
   }
 
   .home-about-card__title {
@@ -2488,64 +2563,53 @@ const serviceHexagonsBottom = [
   }
 
   .home-about-card__media {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 638 / 390;
-    min-height: 260px;
-    flex: none;
-  }
-
-  .home-about-card__frame-border {
-    width: calc(100% - 24px);
-    height: calc(100% - 23px);
-    left: 24px;
-    top: 23px;
-  }
-
-  .home-about-card__image-container {
-    width: calc(100% - 24px);
-    height: calc(100% - 23px);
+    min-height: 220px;
   }
 }
 
 /* Stats Section Matching Figma Desktop - 11 */
 .home-stats-section {
   background-color: #17202B;
-  padding: 80px 96px;
+  padding: 80px 0;
   color: #FFFFFF;
 }
 
 .home-stats-section .container {
-  width: 1248px;
+  width: 100%;
   max-width: 1248px;
-  padding: 0;
+  padding: 0 24px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  box-sizing: border-box;
 }
 
 .home-stats-header {
   text-align: center;
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .home-stats-title {
   font-family: "Cairo", Tajawal, system-ui, -apple-system, sans-serif;
-  font-size: 40px;
+  font-size: clamp(28px, 5vw, 40px);
   font-weight: 800;
   color: #FFFFFF;
-  line-height: 60px;
+  line-height: 1.4;
   margin: 0;
 }
 
 .home-stats-subtitle {
   font-family: "Cairo", Tajawal, system-ui, -apple-system, sans-serif;
-  font-size: 18px;
+  font-size: clamp(15px, 2.5vw, 18px);
   color: #EFEFEF;
   font-weight: 600;
   max-width: 820px;
   margin: 0 auto;
-  line-height: 60px;
+  line-height: 1.6;
 }
 
 .home-stats-grid {
@@ -2554,20 +2618,42 @@ const serviceHexagonsBottom = [
   gap: 20px;
   row-gap: 20px;
   justify-content: center;
-  width: 1248px;
+  width: 100%;
   max-width: 1248px;
   margin: 0 auto;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1140px) {
   .home-stats-grid {
-    grid-template-columns: repeat(2, 260px);
+    grid-template-columns: repeat(2, minmax(0, 260px));
+  }
+}
+
+@media (max-width: 600px) {
+  .home-stats-section {
+    padding: 60px 0;
+  }
+
+  .home-stats-section .container {
+    padding: 0 16px;
+  }
+
+  .home-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+
+@media (max-width: 359px) {
+  .home-stats-grid {
+    grid-template-columns: 1fr;
   }
 }
 
 .home-stat-card {
-  width: 260px;
-  height: 118px;
+  width: 100%;
+  max-width: 260px;
+  min-height: 118px;
   background: transparent;
   border: 1px solid #CDBCB2;
   border-radius: 18px;
@@ -2579,6 +2665,7 @@ const serviceHexagonsBottom = [
   gap: 0px;
   text-align: center;
   transition: all var(--transition-normal);
+  margin: 0 auto;
 }
 
 .home-stat-card:hover {
@@ -2588,12 +2675,13 @@ const serviceHexagonsBottom = [
 }
 
 .home-stat-val {
-  width: 226px;
+  width: 100%;
+  max-width: 226px;
   display: inline-block;
   text-align: center;
   font-family: "Cairo", Tajawal, system-ui, sans-serif;
-  font-size: 30px;
-  line-height: 45px;
+  font-size: clamp(22px, 5vw, 30px);
+  line-height: 1.45;
   font-weight: 900;
   color: #D6214E;
 }
@@ -3108,7 +3196,7 @@ const serviceHexagonsBottom = [
 }
 
 /* Desktop - 8 fidelity adjustments */
-@media (min-width: 1025px) {
+@media (min-width: 1280px) {
   .hero-section__container {
     padding-top: 51px;
   }
@@ -3158,9 +3246,7 @@ const serviceHexagonsBottom = [
   }
 
   .steps-section__container {
-    grid-template-columns: 335px 1fr;
     gap: 72px;
-    padding-inline: 0;
   }
 
   .steps-section__intro {
@@ -3236,17 +3322,11 @@ const serviceHexagonsBottom = [
 
   .home-about-teaser {
     min-height: 724px;
-    padding: 0 96px;
     display: flex;
     align-items: center;
   }
 
-  .home-about-teaser>.container {
-    padding-inline: 0;
-  }
-
   .home-about-card {
-    grid-template-columns: 583px 614px;
     gap: 51px;
   }
 
@@ -3263,14 +3343,14 @@ const serviceHexagonsBottom = [
   }
 
   .home-about-card__media {
-    width: 614px;
-    height: 367px;
+    width: 638px;
+    height: 390px;
     border-radius: 16px;
   }
 
   .home-about-card__img {
-    width: 614px;
-    max-width: none;
+    width: 100%;
+    height: 100%;
     border-radius: 16px;
   }
 

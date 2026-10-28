@@ -433,29 +433,29 @@ const baseUrl = import.meta.env.BASE_URL;
    ========================================================================== */
 @media (max-width: 1280px) {
   .about-section__grid {
-    gap: 20px;
+    gap: 24px;
   }
 
   .about-section__content {
     max-width: 520px;
-    flex: 0 0 520px;
+    flex: 1 1 440px;
   }
 
   .about-section__media {
-    width: 580px;
-    height: 355px;
-    flex: 0 0 580px;
+    width: 520px;
+    height: 320px;
+    flex: 0 0 520px;
   }
 
   .about-section__frame-border,
   .about-section__image-container {
-    width: 556px;
-    height: 332px;
+    width: 496px;
+    height: 297px;
   }
 
   .about-section__badge {
-    left: 340px;
-    top: 250px;
+    left: 280px;
+    top: 220px;
   }
 }
 
@@ -478,13 +478,13 @@ const baseUrl = import.meta.env.BASE_URL;
 
   .about-section {
     min-height: auto;
-    padding: 60px 0 80px;
+    padding: 60px 0 90px;
   }
 
   .about-section__grid {
     flex-direction: column;
     align-items: center;
-    gap: 60px;
+    gap: 48px;
   }
 
   .about-section__content {
@@ -494,19 +494,36 @@ const baseUrl = import.meta.env.BASE_URL;
   }
 
   .about-section__media {
-    max-width: 100%;
+    width: 100%;
+    max-width: 614px;
+    height: auto;
+    aspect-ratio: 638 / 390;
+    flex: none;
     margin-top: 10px;
+  }
+
+  .about-section__frame-border,
+  .about-section__image-container {
+    width: calc(100% - 24px);
+    height: calc(100% - 23px);
+  }
+
+  .about-section__badge {
+    left: auto;
+    right: 16px;
+    bottom: -24px;
+    top: auto;
   }
 }
 
 @media (max-width: 680px) {
   .about-hero {
-    min-height: 480px;
+    min-height: 440px;
     padding: 120px 16px 50px;
   }
 
   .about-hero__content {
-    gap: 24px;
+    gap: 20px;
   }
 
   .about-hero__title {
@@ -517,6 +534,10 @@ const baseUrl = import.meta.env.BASE_URL;
   .about-hero__subtitle {
     font-size: 18px;
     line-height: 28px;
+  }
+
+  .about-section__container {
+    padding: 0 16px;
   }
 
   .about-section__heading-wrap {
@@ -551,28 +572,12 @@ const baseUrl = import.meta.env.BASE_URL;
 
   /* Responsive image frame on small mobile screens */
   .about-section__media {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 638 / 390;
-    min-height: 260px;
-    flex: none;
-  }
-
-  .about-section__frame-border {
-    width: calc(100% - 24px);
-    height: calc(100% - 23px);
-    left: 24px;
-    top: 23px;
-  }
-
-  .about-section__image-container {
-    width: calc(100% - 24px);
-    height: calc(100% - 23px);
+    min-height: 220px;
   }
 
   .about-section__badge {
-    width: 180px;
-    height: 100px;
+    width: 170px;
+    height: 94px;
     left: auto;
     right: 12px;
     bottom: -20px;

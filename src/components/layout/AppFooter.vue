@@ -25,7 +25,7 @@ const serviceLinks = [
         <!-- Brand Column -->
         <div class="app-footer__brand">
           <RouterLink to="/" class="app-footer__logo" aria-label="الرئيسية">
-            <img :src="`${baseUrl}assets/logo-dark-bg.png`" alt="مؤسسة سهم القمة" class="app-footer__logo-img" />
+            <img :src="`${baseUrl}assets/logo.png`" alt="مؤسسة سهم القمة" class="app-footer__logo-img" />
           </RouterLink>
           <p class="app-footer__desc">
             حلول استشارية واستثمارية متكاملة في قلب المجال الـ MEP.
@@ -111,24 +111,32 @@ const serviceLinks = [
   border-top: none;
   border: none;
   width: 100%;
+  overflow-x: clip;
 }
 
 .app-footer__container {
   width: 100%;
   max-width: 1248px;
   margin: 0 auto;
-  padding: 0;
+  padding: 0 24px;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+}
+
+@media (min-width: 1296px) {
+  .app-footer__container {
+    padding: 0;
+  }
 }
 
 .app-footer__grid {
-  width: 1248px;
+  width: 100%;
   max-width: 1248px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 40px;
+  gap: 36px;
 }
 
 @media (min-width: 640px) {
@@ -140,9 +148,16 @@ const serviceLinks = [
 
 @media (min-width: 1024px) {
   .app-footer__grid {
+    grid-template-columns: 1.3fr auto 1.3fr 1.1fr;
+    gap: 36px;
+    align-items: start;
+  }
+}
+
+@media (min-width: 1280px) {
+  .app-footer__grid {
     grid-template-columns: 1.3fr 115px 1.3fr 1.1fr;
     gap: 48px;
-    align-items: start;
   }
 }
 
@@ -205,14 +220,21 @@ const serviceLinks = [
   flex-direction: column;
   gap: 12px;
   text-align: right;
+  min-width: 0;
 }
 
 .app-footer__col--quick {
-  width: 115px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 12px;
   text-align: right;
+}
+
+@media (min-width: 1024px) {
+  .app-footer__col--quick {
+    width: 115px;
+  }
 }
 
 .app-footer__col--services {
@@ -220,7 +242,13 @@ const serviceLinks = [
   flex-direction: column;
   gap: 12px;
   text-align: right;
-  margin-inline-start: 111.2px;
+  margin-inline-start: 0;
+}
+
+@media (min-width: 1280px) {
+  .app-footer__col--services {
+    margin-inline-start: 111.2px;
+  }
 }
 
 .app-footer__col--contact {
@@ -321,6 +349,33 @@ const serviceLinks = [
   text-align: center;
   margin: 0 auto;
   display: block;
-  transform: translateX(495.5px);
+}
+
+@media (min-width: 1280px) {
+  .app-footer__copyright {
+    transform: translateX(495.5px);
+  }
+}
+
+@media (max-width: 767px) {
+  .app-footer {
+    padding: 56px 0 0;
+  }
+
+  .app-footer__container {
+    padding: 0 16px;
+  }
+
+  .app-footer__desc,
+  .app-footer__link,
+  .app-footer__contact-item {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .app-footer__bottom {
+    margin-top: 48px;
+    padding: 0 0 24px;
+  }
 }
 </style>

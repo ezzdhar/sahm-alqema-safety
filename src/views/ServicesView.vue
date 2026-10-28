@@ -416,8 +416,10 @@ const scrollToService = (id) => {
 @media (max-width: 1024px) {
   .services-hero {
     height: auto;
-    min-height: 100vh;
-    padding-bottom: 48px;
+    min-height: 520px;
+    align-items: center;
+    padding-top: 130px;
+    padding-bottom: 56px;
   }
 }
 
@@ -553,9 +555,14 @@ const scrollToService = (id) => {
 
 @media (max-width: 767px) {
   .services-hero {
-    min-height: auto;
-    padding-top: 120px;
-    padding-bottom: 36px;
+    min-height: 420px;
+    padding-top: 110px;
+    padding-bottom: 44px;
+  }
+
+  .services-hero__title {
+    font-size: clamp(32px, 8vw, 42px);
+    margin-bottom: 16px;
   }
 
   .services-hero__container {
@@ -794,14 +801,14 @@ const scrollToService = (id) => {
   z-index: 1;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 40px;
+  gap: 36px;
   direction: rtl;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .service-item__grid {
     grid-template-columns: 1.15fr 1fr;
-    gap: 36px;
+    gap: 40px;
     align-items: start;
   }
 }
@@ -955,8 +962,14 @@ const scrollToService = (id) => {
 .service-item__deliverables {
   display: flex;
   flex-direction: column;
-  gap: 54px;
+  gap: 24px;
   width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .service-item__deliverables {
+    gap: 54px;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -1138,9 +1151,16 @@ const scrollToService = (id) => {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 32px;
-  margin-bottom: 70px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: 24px;
+  margin-bottom: 56px;
+}
+
+@media (min-width: 768px) {
+  .projects-grid {
+    gap: 32px;
+    margin-bottom: 70px;
+  }
 }
 
 .project-card {
@@ -1259,13 +1279,19 @@ const scrollToService = (id) => {
   background: linear-gradient(135deg, rgba(20, 47, 83, 0.6) 0%, rgba(9, 22, 39, 0.95) 100%);
   border: 1px solid rgba(214, 33, 78, 0.3);
   border-radius: 20px;
-  padding: 40px 48px;
+  padding: 28px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
   text-align: center;
+}
+
+@media (min-width: 768px) {
+  .projects-cta-box {
+    padding: 40px 48px;
+  }
 }
 
 @media (min-width: 900px) {

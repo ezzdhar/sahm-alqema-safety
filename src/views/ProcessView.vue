@@ -519,13 +519,14 @@ const steps = [
 }
 
 /* Responsive Breakpoints */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .process-view {
     padding-top: 150px;
+    padding-bottom: 80px;
   }
 
   .process-header {
-    margin-bottom: 48px;
+    margin-bottom: 40px;
   }
 
   .process-header__title {
@@ -545,7 +546,7 @@ const steps = [
       "heading action"
       "desc desc";
     gap: 16px;
-    padding: 20px 0;
+    padding: 20px 8px;
     align-items: center;
   }
 
@@ -554,6 +555,7 @@ const steps = [
     display: flex;
     align-items: center;
     gap: 16px;
+    min-width: 0;
   }
 
   .process-item__action {
@@ -570,8 +572,8 @@ const steps = [
   }
 
   .process-item__desc {
-    font-size: 16px;
-    line-height: 26px;
+    font-size: 17px;
+    line-height: 27px;
   }
 
   .drawer-inner {
@@ -582,35 +584,64 @@ const steps = [
 }
 
 @media (max-width: 600px) {
+  .process-view {
+    padding-top: 120px;
+    padding-bottom: 60px;
+  }
+
+  .process-container {
+    padding: 0 16px;
+  }
+
+  .process-header {
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
   .process-header__title {
-    font-size: 30px;
-    line-height: 46px;
+    font-size: clamp(28px, 7.5vw, 34px);
+    line-height: 1.45;
   }
 
   .process-header__desc {
-    font-size: 18px;
-    line-height: 28px;
+    font-size: 17px;
+    line-height: 27px;
+  }
+
+  .process-item__row {
+    padding: 18px 0;
+    gap: 12px;
+  }
+
+  .process-item__heading {
+    gap: 12px;
   }
 
   .process-item__number {
-    font-size: 56px;
-    min-width: 60px;
+    font-size: clamp(44px, 12vw, 56px);
+    line-height: 1.1;
+    min-width: 52px;
   }
 
   .process-item__title {
-    font-size: 24px;
-    line-height: 36px;
+    font-size: clamp(20px, 5.5vw, 24px);
+    line-height: 1.35;
+    white-space: normal;
   }
 
   .process-item__desc {
-    font-size: 17px;
-    line-height: 28px;
+    font-size: 16px;
+    line-height: 26px;
   }
 
   .process-item__arrow-btn,
   .process-item__arrow-svg {
-    width: 52px;
-    height: 52px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .process-item__drawer {
+    padding: 0 0 24px;
   }
 
   .drawer-columns {

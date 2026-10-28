@@ -565,9 +565,16 @@ const handleSubmit = async () => {
 
 @media (min-width: 1024px) {
   .contact-cards {
+    grid-template-columns: minmax(0, 421fr) minmax(0, 631fr);
+    gap: 32px;
+    align-items: start;
+  }
+}
+
+@media (min-width: 1140px) {
+  .contact-cards {
     grid-template-columns: 421px 631px; /* Right: Info 421px, Left: Form 631px in RTL */
     gap: 48px; /* Difference 11: 48px gap */
-    align-items: start;
   }
 }
 
@@ -584,12 +591,13 @@ const handleSubmit = async () => {
   min-height: 576px; /* Difference 11: Size 421 x 576px */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
   box-sizing: border-box;
+  width: 100%;
 }
 
 @media (min-width: 1024px) {
   .contact-info-panel {
-    width: 421px;
-    height: 576px;
+    max-width: 421px;
+    min-height: 576px;
   }
 }
 
@@ -597,6 +605,7 @@ const handleSubmit = async () => {
   .contact-info-panel {
     padding: 24px 18px;
     min-height: auto;
+    gap: 24px;
   }
 }
 
@@ -702,13 +711,13 @@ const handleSubmit = async () => {
   flex-direction: column;
   justify-content: center;
   box-sizing: border-box;
+  width: 100%;
 }
 
 @media (min-width: 1024px) {
   .contact-form-panel {
-    width: 631px; /* Difference 42: Width 631px */
-    min-height: 576px;
-    height: 600px; /* Difference 41: Height 600px */
+    max-width: 631px; /* Difference 42: Width 631px */
+    min-height: 600px; /* Difference 41: Height 600px */
   }
 }
 

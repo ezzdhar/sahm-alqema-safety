@@ -320,17 +320,17 @@ onUnmounted(() => {
 }
 
 .app-header__logo-img {
+  margin-bottom: 0;
   width: auto;
-  height: 57px;
-  max-height: 57px;
+  height: 45px;
+  max-height: 50px;
   object-fit: contain;
   transition: all var(--transition-fast);
 }
 
-@media (max-width: 767px) {
+@media (min-width: 1024px) {
   .app-header__logo-img {
-    width: 145px;
-    height: 48px;
+    margin-bottom: 10px;
   }
 }
 
@@ -633,23 +633,31 @@ onUnmounted(() => {
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-  .app-header__bar {
-    padding: 8px 16px;
-    gap: 14px;
+  .app-header,
+  .app-header--scrolled {
+    padding: 20px 0 0;
+  }
+
+  .app-header__bar,
+  .app-header--scrolled .app-header__bar {
+    padding: 8px 18px;
+    gap: 16px;
   }
 
   .app-header__nav {
-    gap: 14px;
+    gap: 18px;
   }
 
   .app-header__nav-link {
-    font-size: 13.5px;
-    padding: 6px 2px;
+    font-size: 14.5px;
+    padding: 4px 2px;
   }
 
   .app-header__cta-btn {
-    padding: 8px 14px;
-    font-size: 13px;
+    width: auto;
+    height: 42px;
+    padding: 0 18px;
+    font-size: 14px;
   }
 
   .app-header__logo-img {
