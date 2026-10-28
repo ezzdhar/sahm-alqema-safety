@@ -4,7 +4,7 @@ const baseUrl = import.meta.env.BASE_URL;
 const quickLinks = [
   { name: 'الرئيسية', path: '/' },
   { name: 'من نحن', path: '/about' },
-  { name: 'كيف نعمل', path: '/process' },
+  { name: 'آلية العمل', path: '/process' },
   { name: 'خدماتنا', path: '/services' },
   { name: 'تواصل معنا', path: '/contact' },
 ];

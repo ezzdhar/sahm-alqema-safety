@@ -11,7 +11,7 @@ const mobileMenuOpen = ref(false);
 const navLinks = [
   { name: 'الرئيسية', path: '/' },
   { name: 'من نحن', path: '/about' },
-  { name: 'كيف نعمل', path: '/process' },
+  { name: 'آلية العمل', path: '/process' },
   { name: 'خدماتنا', path: '/services' },
   { name: 'تواصل معنا', path: '/contact' },
 ];
@@ -266,13 +266,13 @@ onUnmounted(() => {
   justify-content: space-between;
   width: 100%;
   gap: 24px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(9, 22, 39, 0.88);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 40px;
   padding: 10px 24px;
-  box-shadow: none;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
   transition: all var(--transition-normal);
 }
 
@@ -280,8 +280,8 @@ onUnmounted(() => {
   .app-header__bar {
     padding: 8px 16px;
     gap: 16px;
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
+    background: rgba(9, 22, 39, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.12);
   }
 }
 
@@ -292,22 +292,23 @@ onUnmounted(() => {
 }
 
 .app-header--scrolled .app-header__bar {
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
-  box-shadow: none;
+  background: rgba(9, 22, 39, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.45);
   padding: 10px 24px;
 }
 
 @media (max-width: 767px) {
   .app-header--scrolled .app-header__bar {
     padding: 8px 16px;
+    background: rgba(9, 22, 39, 0.96);
   }
 }
 
 .app-header--menu-open .app-header__bar {
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
-  box-shadow: none;
+  background: rgba(9, 22, 39, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
 /* Logo */
