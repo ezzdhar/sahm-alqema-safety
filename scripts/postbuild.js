@@ -37,3 +37,4 @@ if (fs.existsSync(distAssetsDir)) {
 }
 
 console.log('✅ Production bundle successfully mirrored to repository root for GitHub Pages direct deployment.');
+
