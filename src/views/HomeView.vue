@@ -150,14 +150,14 @@ const filteredProjects = computed(() => {
 
 // Stats Data matching Desktop - 11
 const statsData = [
-  { value: '25,000+', label: 'غرفة فندقية' },
-  { value: '6,000+', label: 'فيلا وقصر' },
-  { value: '4,000+', label: 'شقة ووحدة سكنية' },
-  { value: '220+', label: 'مشروع تجاري وإداري' },
-  { value: '90%', label: 'نسبة ولاء وعودة العملاء' },
-  { value: '20+', label: 'محطة غلايات كبرى' },
-  { value: '200+', label: 'محطة وغرفة مضخات' },
-  { value: '1,200+', label: 'مخطط هندسي معتمد' },
+  { num: '220', suffix: '+', label: 'شقة ووحدة سكنية' },
+  { num: '4,000', suffix: '+', label: 'شقة ووحدة سكنية' },
+  { num: '6,000', suffix: '+', label: 'فيلا وقصر' },
+  { num: '25,000', suffix: '+', label: 'غرفة فندقية' },
+  { num: '1,200', suffix: '+', label: 'شقة ووحدة سكنية' },
+  { num: '200', suffix: '+', label: 'محطة وغرفة مضخات' },
+  { num: '20', suffix: '+', label: 'محطة غلايات كبري' },
+  { num: '90', suffix: '%', label: 'نسبة ولاء وعودة العملاء' },
 ];
 
 // Why Us Items matching Figma Frame 60
@@ -458,7 +458,7 @@ const serviceHexagonsBottom = [
             منظومة متكاملة تضمن راحة بالك. </p>
 
           <AppButton to="/contact" variant="primary" size="lg" class="steps-btn" data-name="Button">
-            احجز الآن
+            ابدأ نحو القمة
           </AppButton>
         </div>
 
@@ -466,40 +466,38 @@ const serviceHexagonsBottom = [
         <div class="steps-section__cards" data-name="Frame 110">
           <div v-for="(step, idx) in steps" :key="idx" class="step-card" :class="`step-card--${idx + 1}`"
             :data-name="`Frame ${85 + idx}`">
-            <div class="step-card__icon">
-              <!-- Card 1: التخطيط والدراسة (search) -->
-              <svg v-if="idx === 0" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#D6214E"
-                stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="11" cy="11" r="7" />
-                <line x1="21" y1="21" x2="16.65" y2="16.65" />
-              </svg>
-              <!-- Card 2: التصميم والنمذجة (cube) -->
-              <svg v-else-if="idx === 1" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#D6214E"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path
-                  d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-                <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
-                <line x1="12" y1="22.08" x2="12" y2="12" />
-              </svg>
-              <!-- Card 3: التوريد والتركيب (hvac) -->
-              <svg v-else-if="idx === 2" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#D6214E"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="3" width="18" height="18" rx="3" />
-                <circle cx="12" cy="12" r="4" />
-                <path d="M12 4v4" />
-                <path d="M12 16v4" />
-                <path d="M4 12h4" />
-                <path d="M16 12h4" />
-              </svg>
-              <!-- Card 4: الاختبار والتشغيل (check circle) -->
-              <svg v-else width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#D6214E" stroke-width="2.2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="9" />
-                <path d="m9 12 2 2 4-4" />
-              </svg>
+            <div class="step-card__inner" :data-name="idx < 2 ? 'Frame 89' : `Frame ${109 + idx}`">
+              <div class="step-card__icon">
+                <!-- Card 1: التخطيط والدراسة (iconamoon:search-light) -->
+                <svg v-if="idx === 0" width="35" height="35" viewBox="0 0 24 24" fill="none"
+                  xmlns="http://www.w3.org/2000/svg" data-name="iconamoon:search-light">
+                  <path d="M21 21L16.657 16.657M16.657 16.657A8 8 0 1 0 5.343 5.343A8 8 0 0 0 16.657 16.657Z"
+                    stroke="#D6214E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <!-- Card 2: التصميم والنمذجة (boxicons:cube) -->
+                <svg v-else-if="idx === 1" width="35" height="35" viewBox="0 0 24 24" fill="none"
+                  xmlns="http://www.w3.org/2000/svg" data-name="boxicons:cube">
+                  <path fill="#D6214E"
+                    d="M12.447 2.106a1 1 0 0 0-.894 0l-8 4A1 1 0 0 0 3 7v10a1 1 0 0 0 .553.894l8 4a1 1 0 0 0 .894 0l8-4A1 1 0 0 0 21 17V7a1 1 0 0 0-.553-.894l-8-4zM12 4.118 17.764 7 12 9.882 6.236 7 12 4.118zM5 8.618l6 3v7.764l-6-3V8.618zm8 10.764v-7.764l6-3v7.764l-6 3z" />
+                </svg>
+                <!-- Card 3: التوريد والتركيب (material-symbols-light:hvac-outline) -->
+                <svg v-else-if="idx === 2" width="35" height="35" viewBox="0 0 24 24" fill="none"
+                  xmlns="http://www.w3.org/2000/svg" data-name="material-symbols-light:hvac-outline">
+                  <path fill="#D6214E"
+                    d="M4 20V4h16v16H4Zm1-1h14V5H5v14Zm3.55-3.5h6.9q.4-.55.65-1.2h-8.2q.25.65.65 1.2Zm-.9-2.2h8.7q.15-.55.15-1.15t-.15-1.15h-8.7q-.15.55-.15 1.15t.15 1.15Zm.9-3.3h6.9q-.65-.9-1.6-1.45T12 8q-1 0-1.95.55T8.55 10ZM12 17q-2.075 0-3.537-1.463T7 12q0-2.075 1.463-3.538T12 7q2.075 0 3.538 1.463T17 12q0 2.075-1.463 3.538T12 17Z" />
+                </svg>
+                <!-- Card 4: الاختبار والتشغيل (line-md:circle-to-confirm-circle-transition) -->
+                <svg v-else width="35" height="35" viewBox="0 0 24 24" fill="none"
+                  xmlns="http://www.w3.org/2000/svg" data-name="line-md:circle-to-confirm-circle-transition">
+                  <circle cx="12" cy="12" r="9" stroke="#D6214E" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                  <path d="M8 12L11 15L16 10" stroke="#D6214E" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+              <h3 class="step-card__title">{{ step.title }}</h3>
+              <p class="step-card__desc">{{ step.desc }}</p>
             </div>
-            <h3 class="step-card__title">{{ step.title }}</h3>
-            <p class="step-card__desc">{{ step.desc }}</p>
           </div>
         </div>
       </div>
@@ -569,7 +567,11 @@ const serviceHexagonsBottom = [
         </div>
         <div class="home-stats-grid">
           <div v-for="(stat, sIdx) in statsData" :key="sIdx" class="home-stat-card">
-            <span class="home-stat-val">{{ stat.value }}</span>
+            <span class="home-stat-val">
+              <span class="home-stat-num">{{ stat.num }}</span>
+              <span class="home-stat-suffix" :class="{ 'home-stat-suffix--red': stat.suffix === '%' }">{{ stat.suffix
+              }}</span>
+            </span>
             <span class="home-stat-lbl">{{ stat.label }}</span>
           </div>
         </div>
@@ -825,7 +827,7 @@ const serviceHexagonsBottom = [
   .hero-section {
     min-height: auto;
     padding-top: 130px;
-    padding-bottom: 40px;
+    padding-bottom: 50px;
     overflow: visible;
   }
 }
@@ -833,7 +835,7 @@ const serviceHexagonsBottom = [
 @media (max-width: 767px) {
   .hero-section {
     padding-top: 110px;
-    padding-bottom: 32px;
+    padding-bottom: 40px;
   }
 }
 
@@ -1031,8 +1033,9 @@ const serviceHexagonsBottom = [
   right: 0;
   z-index: 20;
   width: 100%;
-  margin: 36px 0 -90px;
-  padding: 0;
+  margin: 36px auto 0;
+  padding: 0 16px;
+  box-sizing: border-box;
 }
 
 @media (min-width: 1024px) {
@@ -1040,6 +1043,7 @@ const serviceHexagonsBottom = [
     position: absolute;
     bottom: -65px;
     margin: 0;
+    padding: 0;
   }
 }
 
@@ -1048,22 +1052,32 @@ const serviceHexagonsBottom = [
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 24px;
+  border-radius: 20px;
   padding: 12px;
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 8px;
-  box-shadow: none;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
   width: 100%;
   max-width: 1248px;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
-@media (min-width: 480px) {
+@media (max-width: 360px) {
   .hero-features__bar {
-    grid-template-columns: repeat(2, 1fr);
-    padding: 16px;
-    gap: 12px;
+    grid-template-columns: 1fr;
+    padding: 10px;
+    gap: 8px;
+    border-radius: 16px;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-features__bar {
+    padding: 18px 20px;
+    gap: 16px;
+    border-radius: 24px;
   }
 }
 
@@ -1082,11 +1096,19 @@ const serviceHexagonsBottom = [
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 10px;
   position: relative;
   width: 100%;
   height: 100%;
-  padding: 14px 16px;
+  padding: 10px 8px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .hero-features__item {
+    gap: 14px;
+    padding: 12px 14px;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -1098,22 +1120,57 @@ const serviceHexagonsBottom = [
 
 .hero-features__icon-wrap {
   flex-shrink: 0;
-  width: 48px;
-  height: 48px;
+  width: 38px;
+  height: 38px;
   color: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.hero-features__icon-wrap svg {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  .hero-features__icon-wrap {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-features__icon-wrap {
+    width: 48px;
+    height: 48px;
+  }
+}
+
 .hero-features__text {
-  font-size: 16px;
+  font-size: 13.5px;
   font-weight: 600;
   color: #FFFFFF;
-  line-height: 24px;
+  line-height: 1.45;
   text-align: right;
   white-space: pre-line;
   margin: 0;
+}
+
+@media (min-width: 480px) {
+  .hero-features__text {
+    font-size: 14.5px;
+    line-height: 1.5;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-features__text {
+    font-size: 16px;
+    line-height: 24px;
+  }
 }
 
 .hero-features__divider {
@@ -1145,7 +1202,7 @@ const serviceHexagonsBottom = [
 
 @media (max-width: 1023px) {
   .services-overview {
-    padding-top: 110px;
+    padding-top: 70px;
     padding-bottom: 60px;
     overflow: hidden;
   }
@@ -1644,14 +1701,14 @@ const serviceHexagonsBottom = [
 /* Watermark: shield watermark on the right side */
 .steps-section__watermark {
   position: absolute;
-  width: 862px;
-  height: 1108px;
-  right: -100px;
-  top: -260px;
+  width: 700px;
+  height: 1208px;
+  right: -300px;
+  top: -50px;
   background-image: url('/assets/shield-watermark.png');
   background-repeat: no-repeat;
   background-size: contain;
-  opacity: 0.08;
+  opacity: 0.06;
   pointer-events: none;
   z-index: 0;
 }
@@ -1737,7 +1794,7 @@ const serviceHexagonsBottom = [
   font-weight: 700 !important;
   font-size: 16px !important;
   line-height: 24px !important;
-  box-shadow: 0 4px 14px rgba(214, 33, 78, 0.25) !important;
+  box-shadow: none !important;
   transition: all var(--transition-normal);
   display: inline-flex;
   align-items: center;
@@ -1747,7 +1804,6 @@ const serviceHexagonsBottom = [
 .steps-btn:hover {
   background: #BF1B44 !important;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(214, 33, 78, 0.4) !important;
 }
 
 /* ==========================================================================
@@ -1764,40 +1820,89 @@ const serviceHexagonsBottom = [
   box-sizing: border-box;
 }
 
-/* Card: width 188px, height 317px, background rgba(28, 28, 28, 0.15) */
+/* Frame 85 / 86 / 87 / 88: dark glass cards with the fine lit rim from the reference. */
 .step-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   width: 188px;
   min-width: 188px;
   height: 317px;
-  background: rgba(255, 255, 255, 0.035);
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  /* background:
+    radial-gradient(130% 100% at 100% 0%, rgba(100, 120, 138, 0.12) 0%, rgba(100, 120, 138, 0) 56%) padding-box,
+    linear-gradient(120deg, rgba(29, 39, 51, 0.9) 0%, rgba(21, 29, 39, 0.82) 100%) padding-box,
+    linear-gradient(135deg, rgba(158, 174, 188, 0.32) 0%, rgba(255, 255, 255, 0.05) 43%, rgba(145, 160, 176, 0.36) 100%) border-box; */
+  border: .1px solid rgb(83, 83, 83);
   border-radius: 12px;
-  padding: 24px 15px;
+  padding: 0;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 20px;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-  transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+  box-shadow:
+    inset 1px 0 0 rgba(255, 255, 255, 0.035),
+    inset -10px 0 18px rgba(2, 7, 13, 0.12),
+    0 12px 24px rgba(5, 11, 20, 0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), filter var(--transition-normal);
+}
+
+.step-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.05), transparent 18%, transparent 78%, rgba(255, 255, 255, 0.035));
 }
 
 .step-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(214, 33, 78, 0.35);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+  transform: translateY(-5px);
+  box-shadow:
+    inset 1px 0 0 rgba(255, 255, 255, 0.07),
+    inset -10px 0 18px rgba(2, 7, 13, 0.1),
+    0 18px 30px rgba(5, 11, 20, 0.3);
+  filter: brightness(1.06);
+}
+
+/* Frame 89 / 111 / 112: Inner Auto Layout */
+.step-card__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  gap: 20px;
+  position: absolute;
+  z-index: 1;
+  width: 158px;
+  left: calc(50% - 158px / 2);
+}
+
+/* Frame 85 -> Frame 89: width 158px, height 234px, left calc(50% - 158px/2), top calc(50% - 234px/2 - 0.5px) */
+.step-card--1 .step-card__inner {
+  height: 234px;
+  top: calc(50% - 234px / 2 - 0.5px);
+}
+
+/* Frame 86 -> Frame 89: width 158px, height 229px, left calc(50% - 158px/2), top calc(50% - 229px/2) */
+.step-card--2 .step-card__inner {
+  height: 229px;
+  top: calc(50% - 229px / 2);
+}
+
+/* Frame 87 -> Frame 111 & Frame 88 -> Frame 112: width 158px, height 205px, left 15px, top calc(50% - 205px/2 + 0.5px) */
+.step-card--3 .step-card__inner,
+.step-card--4 .step-card__inner {
+  height: 205px;
+  left: 15px;
+  top: calc(50% - 205px / 2 + 0.5px);
 }
 
 /* Staircase offsets matching Figma:
    In RTL:
-   Card 1 (التخطيط والدراسة): 0px (highest)
-   Card 2 (التصميم والنمذجة): 35px
-   Card 3 (التوريد والتركيب): 70px
-   Card 4 (الاختبار والتشغيل): 105px (lowest)
+   Card 1 (Frame 85 - التخطيط والدراسة): top 0px
+   Card 2 (Frame 86 - التصميم والنمذجة): top 35px
+   Card 3 (Frame 87 - التوريد والتركيب): top 70px
+   Card 4 (Frame 88 - الاختبار والتشغيل): top 105px
 */
 .step-card--1 {
   margin-top: 0px;
@@ -1821,11 +1926,15 @@ const serviceHexagonsBottom = [
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
-/* Card Title: Cairo 700, 18px, line-height 24px, color #FFFFFF */
+/* Card Title: Cairo 700, 18px, color #FFFFFF */
 .step-card__title {
+  width: 158px;
+  height: 25px;
   font-family: 'Cairo', var(--font-cairo, sans-serif);
   font-style: normal;
   font-weight: 700;
@@ -1834,11 +1943,32 @@ const serviceHexagonsBottom = [
   color: #FFFFFF;
   text-align: center;
   margin: 0;
-  width: 100%;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
 }
 
-/* Card Desc: Cairo 400, 14px, line-height 21px, color #B9BFD0 */
+/* Frame 85: التخطيط والدراسة (width: 98px; height: 54px; line-height: 27px) */
+.step-card--1 .step-card__title {
+  width: 98px;
+  height: 54px;
+  line-height: 27px;
+  align-self: center;
+}
+
+/* Frame 86: التصميم والنمذجة (width: 118px; height: 49px; line-height: 24px) */
+.step-card--2 .step-card__title {
+  width: 118px;
+  height: 49px;
+  line-height: 24px;
+  align-self: center;
+}
+
+/* Card Desc: width 158px, height 105px, Cairo 400, 14px, line-height 21px, color #B9BFD0 */
 .step-card__desc {
+  width: 158px;
+  height: 105px;
   font-family: 'Cairo', var(--font-cairo, sans-serif);
   font-style: normal;
   font-weight: 400;
@@ -1847,7 +1977,10 @@ const serviceHexagonsBottom = [
   color: #B9BFD0;
   text-align: center;
   margin: 0;
-  width: 100%;
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
 }
 
 /* ==========================================================================
@@ -1878,7 +2011,6 @@ const serviceHexagonsBottom = [
     flex: 1 1 0;
     width: auto;
     min-width: 0;
-    padding: 20px 12px;
   }
 }
 
@@ -1922,18 +2054,18 @@ const serviceHexagonsBottom = [
 
   .steps-section__cards {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    max-width: 680px;
+    grid-template-columns: repeat(2, 188px);
+    justify-content: center;
+    max-width: 400px;
     width: 100%;
     flex: none;
     gap: 20px;
   }
 
   .step-card {
-    width: 100%;
-    min-width: 0;
-    height: auto;
-    min-height: 260px;
+    width: 188px;
+    min-width: 188px;
+    height: 317px;
   }
 
   .step-card--1,
@@ -1970,13 +2102,28 @@ const serviceHexagonsBottom = [
 
 @media (max-width: 480px) {
   .steps-section__cards {
-    grid-template-columns: 1fr;
-    gap: 14px;
+    grid-template-columns: repeat(2, minmax(0, 188px));
+    gap: 12px;
   }
 
   .step-card {
-    min-height: auto;
-    padding: 24px 16px;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .step-card__inner,
+  .step-card--3 .step-card__inner,
+  .step-card--4 .step-card__inner {
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 20px);
+    max-width: 158px;
+  }
+
+  .step-card__title,
+  .step-card__desc {
+    width: 100%;
+    max-width: 158px;
   }
 }
 
@@ -2668,12 +2815,28 @@ const serviceHexagonsBottom = [
 .home-stat-val {
   width: 100%;
   max-width: 226px;
-  display: inline-block;
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 2px;
   text-align: center;
   font-family: "Cairo", Tajawal, system-ui, sans-serif;
   font-size: clamp(22px, 5vw, 30px);
   line-height: 1.45;
   font-weight: 900;
+  direction: ltr;
+}
+
+.home-stat-num {
+  color: #D6214E;
+}
+
+.home-stat-suffix {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.home-stat-suffix--red {
   color: #D6214E;
 }
 
@@ -2683,13 +2846,6 @@ const serviceHexagonsBottom = [
   font-weight: 600;
   color: #FFFFFF;
   line-height: 1.4;
-}
-
-.home-stats-grid>.home-stat-card:nth-child(4) .home-stat-val,
-.home-stats-grid>.home-stat-card:nth-child(5) .home-stat-val,
-.home-stats-grid>.home-stat-card:nth-child(8) .home-stat-val {
-  color: #F4F4F4;
-  font-weight: 700;
 }
 
 /* Why Us Section Matching Figma Frame 60 */
@@ -3276,17 +3432,32 @@ const serviceHexagonsBottom = [
     padding: 96px 0;
   }
 
+  .steps-section__watermark {
+    width: 700px;
+    /* height: 70px; */
+    right: auto;
+    left: calc(55% + 208.68px);
+    top: -55px;
+    opacity: 0.04;
+  }
+
   .steps-section__container {
-    gap: 72px;
+    /* Frame 110 (824px) + 90px gap + Frame 84 (335px). */
+    width: calc(100% - 48px);
+    max-width: 1249px;
+    padding: 0;
+    justify-content: flex-start;
+    gap: clamp(24px, calc(100vw - 1207px), 90px);
   }
 
   .steps-section__intro {
     max-width: 335px;
-    gap: 20px;
+    flex-basis: 335px;
+    gap: 40px;
   }
 
   .steps-section__title {
-    font-family: Tajawal, Cairo, system-ui, -apple-system, sans-serif;
+    font-family: 'Cairo', var(--font-cairo, sans-serif);
     font-size: 40px;
     line-height: 60px;
     color: #FBE9ED;
@@ -3312,14 +3483,10 @@ const serviceHexagonsBottom = [
   }
 
   .step-card {
-    min-height: 317px;
-    background: rgba(28, 28, 28, 0.15);
-    border: 0;
-    border-radius: 12px;
-    box-shadow: none;
-    padding: 24px 15px;
-    align-items: flex-start;
-    text-align: right;
+    width: 188px;
+    min-width: 188px;
+    height: 317px;
+    min-height: 0;
   }
 
   .steps-section__cards>.step-card:nth-child(2) {
@@ -3341,14 +3508,30 @@ const serviceHexagonsBottom = [
   .step-card__title {
     color: #FFFFFF;
     font-size: 18px;
-    line-height: 27px;
-    text-align: right;
+    line-height: 24px;
+    text-align: center;
   }
 
   .step-card__desc {
+    width: 158px;
+    height: 105px;
     color: #B9BFD0;
     font-size: 14px;
-    text-align: right;
+    line-height: 21px;
+    text-align: center;
+  }
+
+  /* Figma fixes the two multi-line headings to narrower text frames. */
+  .step-card--1 .step-card__title {
+    width: 98px;
+    height: 54px;
+    line-height: 27px;
+  }
+
+  .step-card--2 .step-card__title {
+    width: 118px;
+    height: 49px;
+    line-height: 24px;
   }
 
   .home-about-teaser {
