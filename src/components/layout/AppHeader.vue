@@ -10,9 +10,9 @@ const mobileMenuOpen = ref(false);
 
 const navLinks = [
   { name: 'الرئيسية', path: '/' },
-  { name: 'من نحن', path: '/about' },
-  { name: 'آلية العمل', path: '/process' },
   { name: 'خدماتنا', path: '/services' },
+  { name: 'آلية العمل', path: '/process' },
+  { name: 'من نحن', path: '/about' },
   { name: 'تواصل معنا', path: '/contact' },
 ];
 
@@ -91,7 +91,7 @@ onUnmounted(() => {
         <RouterLink to="/" class="app-header__logo" @click="closeMobileMenu">
           <img
             :src="`${baseUrl}assets/logo.png`"
-            alt="مؤسسة سهم القمة لتطوير وإدارة الأعمال"
+            alt="مؤسسة سهم القمة لأنظمة الأمن والسلامة"
             class="app-header__logo-img"
           />
         </RouterLink>
@@ -202,8 +202,8 @@ onUnmounted(() => {
           </div>
 
           <div class="app-header__mobile-footer">
-            <div class="app-header__mobile-tagline">مؤسسة سهم القمة لتطوير وإدارة الأعمال</div>
-            <div class="app-header__mobile-sub">حلول استشارية واستثمارية متكاملة</div>
+            <div class="app-header__mobile-tagline">مؤسسة سهم القمة لأنظمة الأمن والسلامة</div>
+            <div class="app-header__mobile-sub">حلول هندسية متكاملة لأنظمة الأمن والسلامة والـ MEP</div>
           </div>
         </div>
       </div>

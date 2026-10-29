@@ -71,7 +71,7 @@ const featuredProjects = [
     id: 2,
     title: 'كليات عناية الطبية',
     client: 'عناية الطبية · مدينة الرياض',
-    desc: 'تنفيذ البنية التحتية المتطورة وأنظمة إطفاء وإنذار الحريق لثلاثة مبانٍ جامعية طبية متخصصة ومختبرات مركزية.',
+    desc: 'تنفيذ البنية التحتية المتطورة وأنظمة إطفاء وأنظمة الإنارة لثلاثة مبانٍ جامعية طبية متخصصة ومختبرات مركزية.',
     country: 'السعودية',
     countryCode: 'saudi',
     image: '/assets/projects/project-enaya-colleges.png',
@@ -153,9 +153,9 @@ const statsData = [
   { value: '25,000+', label: 'غرفة فندقية' },
   { value: '6,000+', label: 'فيلا وقصر' },
   { value: '4,000+', label: 'شقة ووحدة سكنية' },
-  { value: '220+', label: 'شقة ووحدة سكنية' },
+  { value: '220+', label: 'مشروع تجاري وإداري' },
   { value: '90%', label: 'نسبة ولاء وعودة العملاء' },
-  { value: '20+', label: 'محطة غلايات كبري' },
+  { value: '20+', label: 'محطة غلايات كبرى' },
   { value: '200+', label: 'محطة وغرفة مضخات' },
   { value: '1,200+', label: 'مخطط هندسي معتمد' },
 ];
@@ -165,22 +165,22 @@ const whyUsItems = [
   {
     number: '01',
     title: 'خبرة عريقة متوارثة منذ 1989',
-    desc: 'أكثر من ثلاثة عقود من العمل المستمر في كبرى مشاريع البنية التحتية والسكك والصحة في الخليج.',
+    desc: 'أكثر من ثلاثة عقود من العمل المستمر في كبرى مشاريع البنية التحتية والفندقة والصحة في الخليج ومصر، بسمعة راسخة قوامها الثقة والجودة.',
   },
   {
     number: '02',
-    title: 'كادر هندسي معتمد ومؤهل',
-    desc: 'فريق من خيرة الكفاءات الهندسية والاستشارية المعتمدة لضمان جودة التصاميم والتنفيذ.',
+    title: 'منظومة هندسية شاملة تحت سقف واحد',
+    desc: 'تتكامل أعمال الميكانيكا، الكهرباء، السباكة، الحريق، والتحكم الذكي وتصميمات BIM عبر فريق عمل موحد لتجنب تضارب المقاولين.',
   },
   {
     number: '03',
-    title: 'تقنيات وتنسيق متطور بنظام BIM',
+    title: 'مسؤولية تنفيذية وتسليم مفتاح',
     desc: 'فريق عمل BIM لتكامل أعمال الميكانيكا، الكهرباء، السباكة ومكافحة الحريق لمنع أي تعارض ميداني.',
   },
   {
     number: '04',
-    title: 'ضمانات وجودة تسليم معتمدة',
-    desc: 'التزام صارم بالجداول الزمنية والتسليم بمخططات As-Built وضمانات ما بعد التشغيل.',
+    title: 'علاقات استراتيجية متجددة',
+    desc: ' 9 من كل 10 عملاء يختارون سهم القمة لمشاريعهم اللاحقة، نظير التزامنا الصارم بالمواصفات وخدمات ما بعد البيع والدعم المستمر.',
   },
 ];
 
@@ -221,22 +221,31 @@ const contactCards = [
   {
     icon: 'building',
     title: 'زورونا',
-    subtitle: 'يسعدنا استقبالكم في مقرنا بالرياض',
-    detail: 'المملكة العربية السعودية، الرياض 11415، التخصصي، ص.ب 3078',
+    subtitle: 'يسعدنا استقبالكم في مكتبنا خلال ساعات العمل',
+    details: [
+      'المملكة العربية السعودية ,الرياض, 7455 الحسين بن علي 3272',
+      'مصر,القاهرة, نزهة الجديدة, شيراتون, عبد الحميد بدوي',
+    ],
   },
   {
     icon: 'phone',
     title: 'اتصلوا بنا',
-    subtitle: 'فريقنا متاح للرد على استفساراتكم',
-    detail: '+966 56 890 9193',
-    link: 'tel:+966568909193',
+    subtitle: 'فريقنا متاح من الأحد إلى الخميس خلال ساعات العمل',
+    details: [
+      '+966 59 591 0235',
+      '+966 56 890 9193',
+      '+20 111 977 8112',
+      '+20 100 950 7330',
+    ],
   },
   {
     icon: 'mail',
     title: 'راسلونا',
-    subtitle: 'أرسلوا لنا وسنرد خلال 24 ساعة',
-    detail: 'mahmoud@k-fawziat.net',
-    link: 'mailto:mahmoud@k-fawziat.net',
+    subtitle: 'أرسلوا لنا وسنعاود الرد خلال يوم عمل واحد',
+    details: [
+      'mahmoud@etc-foustat.net',
+      'ahmed@etc-foustat.net',
+    ],
   },
 ];
 
@@ -300,8 +309,8 @@ const serviceHexagonsBottom = [
       <div class="container hero-section__container">
         <div class="hero-section__content">
           <h1 class="hero-section__title">
-            <span class="hero-title-block">حيث تلتقي</span>
-            <span class="hero-title-block"><span class="highlight-red">الأمان</span> بالإتقان الهندسي</span>
+            <span class="hero-title-block">حيث تلتقي <span class="highlight-red">الأمان</span></span>
+            <span class="hero-title-block">بالإتقان الهندسي</span>
           </h1>
           <p class="hero-section__subtitle">
             استشارات وتصميم وتنفيذ لأنظمة الميكانيكا والكهرباء والسباكة ومكافحة الحريق والأمن، بخبرة هندسية تمتد منذ عام
@@ -364,10 +373,9 @@ const serviceHexagonsBottom = [
                 </svg>
 
                 <!-- Electrical / Bolt Icon -->
-                <svg v-else width="36" height="44" viewBox="0 0 24 24" fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path d="M13 2L4.5 13.5H11.5L10.5 22L19.5 10.5H12.5L13 2Z" stroke="#D6214E"
-                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                <svg v-else width="36" height="44" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M13 2L4.5 13.5H11.5L10.5 22L19.5 10.5H12.5L13 2Z" stroke="#D6214E" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </div>
               <p class="hero-features__text">{{ item.title }}</p>
@@ -446,43 +454,36 @@ const serviceHexagonsBottom = [
           </div>
 
           <p class="steps-section__desc" data-name="Paragraph">
-            حلول استشارية واستثمارية متكاملة في قلب التحول الاقتصادي للمملكة.
-          </p>
+            رحلة هندسية دقيقة ننفذها باحترافية، بدءاً من دراسة المخططات حتى الفحص والتشغيل التجريبي لتسليم
+            منظومة متكاملة تضمن راحة بالك. </p>
 
-          <AppButton
-            to="/contact"
-            variant="primary"
-            size="lg"
-            class="steps-btn"
-            data-name="Button"
-          >
+          <AppButton to="/contact" variant="primary" size="lg" class="steps-btn" data-name="Button">
             احجز الآن
           </AppButton>
         </div>
 
         <!-- Frame 110: 4 Stepping Cards (Left side in RTL) -->
         <div class="steps-section__cards" data-name="Frame 110">
-          <div
-            v-for="(step, idx) in steps"
-            :key="idx"
-            class="step-card"
-            :class="`step-card--${idx + 1}`"
-            :data-name="`Frame ${85 + idx}`"
-          >
+          <div v-for="(step, idx) in steps" :key="idx" class="step-card" :class="`step-card--${idx + 1}`"
+            :data-name="`Frame ${85 + idx}`">
             <div class="step-card__icon">
               <!-- Card 1: التخطيط والدراسة (search) -->
-              <svg v-if="idx === 0" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#D6214E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <svg v-if="idx === 0" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#D6214E"
+                stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="11" cy="11" r="7" />
                 <line x1="21" y1="21" x2="16.65" y2="16.65" />
               </svg>
               <!-- Card 2: التصميم والنمذجة (cube) -->
-              <svg v-else-if="idx === 1" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#D6214E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+              <svg v-else-if="idx === 1" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#D6214E"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
                 <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
                 <line x1="12" y1="22.08" x2="12" y2="12" />
               </svg>
               <!-- Card 3: التوريد والتركيب (hvac) -->
-              <svg v-else-if="idx === 2" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#D6214E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg v-else-if="idx === 2" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#D6214E"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="3" y="3" width="18" height="18" rx="3" />
                 <circle cx="12" cy="12" r="4" />
                 <path d="M12 4v4" />
@@ -491,7 +492,8 @@ const serviceHexagonsBottom = [
                 <path d="M16 12h4" />
               </svg>
               <!-- Card 4: الاختبار والتشغيل (check circle) -->
-              <svg v-else width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#D6214E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <svg v-else width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#D6214E" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="9" />
                 <path d="m9 12 2 2 4-4" />
               </svg>
@@ -518,20 +520,24 @@ const serviceHexagonsBottom = [
             </div>
 
             <p class="home-about-card__desc" data-name="Paragraph">
-              مؤسسة سهم القمة لأنظمة الأمن والسلامة هي الذراع الاستشاري والتنفيذي لمجموعة الفسطاط، المزوّد الهندسي الثابت منذ 1989 لخدمات الميكانيكا والكهرباء والسباكة (MEP). ننطلق من الرياض بفريق عريق يغطي المشاريع السكنية والفندقية والطبية والتعليمية.
+              مؤسسة سهم القمة لأنظمة الأمن والسلامة هي الذراع الاستشاري والتنفيذي لمجموعة الفسطاط، المزوّد الهندسي
+              الثابت منذ 1989 لخدمات الميكانيكا والكهرباء والسباكة (MEP). ننطلق من الرياض بفريق عريق يغطي المشاريع
+              السكنية والفندقية والطبية والتعليمية.
             </p>
 
             <div class="home-about-subsections" data-name="Container">
               <div class="home-about-subsection" data-name="Container">
                 <h3 class="home-about-sub-title" data-name="Heading 3">رؤيتنا الهندسية</h3>
                 <p class="home-about-sub-desc">
-                  أن نكون منارة التميز الأولى في حلول السلامة والاستشارات الهندسية المتكاملة، مع تحقيق أعلى معدلات الكفاءة الإنشائية ومطابقة المعايير الدولية.
+                  أن نكون منارة التميز الأولى في حلول السلامة والاستشارات الهندسية المتكاملة، مع تحقيق أعلى معدلات
+                  الكفاءة الإنشائية ومطابقة المعايير الدولية.
                 </p>
               </div>
               <div class="home-about-subsection" data-name="Container">
                 <h3 class="home-about-sub-title" data-name="Heading 3">رسالتنا</h3>
                 <p class="home-about-sub-desc">
-                  تمكين شركائنا بحلول هندسية موثوقة تحد من المخاطر وتقلل التكاليف التشغيلية، مع بناء علاقات شراكة طويلة الأجل أساسها المصداقية والجودة.
+                  تمكين شركائنا بحلول هندسية موثوقة تحد من المخاطر وتقلل التكاليف التشغيلية، مع بناء علاقات شراكة طويلة
+                  الأجل أساسها المصداقية والجودة.
                 </p>
               </div>
             </div>
@@ -544,13 +550,8 @@ const serviceHexagonsBottom = [
 
             <!-- Front Image Frame (Frame 113) -->
             <div class="home-about-card__image-container" data-name="Frame 113">
-              <img
-                src="/assets/villa.jpg"
-                alt="مقر ومشاريع مؤسسة سهم القمة"
-                class="home-about-card__img"
-                loading="lazy"
-                data-name="villa 1"
-              />
+              <img src="/assets/villa.jpg" alt="مقر ومشاريع مؤسسة سهم القمة" class="home-about-card__img" loading="lazy"
+                data-name="villa 1" />
             </div>
           </div>
         </div>
@@ -561,7 +562,7 @@ const serviceHexagonsBottom = [
     <section class="home-stats-section">
       <div class="container">
         <div class="home-stats-header">
-          <h2 class="home-stats-title">أرقام تتحدث عن خبرتنا</h2>
+          <h2 class="home-stats-title">أرقام تتحدث عن <span class="highlight-red">خبرتنا</span></h2>
           <p class="home-stats-subtitle">
             أكثر من ثلاثة عقود من التنفيذ في المباني السكنية والفندقية والصحية والتعليمية.
           </p>
@@ -579,10 +580,10 @@ const serviceHexagonsBottom = [
     <section class="differentiators-section">
       <div class="container differentiators-section__container">
         <div class="differentiators-section__header">
-          <h2 class="differentiators-section__main-title">ما يميّزنا عن غيرنا</h2>
+          <h2 class="differentiators-section__main-title"><span class="highlight-red">ما يميّزنا</span> في قطاع
+            الانشاءات والسلامة</h2>
           <p class="differentiators-section__title">
-            لأن نجاحك يبدأ بشريك <span class="highlight-navy">يفهمك</span>، ويخطط معك، <span
-              class="highlight-navy">وينفذ</span> بإتقان
+            شريك هندسي يفهم تطلعاتك، يخطط باحترافية، وينفذ بدقة متناهية تحمي استثماراتك.
           </p>
         </div>
 
@@ -614,44 +615,30 @@ const serviceHexagonsBottom = [
       <div class="container">
         <div class="home-projects-header">
           <h2 class="home-projects-title">
-            <span class="title-navy">نماذج من </span><span class="highlight-crimson">مشاريعنا</span><span class="title-navy"> الرائدة</span>
+            <span class="title-navy">نماذج من </span><span class="highlight-crimson">مشاريعنا</span><span
+              class="title-navy"> الرائدة</span>
           </h2>
           <div class="home-projects-title-bar" aria-hidden="true"></div>
           <p class="home-projects-subtitle">
-            محفظة أعمال متنوعة تضم كبرى المدارس والمستشفيات والمنتجعات السياحية في السعودية ومصر<br class="desktop-break" />والإمارات.
+            محفظة أعمال متنوعة تضم كبرى المدارس والمستشفيات والمنتجعات السياحية في السعودية ومصر<br
+              class="desktop-break" />والإمارات.
           </p>
         </div>
 
         <!-- Country Filters -->
         <div class="home-projects-filters" role="tablist" aria-label="تصفية المشاريع حسب الدولة">
-          <button
-            v-for="filter in projectCountryFilters"
-            :key="filter.id"
-            type="button"
-            role="tab"
-            :aria-selected="activeProjectCountry === filter.id"
-            class="home-projects-filter-btn"
-            :class="{ 'is-active': activeProjectCountry === filter.id }"
-            @click="activeProjectCountry = filter.id"
-          >
+          <button v-for="filter in projectCountryFilters" :key="filter.id" type="button" role="tab"
+            :aria-selected="activeProjectCountry === filter.id" class="home-projects-filter-btn"
+            :class="{ 'is-active': activeProjectCountry === filter.id }" @click="activeProjectCountry = filter.id">
             {{ filter.label }}
           </button>
         </div>
 
         <!-- Projects Grid -->
         <div v-if="filteredProjects.length > 0" class="home-projects-grid">
-          <article
-            v-for="project in filteredProjects"
-            :key="project.id"
-            class="home-project-card"
-          >
+          <article v-for="project in filteredProjects" :key="project.id" class="home-project-card">
             <div class="home-project-card__img-wrap">
-              <img
-                :src="project.image"
-                :alt="project.title"
-                class="home-project-card__img"
-                loading="lazy"
-              />
+              <img :src="project.image" :alt="project.title" class="home-project-card__img" loading="lazy" />
               <span class="home-project-card__badge">{{ project.country }}</span>
             </div>
             <div class="home-project-card__body">
@@ -681,7 +668,7 @@ const serviceHexagonsBottom = [
     <section class="partners-section" data-name="Frame 160">
       <div class="container">
         <div class="partners-header">
-          <h2 class="partners-title">عملاء يثقون بنا</h2>
+          <h2 class="partners-title">عملاء <span class="highlight-red">يثقون بنا</span></h2>
           <p class="partners-subtitle">
             نعتز بالتعاون مع أسماء رائدة في القطاعات العقارية والتجارية والصناعية والخدمية
           </p>
@@ -692,35 +679,14 @@ const serviceHexagonsBottom = [
       <div class="partners-strip partners-slider-wrapper" dir="ltr" aria-label="شركاء النجاح">
         <div class="partners-track">
           <!-- First set of logos -->
-          <div
-            v-for="(partner, pIdx) in partnerLogos"
-            :key="'p1-' + pIdx"
-            class="partner-card"
-          >
-            <img
-              :src="partner.src"
-              :alt="partner.name"
-              class="partner-card__img"
-              loading="lazy"
-              width="200"
-              height="100"
-            />
+          <div v-for="(partner, pIdx) in partnerLogos" :key="'p1-' + pIdx" class="partner-card">
+            <img :src="partner.src" :alt="partner.name" class="partner-card__img" loading="lazy" width="200"
+              height="100" />
           </div>
           <!-- Duplicate set for seamless infinite loop -->
-          <div
-            v-for="(partner, pIdx) in partnerLogos"
-            :key="'p2-' + pIdx"
-            class="partner-card"
-            aria-hidden="true"
-          >
-            <img
-              :src="partner.src"
-              :alt="partner.name"
-              class="partner-card__img"
-              loading="lazy"
-              width="200"
-              height="100"
-            />
+          <div v-for="(partner, pIdx) in partnerLogos" :key="'p2-' + pIdx" class="partner-card" aria-hidden="true">
+            <img :src="partner.src" :alt="partner.name" class="partner-card__img" loading="lazy" width="200"
+              height="100" />
           </div>
         </div>
       </div>
@@ -731,9 +697,9 @@ const serviceHexagonsBottom = [
       <!-- Frame 142: Hero Banner -->
       <div class="home-contact-section__hero">
         <div class="container home-contact-section__hero-content">
-          <h2 class="home-contact-section__title">تواصل معنا</h2>
+          <h2 class="home-contact-section__title"><span class="highlight-red">تواصل</span> معنا</h2>
           <p class="home-contact-section__subtitle">
-            أخبرنا بفكرتك وسنعود إليك بخطة واضحة تناسب أهدافك، خلال 24 ساعة
+            أخبرنا بتفاصيل مشروعك وسنعود إليك بخطة واضحة تناسب أهدافك، خلال 24 ساعة
           </p>
           <AppButton to="/contact" variant="primary" class="home-contact-hero-btn">
             احجز الآن
@@ -748,14 +714,19 @@ const serviceHexagonsBottom = [
             <!-- Column 1: زورونا (Right in RTL) -->
             <div class="contact-box">
               <div class="contact-box__icon">
-                <svg width="58" height="58" viewBox="0 0 24 24" fill="none" stroke="#D6214E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V9.5z"></path>
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="#D6214E" stroke-width="2.3"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 15.5L16.4 4.2a2.3 2.3 0 0 1 3.2 0L32 15.5V31a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V15.5z" />
+                  <path d="M13.5 33V23a4.5 4.5 0 0 1 9 0v10" />
                 </svg>
               </div>
               <h3 class="contact-box__title">زورونا</h3>
-              <p class="contact-box__desc">يسعدنا استقبالكم في مكتبنا خلال ساعات العمل</p>
+              <p class="contact-box__desc">يسعدنا استقبالكم في مكتبنا خلال ساعات<br />العمل</p>
               <div class="contact-box__detail-wrap">
-                <span class="contact-box__detail">شارع الملك فهد، الرياض، المملكة العربية السعودية</span>
+                <div class="contact-box__addresses">
+                  <p class="contact-box__detail">المملكة العربية السعودية ,الرياض, 7455 الحسين بن<br />علي 3272</p>
+                  <p class="contact-box__detail">مصر,القاهرة, نزهة الجديدة, شيراتون, عبد الحميد بدوي</p>
+                </div>
                 <div class="contact-box__line" aria-hidden="true"></div>
               </div>
             </div>
@@ -763,16 +734,30 @@ const serviceHexagonsBottom = [
             <!-- Column 2: اتصلوا بنا (Middle) -->
             <div class="contact-box">
               <div class="contact-box__icon">
-                <svg width="58" height="58" viewBox="0 0 24 24" fill="none" stroke="#D6214E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#D6214E" stroke-width="2.3"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                  </path>
                 </svg>
               </div>
               <h3 class="contact-box__title">اتصلوا بنا</h3>
-              <p class="contact-box__desc">فريقنا متاح من الأحد إلى الخميس خلال ساعات العمل</p>
+              <p class="contact-box__desc">فريقنا متاح من الأحد إلى الخميس خلال<br />ساعات العمل</p>
               <div class="contact-box__detail-wrap">
-                <a href="tel:+966568909193" class="contact-box__detail contact-box__link" dir="ltr">
-                  +966 56 890 9193
-                </a>
+                <div class="contact-box__phones">
+                  <div class="contact-box__phones-row">
+                    <a href="tel:+966595910235" class="contact-box__detail contact-box__link" dir="ltr">+966 59 591
+                      0235</a>
+                    <a href="tel:+966568909193" class="contact-box__detail contact-box__link" dir="ltr">+966 56 890
+                      9193</a>
+                  </div>
+                  <div class="contact-box__phones-row">
+                    <a href="tel:+201119778112" class="contact-box__detail contact-box__link" dir="ltr">+20 111 977
+                      8112</a>
+                    <a href="tel:+201009507330" class="contact-box__detail contact-box__link" dir="ltr">+20 100 950
+                      7330</a>
+                  </div>
+                </div>
                 <div class="contact-box__line" aria-hidden="true"></div>
               </div>
             </div>
@@ -780,7 +765,8 @@ const serviceHexagonsBottom = [
             <!-- Column 3: راسلونا (Left in RTL) -->
             <div class="contact-box">
               <div class="contact-box__icon">
-                <svg width="58" height="58" viewBox="0 0 24 24" fill="none" stroke="#D6214E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#D6214E" stroke-width="2.3"
+                  stroke-linecap="round" stroke-linejoin="round">
                   <rect x="2" y="4" width="20" height="16" rx="2"></rect>
                   <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                 </svg>
@@ -788,9 +774,14 @@ const serviceHexagonsBottom = [
               <h3 class="contact-box__title">راسلونا</h3>
               <p class="contact-box__desc">أرسلوا لنا وسنعاود الرد خلال يوم عمل واحد</p>
               <div class="contact-box__detail-wrap">
-                <a href="mailto:mahmoud@k-fawziat.net" class="contact-box__detail contact-box__link" dir="ltr">
-                  mahmoud@k-fawziat.net
-                </a>
+                <div class="contact-box__emails">
+                  <a href="mailto:mahmoud@etc-foustat.net" class="contact-box__detail contact-box__link" dir="ltr">
+                    mahmoud@etc-foustat.net
+                  </a>
+                  <a href="mailto:ahmed@etc-foustat.net" class="contact-box__detail contact-box__link" dir="ltr">
+                    ahmed@etc-foustat.net
+                  </a>
+                </div>
                 <div class="contact-box__line" aria-hidden="true"></div>
               </div>
             </div>
@@ -1241,7 +1232,7 @@ const serviceHexagonsBottom = [
   display: flex;
   align-items: center;
   gap: 64px;
-    flex-direction: row-reverse;
+  flex-direction: row-reverse;
 
   padding: 32px 0;
   border: 0;
@@ -2859,20 +2850,16 @@ const serviceHexagonsBottom = [
   position: relative;
   overflow: hidden;
   padding: 12px 0;
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 6%,
-    black 94%,
-    transparent 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 6%,
-    black 94%,
-    transparent 100%
-  );
+  mask-image: linear-gradient(to right,
+      transparent 0%,
+      black 6%,
+      black 94%,
+      transparent 100%);
+  -webkit-mask-image: linear-gradient(to right,
+      transparent 0%,
+      black 6%,
+      black 94%,
+      transparent 100%);
 }
 
 .partners-track {
@@ -2893,6 +2880,7 @@ const serviceHexagonsBottom = [
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -3051,7 +3039,7 @@ const serviceHexagonsBottom = [
 /* Frame 145: 3 Contact Columns directly below banner */
 .home-contact-section__info-section {
   background-color: #FFFFFF;
-  padding: 60px 0 70px;
+  padding: 50px 0 60px;
 }
 
 .home-contact-section__cards {
@@ -3059,7 +3047,7 @@ const serviceHexagonsBottom = [
   flex-direction: row;
   justify-content: center;
   align-items: stretch;
-  max-width: 1254px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -3069,37 +3057,45 @@ const serviceHexagonsBottom = [
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: 18px;
-  padding: 24px 32px;
-  min-height: 302px;
+  gap: 14px;
+  padding: 16px 20px;
+  min-height: 260px;
   flex: 1;
   box-sizing: border-box;
+  position: relative;
 }
 
 /* Vertical Dividers between columns in RTL */
 @media (min-width: 768px) {
-  .contact-box:not(:last-child) {
-    border-left: 1px solid rgba(0, 0, 0, 0.2);
+  .contact-box:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 15px;
+    bottom: 15px;
+    width: 1px;
+    background-color: #ECECEC;
   }
 }
 
 .contact-box__icon {
-  width: 58px;
-  height: 58px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 2px;
 }
 
 .contact-box__icon svg {
-  width: 58px;
-  height: 58px;
+  width: 36px;
+  height: 36px;
   stroke: #D6214E;
 }
 
 .contact-box__title {
-  font-family: var(--font-family, 'Tajawal', sans-serif);
-  font-size: 27px;
+  font-family: var(--font-family, "Cairo", "Tajawal", sans-serif);
+  font-size: 22px;
   font-weight: 700;
   color: #242A32;
   line-height: 1.25;
@@ -3107,35 +3103,66 @@ const serviceHexagonsBottom = [
 }
 
 .contact-box__desc {
-  font-family: var(--font-family, 'Tajawal', sans-serif);
-  font-size: 16px;
-  font-weight: 500;
+  font-family: var(--font-family, "Cairo", "Tajawal", sans-serif);
+  font-size: 13.5px;
+  font-weight: 400;
   color: #616161;
-  line-height: 1.7;
+  line-height: 1.55;
   margin: 0;
-  max-width: 300px;
+  max-width: 270px;
 }
 
 .contact-box__detail-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  margin-top: 4px;
+  gap: 12px;
+  margin-top: 2px;
+}
+
+.contact-box__addresses {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.contact-box__phones {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.contact-box__phones-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.contact-box__emails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
 }
 
 .contact-box__detail {
-  font-family: var(--font-family, 'Tajawal', sans-serif);
-  font-size: 17px;
+  font-family: var(--font-family, "Cairo", "Tajawal", sans-serif);
+  font-size: 13.5px;
   font-weight: 500;
   color: #D6214E;
-  line-height: 1.45;
+  line-height: 1.5;
   text-align: center;
+  margin: 0;
 }
 
 .contact-box__link {
-  text-decoration: underline;
+  text-decoration: none;
   transition: opacity var(--transition-fast);
+  display: inline-block;
 }
 
 .contact-box__link:hover {
@@ -3143,11 +3170,11 @@ const serviceHexagonsBottom = [
 }
 
 .contact-box__line {
-  width: 38px;
+  width: 26px;
   height: 2px;
   background-color: #D6214E;
   border-radius: 9999px;
-  margin-top: 6px;
+  margin-top: 2px;
 }
 
 /* Mobile Responsive */
@@ -3173,20 +3200,24 @@ const serviceHexagonsBottom = [
   }
 
   .home-contact-section__info-section {
-    padding: 40px 16px;
+    padding: 36px 16px;
   }
 
   .home-contact-section__cards {
     flex-direction: column;
-    gap: 36px;
+    gap: 32px;
   }
 
   .contact-box {
     width: 100%;
     max-width: 100%;
     min-height: auto;
-    padding: 0 0 36px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0 0 32px;
+    border-bottom: 1px solid #ECECEC;
+  }
+
+  .contact-box:not(:last-child)::after {
+    display: none;
   }
 
   .contact-box:last-child {

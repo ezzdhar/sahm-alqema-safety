@@ -17,18 +17,19 @@ const services = [
     lineColor: '#E391A6',
     dotColor: '#FF315F',
     quote: 'تصميم وتركيب يضيء مشروعك بدقة',
-    desc: 'أنظمة كهربائية متكاملة تشمل التمديدات والإنارة ولوحات التوزيع وأنظمة التيار الخفيف والأمان وفق أعلى المعايير الهندسية.',
-    tools: ['CCTV', 'Fire Alarm', 'Generators', 'Grounding', 'Lighting'],
+    desc: 'أعمال تقوم على الدقة والتصميم الاحترافي والتوريد والتركيب والصيانة، بفرق خبرة تبني أنظمة تمنح المنشأة كفاءة في التشغيل.',
+    tools: ['Lighting', 'Grounding', 'Generators', 'Fire Alarm', 'CCTV'],
     btnText: 'اطلب خدمة كهربائية',
     btnVariant: 'primary',
-    deliverablesCount: '05',
+    deliverablesCount: '06',
     minHeight: '790px',
     deliverables: [
-      { id: '01', text: 'أنظمة الإنارة الداخلية والخارجية والذكية' },
-      { id: '02', text: 'لوحات التوزيع الرئيسية والفرعية (MDB & DB)' },
-      { id: '03', text: 'شبكات التيار الخفيف والمراقبة والإنذار (CCTV & Fire Alarm)' },
-      { id: '04', text: 'أنظمة المولدات والتأريض والحماية من الصواعق' },
-      { id: '05', text: 'فحص واختبار التمديدات وضمان السلامة الكهربائية' },
+      { id: '01', text: 'مرافق البنية التحتية' },
+      { id: '02', text: 'أنظمة الإنارة' },
+      { id: '03', text: 'التأريض والحماية من الصواعق' },
+      { id: '04', text: 'المولدات وأنظمة التوزيع' },
+      { id: '05', text: 'أنظمة الحريق والأمن' },
+      { id: '06', text: 'التحكم في المحركات والأنظمة ' },
     ],
   },
   {
@@ -42,18 +43,17 @@ const services = [
     lineColor: '#B8C3D2',
     dotColor: '#82E2D0',
     quote: 'قبل أن تبدأ التنفيذ، ابدأ بالخطة الصحيحة',
-    desc: 'استشارات فنية وهندسية متخصصة لدراسة المخططات وتدقيق الكميات ومراجعة المواصفات لضمان الجدوى والجودة وتقليل الهدر.',
-    tools: ['Commissioning', 'Construction', 'Design', 'Planning'],
+    desc: 'حلول استشارية فعّالة من التخطيط المبدئي إلى التصميم والتنفيذ والتشغيل لمختلف أنواع المشاريع.',
+    tools: ['Planning', 'Design', 'Construction', 'Commissioning'],
     btnText: 'اطلب استشارة هندسية',
     btnVariant: 'dark',
-    deliverablesCount: '05',
+    deliverablesCount: '04',
     minHeight: '790px',
     deliverables: [
-      { id: '01', text: 'دراسة وتدقيق المخططات الهندسية ومراجعة المواصفات' },
-      { id: '02', text: 'مطابقة التصاميم مع كود البناء السعودي ومعايير السلامة' },
-      { id: '03', text: 'إعداد جداول الكميات (BOQ) ودراسات التكلفة التقديرية' },
-      { id: '04', text: 'إدارة وتنسيق المشاريع الهندسية والإشراف الفني الميداني' },
-      { id: '05', text: 'تقييم كفاءة الطاقة والحلول الهندسية البديلة' },
+      { id: '01', text: 'تخطيط مبدئي للمشروع' },
+      { id: '02', text: 'التصميم الهندسي' },
+      { id: '03', text: 'الإشراف على التنفيذ' },
+      { id: '04', text: 'الاختبار والتشغيل' },
     ],
   },
   {
@@ -67,18 +67,18 @@ const services = [
     lineColor: '#E391A6',
     dotColor: '#EAF44A',
     quote: 'أنظمة تتنفس كفاءة داخل أي منشأة',
-    desc: 'حلول ميكانيكية متطورة تشمل أنظمة التكييف والتهوية ومكافحة الحريق والسباكة وتجهيز غرف المضخات والخزانات.',
-    tools: ['Boiler Rooms', 'Pump Rooms', 'Plumbing', 'Fire Fighting', 'HVAC'],
+    desc: 'أعمال تقوم على الدقة والتصميم الاحترافي والتوريد والتركيب والصيانة، بفرق خبرة تبني أنظمة تمنح المنشأة كفاءة في التشغيل.',
+    tools: ['HVAC', 'Fire Fighting', 'Plumbing', 'Pump Rooms', 'Boiler Rooms'],
     btnText: 'اطلب خدمة ميكانيكية',
     btnVariant: 'primary',
     deliverablesCount: '05',
     minHeight: '847px',
     deliverables: [
-      { id: '01', text: 'أنظمة التكييف المركزي والتهوية الميكانيكية (HVAC)' },
-      { id: '02', text: 'شبكات مكافحة الحريق والرش الآلي وأنظمة الإنقاذ' },
-      { id: '03', text: 'شبكات التغذية بالمياه والصرف الصحي ومضخات الرفع' },
-      { id: '04', text: 'تجهيز غرف المضخات المركزية وغرف الغلايات' },
-      { id: '05', text: 'عزل الصوت والاهتزاز واختبارات ضغط الشبكات' },
+      { id: '01', text: 'أنظمة التكييف والتهوية HVAC' },
+      { id: '02', text: 'أنظمة مكافحة الحريق' },
+      { id: '03', text: 'أعمال السباكة' },
+      { id: '04', text: 'البنية التحتية: مياه وصرف وإطفاء وري' },
+      { id: '05', text: 'تركيب المعدات وضبطها' },
     ],
   },
   {
@@ -92,43 +92,43 @@ const services = [
     lineColor: '#B8C3D2',
     dotColor: '#FFFFFF',
     quote: 'جهة واحدة من التخطيط حتى التشغيل',
-    desc: 'تنفيذ هندسي متكامل لكافة أعمال الإلكتروميكانيك MEP من المخططات الأولية حتى التشغيل والتسليم النهائي تحت إدارة موحدة.',
-    tools: ['Commissioning', 'Design & Build', 'MEP'],
+    desc: 'حل MEP متكامل يبدأ من التخطيط المبدئي ويمر بالتصميم والتركيب حتى الاختبار والتشغيل مع صيانة تحافظ على الكفاءة.',
+    tools: ['MEP', 'Design & Build', 'Commissioning'],
     btnText: 'اطلب تصميماً وتنفيذاً',
     btnVariant: 'dark',
-    deliverablesCount: '05',
+    deliverablesCount: '04',
     minHeight: '790px',
     deliverables: [
-      { id: '01', text: 'تصميم وتنفيذ متكامل لكافة تخصصات MEP' },
-      { id: '02', text: 'تنسيق شامل بين الأنظمة الكهربائية والميكانيكية والمدنية' },
-      { id: '03', text: 'إدارة سلاسل الإمداد وتوريد المواد المعتمدة عالمياً' },
-      { id: '04', text: 'إشراف هندسي صارم على الجودة والجدول الزمني' },
-      { id: '05', text: 'اختبارات التشغيل والتسليم النهائي مع وثائق الضمان' },
+      { id: '01', text: 'تصميم وتنفيذ في عقد واحد' },
+      { id: '02', text: 'تنسيق سلس بين التخصصات' },
+      { id: '03', text: 'توريد وتركيب واختبار وتشغيل' },
+      { id: '04', text: 'تسليم جاهز للاستخدام' },
     ],
   },
   {
     id: 'bim',
     number: '05',
     pillTitle: 'تقنية BIM',
-    title: 'تقنية نمذجة معلومات البناء (BIM)',
+    title: 'تقنية BIM',
     titleColor: '#142F53',
     accentColor: '#D6214E',
     watermarkColor: 'rgba(214, 33, 78, 0.2)',
     lineColor: '#E391A6',
     dotColor: '#FF315F',
     quote: 'نمذجة تكشف المشكلات قبل وصولها للموقع',
-    desc: 'بناء نماذج رقمية ثلاثية الأبعاد تكشف التعارضات بين التخصصات وتوفر مخططات تنفيذية دقيقة تقلل التكلفة وزمن الإنجاز.',
-    tools: ['BIM', 'FDS', 'Revit'],
-    btnText: 'اطلب نمذجة BIM',
+    desc: 'نمذجة معلومات المباني (Building Information Modeling) لضمان كفاءة وتعاون أعلى في تخطيط المباني وتصميمها وتنفيذها.',
+    tools: ['Revit', 'FDS', 'BIM'],
+    btnText: 'اطلب خدمة BIM',
     btnVariant: 'primary',
-    deliverablesCount: '05',
+    deliverablesCount: '06',
     minHeight: '847px',
     deliverables: [
-      { id: '01', text: 'نمذجة أنظمة MEP ثلاثية الأبعاد بدقة LOD عالية' },
-      { id: '02', text: 'كشف وحل التعارضات الهندسية (Clash Detection)' },
-      { id: '03', text: 'استخراج المخططات التنفيذية الدقيقة (Shop Drawings)' },
-      { id: '04', text: 'حصر الكميات الدقيقة وربط الجداول الزمنية 4D/5D' },
-      { id: '05', text: 'إعداد نماذج As-Built الرقمية لإدارة المرافق والتسليم' },
+      { id: '01', text: 'نموذج Revit إنشائي' },
+      { id: '02', text: 'نموذج Revit معماري' },
+      { id: '03', text: 'نموذج Revit لأنظمة MEP' },
+      { id: '04', text: 'محاكاة الحريق (FDS)' },
+      { id: '05', text: 'الكتل والعناصر' },
+      { id: '06', text: 'المعدّلات والمزائج' },
     ],
   },
 ];
@@ -218,11 +218,12 @@ const scrollToService = (id) => {
       <div class="container services-hero__container">
         <div class="services-hero__content">
           <h1 class="services-hero__title">
-            <span class="services-hero__title-line"><span class="highlight-red">خدمات</span> متكاملة</span>
-            <span class="services-hero__title-line">لنجاح أعمالك</span>
+            <span class="services-hero__title-line"><span class="highlight-red">خدمات</span> هندسية متكاملة</span>
+            <span class="services-hero__title-line">لحماية وتأمين مشروعك</span>
           </h1>
           <p class="services-hero__desc">
-            خدماتنا تغطي كل ما تحتاجه شركتك من التحليل حتى الانتشار الرقمي </p>
+            حلول هندسية متخصصة تغطي مشروعك الإنشائي من دراسة المخططات والتصميم حتى التوريد والتركيب والتشغيل المعتمد.
+          </p>
         </div>
       </div>
     </section>
@@ -289,8 +290,7 @@ const scrollToService = (id) => {
               </div>
 
               <div class="deliverables-grid">
-                <div v-for="(deliv, idx) in s.deliverables" :key="deliv.id" class="deliverable-chip"
-                  :class="{ 'deliverable-chip--full': s.deliverables.length === 5 && idx === 4 }"
+                <div v-for="deliv in s.deliverables" :key="deliv.id" class="deliverable-chip"
                   :style="{ borderColor: s.accentColor }">
                   <span class="deliverable-chip__text">{{ deliv.text }}</span>
                   <span class="deliverable-chip__num" :style="{ color: s.accentColor }">
@@ -1013,14 +1013,15 @@ const scrollToService = (id) => {
 .deliverables-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 12px;
+  gap: 16px 14px;
   width: 100%;
+  align-items: start;
 }
 
 @media (min-width: 640px) {
   .deliverables-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px 16px;
+    gap: 16px 18px;
   }
 }
 
@@ -1028,7 +1029,7 @@ const scrollToService = (id) => {
   .deliverables-grid {
     width: 486px;
     grid-template-columns: repeat(2, 230px);
-    gap: 20px 26px;
+    gap: 18px 26px;
   }
 }
 
@@ -1036,15 +1037,17 @@ const scrollToService = (id) => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
-  min-height: 52px;
-  padding: 14px 24px;
-  background-color: #FFF8F2;
+  gap: 12px;
+  min-height: 48px;
+  padding: 11px 20px;
+  background-color: #FFFFFF;
   border: 1px solid;
-  border-radius: 20px;
+  border-radius: 26px;
   direction: rtl;
+  text-align: right;
   transition: all var(--transition-fast);
   width: 100%;
+  box-sizing: border-box;
 }
 
 .deliverable-chip--full {
@@ -1054,22 +1057,24 @@ const scrollToService = (id) => {
 
 .deliverable-chip:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
 }
 
 .deliverable-chip__text {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
-  color: #6D6F73;
+  color: #142F53;
   font-family: var(--font-family);
-  line-height: 14.4px;
+  line-height: 1.4;
+  text-align: right;
+  flex: 1;
 }
 
 .deliverable-chip__num {
-  font-size: 10px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 800;
   font-family: var(--font-inter);
-  line-height: 12.1px;
+  line-height: 1;
   flex-shrink: 0;
 }
 

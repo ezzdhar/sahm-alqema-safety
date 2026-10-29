@@ -31,10 +31,17 @@ if (fs.existsSync(distIndexHtml)) {
 
 if (fs.existsSync(distAssetsDir)) {
   if (fs.existsSync(rootAssetsDir)) {
-    fs.rmSync(rootAssetsDir, { recursive: true, force: true });
+    for (const entry of fs.readdirSync(rootAssetsDir)) {
+      if (/^main-[\w-]+\.(js|css)$/.test(entry)) {
+        try {
+          fs.unlinkSync(path.join(rootAssetsDir, entry));
+        } catch {
+          // Ignore locked files on Windows
+        }
+      }
+    }
   }
-  fs.cpSync(distAssetsDir, rootAssetsDir, { recursive: true });
+  fs.cpSync(distAssetsDir, rootAssetsDir, { recursive: true, force: true });
 }
 
 console.log('✅ Production bundle successfully mirrored to repository root for GitHub Pages direct deployment.');
-

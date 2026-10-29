@@ -3,23 +3,23 @@ const baseUrl = import.meta.env.BASE_URL;
 
 const quickLinks = [
   { name: 'الرئيسية', path: '/' },
-  { name: 'من نحن', path: '/about' },
-  { name: 'آلية العمل', path: '/process' },
   { name: 'خدماتنا', path: '/services' },
+  { name: 'كيف نعمل', path: '/process' },
+  { name: 'من نحن', path: '/about' },
   { name: 'تواصل معنا', path: '/contact' },
 ];
 
 const serviceLinks = [
-  { name: 'تصميم ومراجعة المخططات والتراخيص', path: '/services#design-permits' },
-  { name: 'حلول استشارية واستثمارية MEP', path: '/services#consulting' },
-  { name: 'إدارة وتنسيق مهام MEP', path: '/services#mep-tasks' },
-  { name: 'التسويق بالفيديو والجرافيك ديزاين', path: '/services#video-design' },
-  { name: 'إدارة السوشيال ميديا', path: '/services#social-media' },
+  { name: 'الخدمات الكهربائية', path: '/services' },
+  { name: 'الخدمات الميكانيكية', path: '/services' },
+  { name: 'استشارات هندسية', path: '/services' },
+  { name: 'تقنية BIM', path: '/services' },
+  { name: 'التصميم والتنفيذ', path: '/services' },
 ];
 </script>
 
 <template>
-  <footer class="app-footer" data-name="Desktop - 7">
+  <footer id="app-footer" class="app-footer" data-name="Desktop - 7">
     <div class="container app-footer__container">
       <div class="app-footer__grid" data-name="Frame 90">
         <!-- Brand Column -->
@@ -28,7 +28,9 @@ const serviceLinks = [
             <img :src="`${baseUrl}assets/logo.png`" alt="مؤسسة سهم القمة" class="app-footer__logo-img" />
           </RouterLink>
           <p class="app-footer__desc">
-            حلول استشارية واستثمارية متكاملة في قلب المجال الـ MEP.
+            حلول متكاملة لحلول<br />
+            أعمالك، من الفكرة إلى<br />
+            الانتشار
           </p>
           <div class="app-footer__socials">
             <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="app-footer__social-btn"
@@ -84,7 +86,7 @@ const serviceLinks = [
           <div class="app-footer__contact-info" data-name="Frame 93">
             <p class="app-footer__contact-item">الرياض، المملكة العربية السعودية</p>
             <p class="app-footer__contact-item">
-              <a href="mailto:mahmoud@k-fawziat.net" class="app-footer__link">mahmoud@k-fawziat.net</a>
+              <a href="mailto:mahmoud@etc-foustat.net" class="app-footer__link" dir="ltr">Mahmoud@Etc-Foustat.Net</a>
             </p>
             <p class="app-footer__contact-item app-footer__contact-item--phone">
               <a href="tel:+966568909193" class="app-footer__link" dir="ltr">+966 56 890 9193</a>
@@ -93,12 +95,6 @@ const serviceLinks = [
         </div>
       </div>
 
-      <!-- Copyright matching Figma Desktop - 7 Frame 83 -->
-      <div class="app-footer__bottom" data-name="Frame 83">
-        <p class="app-footer__copyright" data-name="2026 © مؤسسة سهم القمة. جميع الحقوق محفوظة.">
-          © 2026 مؤسسة سهم القمة. جميع الحقوق محفوظة.
-        </p>
-      </div>
     </div>
   </footer>
 </template>
@@ -107,58 +103,31 @@ const serviceLinks = [
 .app-footer {
   background-color: var(--color-navy-dark);
   color: var(--color-text-white);
-  padding: 86px 0 0;
-  border-top: none;
-  border: none;
+  padding: 42px 0 34px;
   width: 100%;
   overflow-x: clip;
 }
 
 .app-footer__container {
   width: 100%;
-  max-width: 1248px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 0 24px;
-  display: flex;
-  flex-direction: column;
+  padding: 0;
   box-sizing: border-box;
 }
 
-@media (min-width: 1296px) {
+@media (max-width: 931px) {
   .app-footer__container {
-    padding: 0;
+    padding: 0 24px;
   }
 }
 
 .app-footer__grid {
   width: 100%;
-  max-width: 1248px;
-  margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 36px;
-}
-
-@media (min-width: 640px) {
-  .app-footer__grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .app-footer__grid {
-    grid-template-columns: 1.3fr auto 1.3fr 1.1fr;
-    gap: 36px;
-    align-items: start;
-  }
-}
-
-@media (min-width: 1280px) {
-  .app-footer__grid {
-    grid-template-columns: 1.3fr 115px 1.3fr 1.1fr;
-    gap: 48px;
-  }
+  grid-template-columns: 134px 120px 160px 160px;
+  justify-content: space-between;
+  align-items: start;
 }
 
 /* Brand */
@@ -167,22 +136,21 @@ const serviceLinks = [
   flex-direction: column;
   align-items: flex-start;
   text-align: right;
-  gap: 16px;
+  gap: 13px;
 }
 
 .app-footer__logo-img {
-  height: 56px;
-  width: 168px;
-  max-width: 180px;
+  width: 110px;
+  height: auto;
   object-fit: contain;
 }
 
 .app-footer__desc {
-  font-size: 18px;
+  max-width: 134px;
+  font-size: 13px;
   font-weight: 500;
-  line-height: 26px;
+  line-height: 19px;
   color: #E0E0E0;
-  max-width: 320px;
   text-align: right;
   margin: 0;
 }
@@ -190,7 +158,7 @@ const serviceLinks = [
 .app-footer__socials {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
   margin-top: 8px;
   padding: 0;
 }
@@ -199,12 +167,17 @@ const serviceLinks = [
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 33px;
+  height: 33px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.8);
   color: #FFFFFF;
   transition: all var(--transition-fast);
+}
+
+.app-footer__social-btn svg {
+  width: 17px;
+  height: 17px;
 }
 
 .app-footer__social-btn:hover {
@@ -218,53 +191,22 @@ const serviceLinks = [
 .app-footer__col {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 4px;
   text-align: right;
   min-width: 0;
 }
 
 .app-footer__col--quick {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  text-align: right;
-}
-
-@media (min-width: 1024px) {
-  .app-footer__col--quick {
-    width: 115px;
-  }
-}
-
-.app-footer__col--services {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  text-align: right;
-  margin-inline-start: 0;
-}
-
-@media (min-width: 1280px) {
-  .app-footer__col--services {
-    margin-inline-start: 111.2px;
-  }
-}
-
-.app-footer__col--contact {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  text-align: right;
+  width: 120px;
+  transform: translateX(-30px);
 }
 
 .app-footer__title {
-  font-size: 18px;
+  font-size: 13px;
   font-weight: 500;
+  line-height: 22px;
   margin: 0;
   color: #D6214E;
-  position: relative;
-  display: inline-block;
   text-align: right;
 }
 
@@ -272,24 +214,16 @@ const serviceLinks = [
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 5px;
   padding: 0;
   margin: 0;
   text-align: right;
 }
 
-.app-footer__list--services {
-  gap: 8px;
-}
-
-.app-footer__list--quick {
-  gap: 20px;
-}
-
 .app-footer__link {
-  font-size: 18px;
+  font-size: 13px;
   font-weight: 500;
-  line-height: 27px;
+  line-height: 21px;
   color: #E0E0E0;
   transition: all var(--transition-fast);
   display: inline-block;
@@ -304,15 +238,16 @@ const serviceLinks = [
 .app-footer__contact-info {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 17px;
   text-align: right;
 }
 
 .app-footer__contact-item {
-  font-size: 18px;
+  max-width: 160px;
+  font-size: 13px;
   font-weight: 500;
   color: #E0E0E0;
-  line-height: 26px;
+  line-height: 19px;
   margin: 0;
   text-align: right;
 }
@@ -326,56 +261,27 @@ const serviceLinks = [
   direction: ltr;
   unicode-bidi: isolate;
   text-align: right;
-  font-size: 18px;
-  line-height: 27px;
-}
-
-/* Bottom */
-.app-footer__bottom {
-  margin-top: 88px;
-  padding: 0 0 28px;
-  border-top: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-.app-footer__copyright {
-  font-family: var(--font-inter);
-  font-size: 12px;
-  line-height: 20px;
-  color: #F0F0F0;
-  text-align: center;
-  margin: 0 auto;
-  display: block;
-}
-
-@media (min-width: 1280px) {
-  .app-footer__copyright {
-    transform: translateX(495.5px);
-  }
+  font-size: 13px;
+  line-height: 19px;
 }
 
 @media (max-width: 767px) {
   .app-footer {
-    padding: 56px 0 0;
+    padding: 40px 0;
   }
 
   .app-footer__container {
-    padding: 0 16px;
+    padding: 0 24px;
   }
 
-  .app-footer__desc,
-  .app-footer__link,
-  .app-footer__contact-item {
-    font-size: 16px;
-    line-height: 24px;
+  .app-footer__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px 24px;
   }
 
-  .app-footer__bottom {
-    margin-top: 48px;
-    padding: 0 0 24px;
+  .app-footer__col--quick {
+    width: auto;
+    transform: none;
   }
 }
 </style>

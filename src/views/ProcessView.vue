@@ -78,11 +78,11 @@ const steps = [
       <!-- Section Header -->
       <header class="process-header" data-name="Frame 122">
         <h1 class="process-header__title">
-          من <span class="gradient-idea">الفكرة</span> إلى <span class="gradient-execution">التنفيذ</span>، بخطوات <span class="gradient-clear">واضحة</span>
+          من <span class="gradient-idea">الفكرة</span> إلى <span class="gradient-execution">التنفيذ</span>، بخطوات <span
+            class="gradient-clear">واضحة</span>
         </h1>
         <p class="process-header__desc">
-          منهجية عمل هندسية متكاملة تضمن دقة التنفيذ والالتزام بأعلى معايير الجودة والسلامة
-        </p>
+          خدماتنا تغطي كل ما تحتاجه شركتك من التحليل حتى الانتشار الرقمي </p>
       </header>
 
       <!-- Steps List -->
@@ -91,17 +91,10 @@ const steps = [
           <!-- Separator Line matching Figma Line 24 -->
           <div class="process-divider line-24" data-name="Line 24" aria-hidden="true"></div>
 
-          <article
-            class="process-item"
-            :class="{ 'process-item--expanded': expandedStep === index }"
-            tabindex="0"
-            role="button"
-            :aria-expanded="expandedStep === index"
-            :aria-label="`مرحلة ${step.number}: ${step.title}`"
-            @click="toggleStep(index)"
-            @keydown.enter.prevent="toggleStep(index)"
-            @keydown.space.prevent="toggleStep(index)"
-          >
+          <article class="process-item" :class="{ 'process-item--expanded': expandedStep === index }" tabindex="0"
+            role="button" :aria-expanded="expandedStep === index" :aria-label="`مرحلة ${step.number}: ${step.title}`"
+            @click="toggleStep(index)" @keydown.enter.prevent="toggleStep(index)"
+            @keydown.space.prevent="toggleStep(index)">
             <!-- Main Row -->
             <div class="process-item__row">
               <!-- Right: Number + Title -->
@@ -117,34 +110,14 @@ const steps = [
 
               <!-- Left: 65x65 Arrow Button -->
               <div class="process-item__action">
-                <button
-                  type="button"
-                  class="process-item__arrow-btn"
-                  :aria-label="`تفاصيل مرحلة ${step.title}`"
-                  tabindex="-1"
-                >
-                  <svg
-                    width="65"
-                    height="65"
-                    viewBox="0 0 65 65"
-                    fill="none"
-                    class="process-item__arrow-svg"
-                    aria-hidden="true"
-                  >
-                    <circle
-                      cx="32.5"
-                      cy="32.5"
-                      r="31"
-                      class="arrow-circle"
-                    />
+                <button type="button" class="process-item__arrow-btn" :aria-label="`تفاصيل مرحلة ${step.title}`"
+                  tabindex="-1">
+                  <svg width="65" height="65" viewBox="0 0 65 65" fill="none" class="process-item__arrow-svg"
+                    aria-hidden="true">
+                    <circle cx="32.5" cy="32.5" r="31" class="arrow-circle" />
                     <!-- Arrow pointing left (rotates to down when expanded) -->
-                    <path
-                      d="M41 32.5H24M31 24.5L23 32.5L31 40.5"
-                      class="arrow-stem"
-                      stroke-width="2.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
+                    <path d="M41 32.5H24M31 24.5L23 32.5L31 40.5" class="arrow-stem" stroke-width="2.5"
+                      stroke-linecap="round" stroke-linejoin="round" />
                   </svg>
                 </button>
               </div>
@@ -158,11 +131,7 @@ const steps = [
                   <div class="drawer-columns">
                     <!-- Col 1 (Right in RTL) -->
                     <div class="drawer-col">
-                      <div
-                        v-for="(item, iIdx) in step.deliverablesCol1"
-                        :key="iIdx"
-                        class="drawer-item"
-                      >
+                      <div v-for="(item, iIdx) in step.deliverablesCol1" :key="iIdx" class="drawer-item">
                         <span class="drawer-bullet" aria-hidden="true"></span>
                         <span class="drawer-text">{{ item }}</span>
                       </div>
@@ -170,11 +139,7 @@ const steps = [
 
                     <!-- Col 2 (Left in RTL) -->
                     <div class="drawer-col">
-                      <div
-                        v-for="(item, iIdx) in step.deliverablesCol2"
-                        :key="iIdx"
-                        class="drawer-item"
-                      >
+                      <div v-for="(item, iIdx) in step.deliverablesCol2" :key="iIdx" class="drawer-item">
                         <span class="drawer-bullet" aria-hidden="true"></span>
                         <span class="drawer-text">{{ item }}</span>
                       </div>

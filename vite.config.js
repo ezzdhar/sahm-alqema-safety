@@ -7,8 +7,8 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
 /**
- * Dev server plugin to rewrite / and /index.html to /index.source.html
- * so that Vite dev server serves the live HMR Vue app, even while
+ * Dev server plugin to rewrite /, /index.html, and SPA client routes to /index.source.html
+ * so that Vite dev server always serves the live HMR Vue app, even while
  * the root index.html hosts the compiled production bundle for GitHub Pages.
  */
 function devHtmlRewritePlugin() {
@@ -17,7 +17,15 @@ function devHtmlRewritePlugin() {
     configureServer(server) {
       server.middlewares.use((req, res, next) => {
         const url = req.url ? req.url.split('?')[0] : ''
-        if (url === '' || url === '/' || url === '/index.html') {
+        const isInternalOrAsset =
+          url.startsWith('/@') ||
+          url.startsWith('/src/') ||
+          url.startsWith('/node_modules/') ||
+          url.startsWith('/assets/') ||
+          url.startsWith('/api/') ||
+          url.includes('.')
+
+        if (url === '' || url === '/' || url === '/index.html' || (!isInternalOrAsset && req.method === 'GET')) {
           const query = req.url && req.url.includes('?') ? req.url.slice(req.url.indexOf('?')) : ''
           req.url = '/index.source.html' + query
         }
@@ -82,6 +90,9 @@ function contactApiDevPlugin() {
 export default defineConfig({
   base: '/',
   plugins: [devHtmlRewritePlugin(), vue(), contactApiDevPlugin()],
+  optimizeDeps: {
+    entries: ['index.source.html'],
+  },
   build: {
     rollupOptions: {
       input: {
