@@ -487,8 +487,8 @@ const serviceHexagonsBottom = [
                     d="M4 20V4h16v16H4Zm1-1h14V5H5v14Zm3.55-3.5h6.9q.4-.55.65-1.2h-8.2q.25.65.65 1.2Zm-.9-2.2h8.7q.15-.55.15-1.15t-.15-1.15h-8.7q-.15.55-.15 1.15t.15 1.15Zm.9-3.3h6.9q-.65-.9-1.6-1.45T12 8q-1 0-1.95.55T8.55 10ZM12 17q-2.075 0-3.537-1.463T7 12q0-2.075 1.463-3.538T12 7q2.075 0 3.538 1.463T17 12q0 2.075-1.463 3.538T12 17Z" />
                 </svg>
                 <!-- Card 4: الاختبار والتشغيل (line-md:circle-to-confirm-circle-transition) -->
-                <svg v-else width="35" height="35" viewBox="0 0 24 24" fill="none"
-                  xmlns="http://www.w3.org/2000/svg" data-name="line-md:circle-to-confirm-circle-transition">
+                <svg v-else width="35" height="35" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                  data-name="line-md:circle-to-confirm-circle-transition">
                   <circle cx="12" cy="12" r="9" stroke="#D6214E" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" />
                   <path d="M8 12L11 15L16 10" stroke="#D6214E" stroke-width="2" stroke-linecap="round"
@@ -704,7 +704,7 @@ const serviceHexagonsBottom = [
             أخبرنا بتفاصيل مشروعك وسنعود إليك بخطة واضحة تناسب أهدافك، خلال 24 ساعة
           </p>
           <AppButton to="/contact" variant="primary" class="home-contact-hero-btn">
-            احجز الآن
+            استكشف الفرص
           </AppButton>
         </div>
       </div>
@@ -1053,9 +1053,9 @@ const serviceHexagonsBottom = [
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 20px;
-  padding: 12px;
+  padding: 14px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: 10px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
   width: 100%;
@@ -1064,17 +1064,9 @@ const serviceHexagonsBottom = [
   box-sizing: border-box;
 }
 
-@media (max-width: 360px) {
-  .hero-features__bar {
-    grid-template-columns: 1fr;
-    padding: 10px;
-    gap: 8px;
-    border-radius: 16px;
-  }
-}
-
 @media (min-width: 768px) {
   .hero-features__bar {
+    grid-template-columns: repeat(2, 1fr);
     padding: 18px 20px;
     gap: 16px;
     border-radius: 24px;
@@ -1095,19 +1087,26 @@ const serviceHexagonsBottom = [
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
+  justify-content: flex-start;
+  gap: 14px;
   position: relative;
   width: 100%;
   height: 100%;
-  padding: 10px 8px;
+  padding: 12px 16px;
   box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
 }
 
 @media (min-width: 768px) {
   .hero-features__item {
+    justify-content: center;
     gap: 14px;
     padding: 12px 14px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
   }
 }
 
@@ -1120,8 +1119,8 @@ const serviceHexagonsBottom = [
 
 .hero-features__icon-wrap {
   flex-shrink: 0;
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   color: var(--color-primary);
   display: flex;
   align-items: center;
@@ -1150,19 +1149,19 @@ const serviceHexagonsBottom = [
 }
 
 .hero-features__text {
-  font-size: 13.5px;
+  font-size: 14.5px;
   font-weight: 600;
   color: #FFFFFF;
-  line-height: 1.45;
+  line-height: 1.5;
   text-align: right;
-  white-space: pre-line;
+  white-space: normal;
   margin: 0;
 }
 
-@media (min-width: 480px) {
+@media (min-width: 768px) {
   .hero-features__text {
     font-size: 14.5px;
-    line-height: 1.5;
+    white-space: pre-line;
   }
 }
 

@@ -1085,14 +1085,14 @@ const handleSubmit = async () => {
 .office-card__details {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   padding: 0px;
   gap: 4px;
   text-align: right;
 }
 
 .office-card__details--center {
-  align-items: flex-end;
+  align-items: flex-start;
 }
 
 /* Text & Links */

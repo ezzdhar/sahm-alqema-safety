@@ -1154,6 +1154,24 @@ const scrollToService = (id) => {
   box-shadow: 0 4px 14px rgba(214, 33, 78, 0.4);
 }
 
+@media (max-width: 640px) {
+  .projects-filters {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 340px;
+    margin: 20px auto 0;
+    gap: 10px;
+  }
+
+  .projects-filter-btn {
+    width: 100%;
+    text-align: center;
+    padding: 12px 20px;
+    font-size: 15px;
+  }
+}
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));

@@ -14,10 +14,8 @@ const baseUrl = import.meta.env.BASE_URL;
           <h1 class="about-hero__title" data-name="مؤسسة سهم القمة">
             مؤسسة سهم القمة
           </h1>
-          <p
-            class="about-hero__subtitle"
-            data-name="شريكك الهندسي في أنظمة الأمن والسلامة والميكانيكا والكهرباء والسباكة، بخبرة مجموعة الفسطاط منذ 1989."
-          >
+          <p class="about-hero__subtitle"
+            data-name="شريكك الهندسي في أنظمة الأمن والسلامة والميكانيكا والكهرباء والسباكة، بخبرة مجموعة الفسطاط منذ 1989.">
             شريكك الهندسي في أنظمة الأمن والسلامة والميكانيكا والكهرباء والسباكة، بخبرة مجموعة الفسطاط منذ 1989.
           </p>
         </div>
@@ -40,26 +38,18 @@ const baseUrl = import.meta.env.BASE_URL;
             </div>
 
             <p class="about-section__desc" data-name="Paragraph">
-              مؤسسة سهم القمة لأنظمة الأمن والسلامة هي الفرع السعودي لمجموعة الفسطاط، المزوّد الاستشاري الثابت منذ عام 1989 لخدمات الميكانيكا والكهرباء والسباكة بموثوقية ودقة. بحضور راسخ في الشرق الأوسط وحضور قوي في مصر، وبفرعنا في المملكة العربية السعودية، نحن شريك يُعتمد عليه في احتياجات البنية التحتية لمشروعك.
+              مؤسسة سهم القمة لأنظمة الأمن والسلامة هي الفرع السعودي لمجموعة الفسطاط، المزوّد الاستشاري الثابت منذ عام
+              1989 لخدمات الميكانيكا والكهرباء والسباكة بموثوقية ودقة. بحضور راسخ في الشرق الأوسط وحضور قوي في مصر،
+              وبفرعنا في المملكة العربية السعودية، نحن شريك يُعتمد عليه في احتياجات البنية التحتية لمشروعك.
             </p>
 
             <div class="about-section__actions" data-name="Frame 52">
-              <AppButton
-                to="/contact"
-                variant="primary"
-                size="lg"
-                class="about-section__btn about-section__btn--primary"
-                data-name="Button"
-              >
-                احجز الآن
+              <AppButton to="/contact" variant="primary" size="lg"
+                class="about-section__btn about-section__btn--primary" data-name="Button">
+                استكشف الفرص
               </AppButton>
-              <AppButton
-                to="/services"
-                variant="outline-dark"
-                size="lg"
-                class="about-section__btn about-section__btn--secondary"
-                data-name="Button"
-              >
+              <AppButton to="/services" variant="outline-dark" size="lg"
+                class="about-section__btn about-section__btn--secondary" data-name="Button">
                 خدماتنا
               </AppButton>
             </div>
@@ -72,13 +62,8 @@ const baseUrl = import.meta.env.BASE_URL;
 
             <!-- Front Image Frame (Frame 113) -->
             <div class="about-section__image-container" data-name="Frame 113">
-              <img
-                :src="`${baseUrl}assets/villa.jpg`"
-                alt="مقر ومشاريع مؤسسة سهم القمة"
-                class="about-section__img"
-                loading="lazy"
-                data-name="villa 1"
-              />
+              <img :src="`${baseUrl}assets/villa.jpg`" alt="مقر ومشاريع مؤسسة سهم القمة" class="about-section__img"
+                loading="lazy" data-name="villa 1" />
               <div class="about-section__img-overlay" aria-hidden="true"></div>
             </div>
 

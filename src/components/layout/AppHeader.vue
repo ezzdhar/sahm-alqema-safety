@@ -78,33 +78,22 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <header
-    class="app-header"
-    :class="{
-      'app-header--scrolled': isScrolled,
-      'app-header--menu-open': mobileMenuOpen
-    }"
-  >
+  <header class="app-header" :class="{
+    'app-header--scrolled': isScrolled,
+    'app-header--menu-open': mobileMenuOpen
+  }">
     <div class="container app-header__container">
       <div class="app-header__bar" data-name="Frame 49">
         <!-- Right: Logo (in RTL, first visual item on right) -->
         <RouterLink to="/" class="app-header__logo" @click="closeMobileMenu">
-          <img
-            :src="`${baseUrl}assets/logo.png`"
-            alt="مؤسسة سهم القمة لأنظمة الأمن والسلامة"
-            class="app-header__logo-img"
-          />
+          <img :src="`${baseUrl}assets/logo.png`" alt="مؤسسة سهم القمة لأنظمة الأمن والسلامة"
+            class="app-header__logo-img" />
         </RouterLink>
 
         <!-- Center: Desktop Navigation Links -->
         <nav class="app-header__nav" aria-label="القائمة الرئيسية">
-          <RouterLink
-            v-for="link in navLinks"
-            :key="link.path"
-            :to="link.path"
-            class="app-header__nav-link"
-            :class="{ 'app-header__nav-link--active': route.path === link.path }"
-          >
+          <RouterLink v-for="link in navLinks" :key="link.path" :to="link.path" class="app-header__nav-link"
+            :class="{ 'app-header__nav-link--active': route.path === link.path }">
             {{ link.name }}
             <span v-if="route.path === link.path" class="app-header__active-underline"></span>
           </RouterLink>
@@ -113,50 +102,26 @@ onUnmounted(() => {
         <!-- Left: CTA Button & Mobile Toggle -->
         <div class="app-header__actions">
           <AppButton to="/contact" variant="primary" size="md" class="app-header__cta-btn">
-            احجز الآن
+            استكشف الفرص
           </AppButton>
 
           <!-- Mobile Burger Toggle Button -->
-          <button
-            type="button"
-            class="app-header__mobile-toggle"
-            :class="{ 'app-header__mobile-toggle--open': mobileMenuOpen }"
-            :aria-expanded="mobileMenuOpen"
-            aria-label="تبديل القائمة"
-            aria-controls="mobile-menu-drawer"
-            @click="toggleMobileMenu"
-          >
+          <button type="button" class="app-header__mobile-toggle"
+            :class="{ 'app-header__mobile-toggle--open': mobileMenuOpen }" :aria-expanded="mobileMenuOpen"
+            aria-label="تبديل القائمة" aria-controls="mobile-menu-drawer" @click="toggleMobileMenu">
             <span class="hamburger-box" aria-hidden="true">
               <transition name="icon-fade" mode="out-in">
                 <!-- Symmetrical centered 3-line hamburger icon -->
-                <svg
-                  v-if="!mobileMenuOpen"
-                  key="menu"
-                  class="hamburger-icon"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.3"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
+                <svg v-if="!mobileMenuOpen" key="menu" class="hamburger-icon" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
                   <line x1="4" y1="6" x2="20" y2="6" />
                   <line x1="4" y1="12" x2="20" y2="12" />
                   <line x1="4" y1="18" x2="20" y2="18" />
                 </svg>
 
                 <!-- Symmetrical centered close (X) icon -->
-                <svg
-                  v-else
-                  key="close"
-                  class="hamburger-icon"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.3"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
+                <svg v-else key="close" class="hamburger-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
                   <line x1="6" y1="6" x2="18" y2="18" />
                   <line x1="6" y1="18" x2="18" y2="6" />
                 </svg>
@@ -169,35 +134,23 @@ onUnmounted(() => {
 
     <!-- Mobile Drawer Overlay & Menu -->
     <transition name="mobile-drawer">
-      <div
-        v-if="mobileMenuOpen"
-        id="mobile-menu-drawer"
-        class="app-header__mobile-menu"
-        role="dialog"
-        aria-modal="true"
-        aria-label="القائمة المتنقلة"
-        @click.self="closeMobileMenu"
-      >
+      <div v-if="mobileMenuOpen" id="mobile-menu-drawer" class="app-header__mobile-menu" role="dialog" aria-modal="true"
+        aria-label="القائمة المتنقلة" @click.self="closeMobileMenu">
         <div class="app-header__mobile-content">
           <nav class="app-header__mobile-nav" aria-label="روابط القائمة الرئيسية">
-            <RouterLink
-              v-for="link in navLinks"
-              :key="link.path"
-              :to="link.path"
-              class="app-header__mobile-link"
-              :class="{ 'app-header__mobile-link--active': route.path === link.path }"
-              @click="closeMobileMenu"
-            >
+            <RouterLink v-for="link in navLinks" :key="link.path" :to="link.path" class="app-header__mobile-link"
+              :class="{ 'app-header__mobile-link--active': route.path === link.path }" @click="closeMobileMenu">
               <span class="app-header__mobile-link-text">{{ link.name }}</span>
               <svg class="app-header__mobile-link-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none">
-                <path d="M14 6 8 12l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M14 6 8 12l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
               </svg>
             </RouterLink>
           </nav>
 
           <div class="app-header__mobile-cta">
             <AppButton to="/contact" variant="primary" size="lg" block @click="closeMobileMenu">
-              احجز الآن
+              استكشف الفرص
             </AppButton>
           </div>
 
@@ -633,6 +586,7 @@ onUnmounted(() => {
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
+
   .app-header,
   .app-header--scrolled {
     padding: 20px 0 0;
