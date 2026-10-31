@@ -110,7 +110,7 @@ const serviceLinks = [
 
 .app-footer__container {
   width: 100%;
-  max-width: 900px;
+  max-width: 1028px;
   margin: 0 auto;
   padding: 0;
   box-sizing: border-box;
